@@ -31,3 +31,14 @@ C:\BitBucket\pracaDyplomowaOk\praca\panelTestowy\panelTestowy\obj\Debug\panelTes
 C:\BitBucket\pracaDyplomowaOk\praca\panelTestowy\panelTestowy\obj\Debug\panelTestowy.exe
 C:\BitBucket\pracaDyplomowaOk\praca\panelTestowy\panelTestowy\obj\Debug\panelTestowy.pdb
 C:\BitBucket\pracaDyplomowaOk\praca\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.SuggestedBindingRedirects.cache
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\bin\Debug\panelTestowy.exe.config
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\bin\Debug\panelTestowy.exe
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\bin\Debug\panelTestowy.pdb
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.AssemblyReference.cache
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.SuggestedBindingRedirects.cache
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.Form1.resources
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.Properties.Resources.resources
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.GenerateResource.cache
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.CoreCompileInputs.cache
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.exe
+C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.pdb

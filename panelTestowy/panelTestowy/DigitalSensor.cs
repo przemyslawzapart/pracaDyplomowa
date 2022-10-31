@@ -29,6 +29,7 @@ namespace panelTestowy
             this.button.BackColor = color;
             this.label.Text = name;
             //galaz wtorek
+            //inna zmaina
             
         }
         public void chaneState(bool buttonState)
