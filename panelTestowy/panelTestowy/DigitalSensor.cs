@@ -28,6 +28,7 @@ namespace panelTestowy
             color = Color.Red;
             this.button.BackColor = color;
             this.label.Text = name;
+            //dodano jakis komentarz
             
         }
         public void chaneState(bool buttonState)
