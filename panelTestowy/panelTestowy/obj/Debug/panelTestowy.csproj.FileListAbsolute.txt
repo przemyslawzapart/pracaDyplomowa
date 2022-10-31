@@ -42,3 +42,14 @@ C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj
 C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.CoreCompileInputs.cache
 C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.exe
 C:\github\pracaDyplomowa\panelTestowy\panelTestowy\obj\Debug\panelTestowy.pdb
+G:\github\panelTestowy\panelTestowy\bin\Debug\panelTestowy.exe.config
+G:\github\panelTestowy\panelTestowy\bin\Debug\panelTestowy.exe
+G:\github\panelTestowy\panelTestowy\bin\Debug\panelTestowy.pdb
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.AssemblyReference.cache
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.SuggestedBindingRedirects.cache
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.Form1.resources
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.Properties.Resources.resources
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.GenerateResource.cache
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.CoreCompileInputs.cache
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.exe
+G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.pdb

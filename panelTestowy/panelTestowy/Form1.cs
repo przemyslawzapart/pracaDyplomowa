@@ -17,7 +17,8 @@ namespace panelTestowy
         DateTime dt = new DateTime(2015, 12, 20);
         List<CheckBox> digitalState = new List<CheckBox>();       
         List<AnalogSensor> sensorList = new List<AnalogSensor>(); 
-        DigitalSensor digitalSensor;
+       
+        List<DigitalSensor> digitalSensorList = new List<DigitalSensor>();                                                   
        
         
         public Form1()
@@ -57,7 +58,33 @@ namespace panelTestowy
             sensorList[0].setNewInstelingen(70, 50, 200, "pierwszy", "A");
             sensorList[1].setNewInstelingen(70, 50, 200, "drugi", "V");
             sensorList[2].setNewInstelingen(70, 50, 200, "trzeci", "Bar");
-            digitalSensor = new DigitalSensor(lblDigital1, btnDigital1);
+            
+            //digitalSensor = new DigitalSensor(lblDigital1, btnDigital1);
+            digitalSensorList.Add(new DigitalSensor(lblDigital1, btnDigital1));
+            digitalSensorList.Add(new DigitalSensor(lblDigital2, btnDigital2));
+            digitalSensorList.Add(new DigitalSensor(lblDigital3, btnDigital3));
+            digitalSensorList.Add(new DigitalSensor(lblDigital4, btnDigital4));
+            digitalSensorList.Add(new DigitalSensor(lblDigital5, btnDigital5));
+            digitalSensorList.Add(new DigitalSensor(lblDigital6, btnDigital6));
+            digitalSensorList.Add(new DigitalSensor(lblDigital7, btnDigital7));
+            digitalSensorList.Add(new DigitalSensor(lblDigital8, btnDigital8));
+            digitalSensorList.Add(new DigitalSensor(lblDigital9, btnDigital9));
+            digitalSensorList.Add(new DigitalSensor(lblDigital10, btnDigital10));
+            digitalSensorList.Add(new DigitalSensor(lblDigital11, btnDigital11));
+            digitalSensorList.Add(new DigitalSensor(lblDigital12, btnDigital12));
+            digitalSensorList.Add(new DigitalSensor(lblDigital13, btnDigital13));
+            digitalSensorList.Add(new DigitalSensor(lblDigital14, btnDigital14));
+            digitalSensorList.Add(new DigitalSensor(lblDigital15, btnDigital15));
+            digitalSensorList.Add(new DigitalSensor(lblDigital16, btnDigital16));
+            digitalSensorList.Add(new DigitalSensor(lblDigital17, btnDigital17));
+            digitalSensorList.Add(new DigitalSensor(lblDigital18, btnDigital18));
+            digitalSensorList.Add(new DigitalSensor(lblDigital19, btnDigital19));
+            digitalSensorList.Add(new DigitalSensor(lblDigital20, btnDigital20));
+
+            digitalSensorList[0].setName("pierwsza nazwa");
+            digitalSensorList[0].changeState(false);
+
+          
 
 
         }
@@ -74,7 +101,7 @@ namespace panelTestowy
                 gbManual.Enabled = false;
             }
                 
-            unsetButton(btnHandStart);
+            
         }
         private void unsetButton(Button btn)
         {
@@ -90,8 +117,7 @@ namespace panelTestowy
                 gbManual.Enabled = true;
             }
              
-            if(btnHandStart.Enabled == false)
-                btnHandStart.Enabled = true;
+            
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -102,7 +128,7 @@ namespace panelTestowy
                 gbManual.Enabled = true;
             }
             
-            unsetButton(btnHandStart);
+            
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -163,7 +189,7 @@ namespace panelTestowy
             Console.WriteLine();
             if (data.Length == result)
             {
-                string hex = "142CBD";
+                
                 // this returns 1322173
                 //float intValue = int.Parse(d[3]);
                 //float f = 0;
@@ -196,12 +222,16 @@ namespace panelTestowy
                 int len = (4*d[8].Length) - 1;
                 for (int i = len; i >= 0; i--)
                 {
-                   
+
+                    //if ((nr & (1 << i)) != 0)
+                    //    digitalState[i].Checked = true;
+                    //else
+                    //    digitalState[i].Checked = false;
                     if ((nr & (1 << i)) != 0)
-                        digitalState[i].Checked = true;
+                        digitalSensorList[i].changeState(true);
                     else
-                        digitalState[i].Checked = false;               
-                }    
+                        digitalSensorList[i].changeState(false);
+                }
             }   
         }
 
@@ -245,5 +275,50 @@ namespace panelTestowy
         {
 
         }
+
+        private void btnPanelMain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPanelSettings_Click(object sender, EventArgs e)
+        {
+            
+//            gbValue.Visible = false;
+            //gbValue.Size = new Size(0,0);
+            gbValue.Location = new Point(1000,1000);
+
+//            gbSettings.Visible = true;
+            gbSettings.Size = new Size(680, 403);
+            gbSettings.Location = new Point(0, 47);
+            Console.WriteLine(gbValue.Location);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {      
+            
+            gbValue.Location = new Point(0, 47);
+
+ //           gbSettings.Visible = false;
+//            gbSettings.Size = new Size(0,0);
+            gbSettings.Location = new Point(1000, 1000);
+
+            //            gbValue.Visible = true;
+            //            gbValue.Size = new Size(680,403);
+
+            Console.WriteLine(gbSettings.Location);
+
+
+
+
+
+
+
+
+
+        }
+
+      
     }
 }

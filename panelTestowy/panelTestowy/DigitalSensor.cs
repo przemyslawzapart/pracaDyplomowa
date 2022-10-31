@@ -32,12 +32,17 @@ namespace panelTestowy
             //inna zmaina
             
         }
-        public void chaneState(bool buttonState)
+        public void changeState(bool buttonState)
         {
             if (buttonState)
                 button.BackColor = color;
             else
                 button.BackColor = Color.White;
+        }
+
+        public void setName(string name)
+        {
+            label.Text = name;
         }
     }
 }
