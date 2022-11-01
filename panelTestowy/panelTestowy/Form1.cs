@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -15,13 +17,21 @@ namespace panelTestowy
 {
     public partial class Form1 : Form
     {
+
+       
+
+
         DateTime dt = new DateTime(2015, 12, 20);
         List<CheckBox> digitalState = new List<CheckBox>();       
         List<AnalogSensor> sensorList = new List<AnalogSensor>(); 
        
-        List<DigitalSensor> digitalSensorList = new List<DigitalSensor>();                                                   
+        List<DigitalSensor> digitalSensorList = new List<DigitalSensor>();
+        string password = "123";
+        System.Windows.Forms.TextBox tbx;
+        bool loginState = false;
        
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -85,14 +95,16 @@ namespace panelTestowy
             digitalSensorList[0].setName("pierwsza nazwa");
             digitalSensorList[0].changeState(false);
 
+            tbx = new System.Windows.Forms.TextBox();
 
-            //comboBox2.Items.Add(digitalSensorList);
+            comboBox2.Items.Add("Select digital item");
 
             foreach (var item in digitalSensorList)
             {
                 Console.WriteLine(item.name);
                 comboBox2.Items.Add(item.name);
             }
+            comboBox2.SelectedIndex = 0;
 
             //var items = new[] {
             //    new { Text = "report A", Value = "reportA" },
@@ -316,7 +328,7 @@ namespace panelTestowy
 
         private void button3_Click(object sender, EventArgs e)
         {      
-            
+            gbSetAnalog.Enabled = false;
             gbValue.Location = new Point(0, 47);
 
  //           gbSettings.Visible = false;
@@ -340,7 +352,81 @@ namespace panelTestowy
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //"#A/id*
+            if(comboBox1.SelectedIndex != 0)
+            {
+                int a = comboBox1.SelectedIndex;
+                string data = "#";
+                data += "A";
+                data += "/";
+                data += a.ToString();
+                data += "*";
+               sendData(data);
+            }
+        }
 
+        
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPswdReset_Click(object sender, EventArgs e)
+        {
+            tbPswd.Text = "";
+            //gbPswd.BackColor = SystemColors.ActiveCaption;
+            lblPswd.Visible = false;
+        }
+
+        private void btnPswdCancel_Click(object sender, EventArgs e)
+        {
+            tbPswd.Text = "";
+            gbPswd.Visible = false;
+        }
+
+        private void bntLogin_Click(object sender, EventArgs e)
+        {
+            gbPswd.Visible=true;
+        }
+
+        private void btnPswdLogin_Click(object sender, EventArgs e)
+        {
+            if (String.Compare(tbPswd.Text, password) == 0)
+            {               
+                tbPswd.Text = "";
+                gbPswd.Visible = false;
+                lblPswd.Visible = false;
+                loginState = true;
+                gbSetAnalog.Enabled = true;
+            }
+            else
+            {                
+                tbPswd.Text = "";
+                lblPswd.Visible = true;
+            }
+                
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1 = tbx;
+            
+
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            tbx.Text = "a";
+            tbxKey.Text = "text a";
+            //tbxPisz.Text = "rrrr";
+
+
+        }
+
+        private void tbxPisz_TextChanged(object sender, EventArgs e)
+        {
+            tbx = tbxPisz;
         }
     }
 }

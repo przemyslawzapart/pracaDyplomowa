@@ -63,3 +63,4 @@ C:\github\praca_Dyplomowa_ok\panelTestowy\panelTestowy\obj\Debug\panelTestowy.cs
 C:\github\praca_Dyplomowa_ok\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.CoreCompileInputs.cache
 C:\github\praca_Dyplomowa_ok\panelTestowy\panelTestowy\obj\Debug\panelTestowy.exe
 C:\github\praca_Dyplomowa_ok\panelTestowy\panelTestowy\obj\Debug\panelTestowy.pdb
+C:\github\praca_Dyplomowa_ok\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.SuggestedBindingRedirects.cache
