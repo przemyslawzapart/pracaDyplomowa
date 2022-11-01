@@ -154,7 +154,6 @@
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.digitalSensorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -162,8 +161,28 @@
             this.ghffghToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.bntLogin = new System.Windows.Forms.Button();
+            this.digitalSensorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.gbNoNc = new System.Windows.Forms.GroupBox();
+            this.rbNo = new System.Windows.Forms.RadioButton();
+            this.rbNc = new System.Windows.Forms.RadioButton();
             this.bgKey.SuspendLayout();
             this.gbManual.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -176,10 +195,12 @@
             this.gbValue.SuspendLayout();
             this.gbSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).BeginInit();
+            this.gbNoNc.SuspendLayout();
             this.SuspendLayout();
             // 
             // bgKey
@@ -803,19 +824,21 @@
             // 
             // gbSetAnalog
             // 
-            this.gbSetAnalog.Controls.Add(this.checkBox1);
+            this.gbSetAnalog.Controls.Add(this.groupBox5);
+            this.gbSetAnalog.Controls.Add(this.groupBox4);
+            this.gbSetAnalog.Controls.Add(this.comboBox2);
             this.gbSetAnalog.Controls.Add(this.gbValues);
-            this.gbSetAnalog.Location = new System.Drawing.Point(18, 19);
+            this.gbSetAnalog.Controls.Add(this.comboBox1);
+            this.gbSetAnalog.Location = new System.Drawing.Point(4, 35);
             this.gbSetAnalog.Name = "gbSetAnalog";
-            this.gbSetAnalog.Size = new System.Drawing.Size(216, 311);
+            this.gbSetAnalog.Size = new System.Drawing.Size(670, 359);
             this.gbSetAnalog.TabIndex = 7;
             this.gbSetAnalog.TabStop = false;
-            this.gbSetAnalog.Text = "setAnalog";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 23);
+            this.checkBox1.Location = new System.Drawing.Point(240, 13);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 5;
@@ -828,7 +851,6 @@
             this.gbValues.Controls.Add(this.textBox7);
             this.gbValues.Controls.Add(this.label1);
             this.gbValues.Controls.Add(this.textBox6);
-            this.gbValues.Controls.Add(this.comboBox1);
             this.gbValues.Controls.Add(this.label12);
             this.gbValues.Controls.Add(this.textBox5);
             this.gbValues.Controls.Add(this.label11);
@@ -841,15 +863,15 @@
             this.gbValues.Controls.Add(this.label10);
             this.gbValues.Controls.Add(this.label9);
             this.gbValues.Enabled = false;
-            this.gbValues.Location = new System.Drawing.Point(6, 43);
+            this.gbValues.Location = new System.Drawing.Point(258, 53);
             this.gbValues.Name = "gbValues";
-            this.gbValues.Size = new System.Drawing.Size(204, 261);
+            this.gbValues.Size = new System.Drawing.Size(200, 300);
             this.gbValues.TabIndex = 4;
             this.gbValues.TabStop = false;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(98, 205);
+            this.textBox7.Location = new System.Drawing.Point(97, 182);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 14;
@@ -857,7 +879,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 208);
+            this.label1.Location = new System.Drawing.Point(15, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 13;
@@ -865,7 +887,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(96, 71);
+            this.textBox6.Location = new System.Drawing.Point(95, 48);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 12;
@@ -880,15 +902,16 @@
             "analog3",
             "analog4",
             "analog5"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 19);
+            this.comboBox1.Location = new System.Drawing.Point(267, 14);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 21);
+            this.comboBox1.Size = new System.Drawing.Size(204, 21);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 74);
+            this.label12.Location = new System.Drawing.Point(13, 51);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 11;
@@ -896,7 +919,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(97, 97);
+            this.textBox5.Location = new System.Drawing.Point(96, 74);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 10;
@@ -904,7 +927,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 100);
+            this.label11.Location = new System.Drawing.Point(14, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 13);
             this.label11.TabIndex = 9;
@@ -912,7 +935,7 @@
             // 
             // btnGetAnalogValues
             // 
-            this.btnGetAnalogValues.Location = new System.Drawing.Point(5, 42);
+            this.btnGetAnalogValues.Location = new System.Drawing.Point(4, 19);
             this.btnGetAnalogValues.Name = "btnGetAnalogValues";
             this.btnGetAnalogValues.Size = new System.Drawing.Size(191, 23);
             this.btnGetAnalogValues.TabIndex = 8;
@@ -922,7 +945,7 @@
             // 
             // btnSendAnalogValues
             // 
-            this.btnSendAnalogValues.Location = new System.Drawing.Point(5, 231);
+            this.btnSendAnalogValues.Location = new System.Drawing.Point(4, 208);
             this.btnSendAnalogValues.Name = "btnSendAnalogValues";
             this.btnSendAnalogValues.Size = new System.Drawing.Size(191, 23);
             this.btnSendAnalogValues.TabIndex = 7;
@@ -931,21 +954,21 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(97, 179);
+            this.textBox4.Location = new System.Drawing.Point(96, 156);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 6;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(97, 153);
+            this.textBox3.Location = new System.Drawing.Point(96, 130);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 5;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 123);
+            this.textBox2.Location = new System.Drawing.Point(96, 100);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 4;
@@ -953,7 +976,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 126);
+            this.label6.Location = new System.Drawing.Point(14, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 1;
@@ -962,7 +985,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 182);
+            this.label10.Location = new System.Drawing.Point(14, 159);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 13);
             this.label10.TabIndex = 3;
@@ -971,7 +994,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 156);
+            this.label9.Location = new System.Drawing.Point(14, 133);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 2;
@@ -1475,7 +1498,8 @@
             // gbSettings
             // 
             this.gbSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gbSettings.Controls.Add(this.groupBox3);
+            this.gbSettings.Controls.Add(this.bntLogin);
+            this.gbSettings.Controls.Add(this.checkBox1);
             this.gbSettings.Controls.Add(this.gbSetAnalog);
             this.gbSettings.Location = new System.Drawing.Point(4, 54);
             this.gbSettings.Name = "gbSettings";
@@ -1485,11 +1509,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox2);
             this.groupBox3.Controls.Add(this.statusStrip1);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Location = new System.Drawing.Point(244, 19);
+            this.groupBox3.Location = new System.Drawing.Point(711, 470);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(430, 311);
             this.groupBox3.TabIndex = 8;
@@ -1499,14 +1521,10 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(28, 71);
+            this.comboBox2.Location = new System.Drawing.Point(477, 13);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(385, 21);
+            this.comboBox2.Size = new System.Drawing.Size(187, 21);
             this.comboBox2.TabIndex = 3;
-            // 
-            // digitalSensorBindingSource2
-            // 
-            this.digitalSensorBindingSource2.DataSource = typeof(panelTestowy.DigitalSensor);
             // 
             // statusStrip1
             // 
@@ -1561,11 +1579,55 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(28, 23);
+            this.textBox8.Location = new System.Drawing.Point(441, 647);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(180, 20);
             this.textBox8.TabIndex = 0;
             this.textBox8.Text = "jakis sobie text od wprowadzenia";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.gbNoNc);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.textBox9);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.textBox10);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.textBox11);
+            this.groupBox4.Controls.Add(this.textBox12);
+            this.groupBox4.Controls.Add(this.textBox13);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Location = new System.Drawing.Point(464, 53);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 300);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(10, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(242, 346);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "General settings";
+            // 
+            // bntLogin
+            // 
+            this.bntLogin.Location = new System.Drawing.Point(6, 9);
+            this.bntLogin.Name = "bntLogin";
+            this.bntLogin.Size = new System.Drawing.Size(118, 23);
+            this.bntLogin.TabIndex = 8;
+            this.bntLogin.Text = "Login";
+            this.bntLogin.UseVisualStyleBackColor = true;
+            // 
+            // digitalSensorBindingSource2
+            // 
+            this.digitalSensorBindingSource2.DataSource = typeof(panelTestowy.DigitalSensor);
             // 
             // digitalSensorBindingSource1
             // 
@@ -1575,12 +1637,153 @@
             // 
             this.digitalSensorBindingSource.DataSource = typeof(panelTestowy.DigitalSensor);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 186);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Max range";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(97, 49);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 25;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Id digital";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(98, 75);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 20);
+            this.textBox10.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 78);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Name";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Get settings";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 209);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(191, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Send settings";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(98, 157);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 19;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(98, 131);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 20);
+            this.textBox12.TabIndex = 18;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(98, 101);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 17;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(16, 104);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Min value";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(16, 160);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(26, 13);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Unit";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 134);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 13);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Max value";
+            // 
+            // gbNoNc
+            // 
+            this.gbNoNc.Controls.Add(this.rbNc);
+            this.gbNoNc.Controls.Add(this.rbNo);
+            this.gbNoNc.Location = new System.Drawing.Point(8, 252);
+            this.gbNoNc.Name = "gbNoNc";
+            this.gbNoNc.Size = new System.Drawing.Size(186, 42);
+            this.gbNoNc.TabIndex = 27;
+            this.gbNoNc.TabStop = false;
+            // 
+            // rbNo
+            // 
+            this.rbNo.AutoSize = true;
+            this.rbNo.Location = new System.Drawing.Point(20, 15);
+            this.rbNo.Name = "rbNo";
+            this.rbNo.Size = new System.Drawing.Size(41, 17);
+            this.rbNo.TabIndex = 0;
+            this.rbNo.TabStop = true;
+            this.rbNo.Text = "NO";
+            this.rbNo.UseVisualStyleBackColor = true;
+            // 
+            // rbNc
+            // 
+            this.rbNc.AutoSize = true;
+            this.rbNc.Location = new System.Drawing.Point(84, 16);
+            this.rbNc.Name = "rbNc";
+            this.rbNc.Size = new System.Drawing.Size(40, 17);
+            this.rbNc.TabIndex = 1;
+            this.rbNc.TabStop = true;
+            this.rbNc.Text = "NC";
+            this.rbNc.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1607, 995);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gbSettings);
+            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.bgKey);
@@ -1599,7 +1802,6 @@
             this.gbTime.ResumeLayout(false);
             this.gbTime.PerformLayout();
             this.gbSetAnalog.ResumeLayout(false);
-            this.gbSetAnalog.PerformLayout();
             this.gbValues.ResumeLayout(false);
             this.gbValues.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1607,13 +1809,18 @@
             this.gbMain.ResumeLayout(false);
             this.gbValue.ResumeLayout(false);
             this.gbSettings.ResumeLayout(false);
+            this.gbSettings.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).EndInit();
+            this.gbNoNc.ResumeLayout(false);
+            this.gbNoNc.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1755,6 +1962,25 @@
         private System.Windows.Forms.BindingSource digitalSensorBindingSource;
         private System.Windows.Forms.BindingSource digitalSensorBindingSource1;
         private System.Windows.Forms.BindingSource digitalSensorBindingSource2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button bntLogin;
+        private System.Windows.Forms.GroupBox gbNoNc;
+        private System.Windows.Forms.RadioButton rbNc;
+        private System.Windows.Forms.RadioButton rbNo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
 
