@@ -69,6 +69,7 @@ SensorClass battery4(36, 31, "battery 1", "V");
 SensorClass battery5(37, 32, "battery 2", "V");
 SensorClass battery6(45, 48, "Druk", "V");
 SensorClass sensorArray[] = {battery1,battery2, battery3, battery4, battery5, battery6 };
+//SensorClass sensorArray[] = {battery6,battery5, battery4, battery3, battery2, battery1 };
 
 AnalogSensorClass analog1(A0,16,300,"analog1","V");
 AnalogSensorClass analog2(A0, 16, 300, "analog2", "V");
@@ -163,6 +164,7 @@ void getEngineSensorState() {
 	//getkeyPosition();
 	checkReset();	
 	sendDataToMonitor();
+	
 }
 bool getWaterPressState() {
 		return sensorArray[5].Value();
@@ -178,6 +180,7 @@ void runningMode() {
 		}*/
 		setRunningStatus();
 		getEngineSensorState();
+		serialEvent2();
 
 		if ((keyAutoState && stopSignal() && !getWaterPressState() && !engineStoppingStatus) || (keyHandState && stopSignal() && !engineStoppingStatus)) {
 			state = HIGH;
@@ -196,15 +199,30 @@ void runningMode() {
 }
 void sendDataToMonitor() {
 	if (millis() - sendDataToMonitorTimer >1000) {		
-		char data[20];
-		strcpy(data, "");
-		getDigitalStateHex(data);
+		static int a = 0;
+		char data[50]{ 0 };
+		char temp[20]{ 0 };
+		if(a==0)
+			strcpy(data, "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.000");
+		if(a==1)
+			strcpy(data, "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.555");
+		else if (a == 2) 
+			strcpy(data, "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.aaa");
+		a++;
+		if (a == 3)
+			a = 0;
+		getDigitalStateHex(temp);
+		strcat(data, temp);
+		strcat(data, ".37*");
 		Serial.print("data to send : ");
 		Serial.println(data);
+		Serial2.println(data);
 		sendDataToMonitorTimer = millis();
 		Serial1.println("se 1");
-		Serial2.println("se 2");
+		
 		Serial3.println("se 3");
+		
+		//% 2049 / 01 / 12.04:44 : 23.50, 8.22, 4.26, 8.10, 8.23, 9.AAAAB.
 	}	
 }
 void sendStopSignal() {
@@ -362,16 +380,19 @@ void getDigitalStateHex(char* buffer) {
 	int cnt = 0;
 	int intBuffer = 0;
 	for (size_t i = 0; i < 6; i++) {
+		
 		if (cnt == 4) {
 			changeToHex(intBuffer, buffer);
-			cnt = 0;
+			cnt = 0;			
 			intBuffer = 0;
 		}
 		bool state = sensorArray[i].getValue();
 		if (state) {
 			intBuffer |= (1 << cnt);
+			 
 		}
 		cnt++;
+		
 	}
 	if (cnt > 0)
 		changeToHex(intBuffer, buffer);
@@ -558,6 +579,7 @@ void serialEvent2(){
 	static String data = "";
 	while(Serial2.available()){
 		char c = (char)Serial2.read();
+		Serial.print(c);
 		data += c;
 		if (c == '*') {
 			Serial.print("incoming data : ");

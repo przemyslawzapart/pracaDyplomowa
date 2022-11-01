@@ -232,7 +232,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bgKey.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -337,7 +337,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbManual.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblName1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1083,8 +1083,11 @@
   <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="textBox1.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 90</value>
+    <value>554, 179</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1106,7 +1109,7 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 19</value>
@@ -3362,7 +3365,7 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbMain.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="gbValue.Location" type="System.Drawing.Point, System.Drawing">
     <value>701, 54</value>
@@ -3383,7 +3386,7 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbValue.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="bntLogin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3431,7 +3434,7 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbSettings.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblPswd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3608,7 +3611,7 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbPswd.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tbxKey.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 30</value>
@@ -3761,7 +3764,7 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tbxPisz.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 643</value>
@@ -3782,8 +3785,290 @@ set date time
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbxPisz.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSerialRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSerialRefresh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 74</value>
+  </data>
+  <data name="btnSerialRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSerialRefresh.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnSerialRefresh.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="&gt;&gt;btnSerialRefresh.Name" xml:space="preserve">
+    <value>btnSerialRefresh</value>
+  </data>
+  <data name="&gt;&gt;btnSerialRefresh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSerialRefresh.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;btnSerialRefresh.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lblSerialStatus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSerialStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSerialStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 52</value>
+  </data>
+  <data name="lblSerialStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="lblSerialStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="lblSerialStatus.Text" xml:space="preserve">
+    <value>not conneted</value>
+  </data>
+  <data name="&gt;&gt;lblSerialStatus.Name" xml:space="preserve">
+    <value>lblSerialStatus</value>
+  </data>
+  <data name="&gt;&gt;lblSerialStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSerialStatus.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;lblSerialStatus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 26</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnSerialDisConnect.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnSerialDisConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSerialDisConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 21</value>
+  </data>
+  <data name="btnSerialDisConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSerialDisConnect.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnSerialDisConnect.Text" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="&gt;&gt;btnSerialDisConnect.Name" xml:space="preserve">
+    <value>btnSerialDisConnect</value>
+  </data>
+  <data name="&gt;&gt;btnSerialDisConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSerialDisConnect.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;btnSerialDisConnect.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 31</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Select Baud Rate</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 31</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Select COM Port</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbxSelectBaudRate.Items" xml:space="preserve">
+    <value>9600</value>
+  </data>
+  <data name="cbxSelectBaudRate.Items1" xml:space="preserve">
+    <value>19200</value>
+  </data>
+  <data name="cbxSelectBaudRate.Items2" xml:space="preserve">
+    <value>115200</value>
+  </data>
+  <data name="cbxSelectBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 47</value>
+  </data>
+  <data name="cbxSelectBaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="cbxSelectBaudRate.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectBaudRate.Name" xml:space="preserve">
+    <value>cbxSelectBaudRate</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectBaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectBaudRate.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectBaudRate.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cbxSelectCom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 47</value>
+  </data>
+  <data name="cbxSelectCom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="cbxSelectCom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectCom.Name" xml:space="preserve">
+    <value>cbxSelectCom</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectCom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectCom.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;cbxSelectCom.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnSerialConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSerialConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 47</value>
+  </data>
+  <data name="btnSerialConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnSerialConnect.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnSerialConnect.Text" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="&gt;&gt;btnSerialConnect.Name" xml:space="preserve">
+    <value>btnSerialConnect</value>
+  </data>
+  <data name="&gt;&gt;btnSerialConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSerialConnect.Parent" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;btnSerialConnect.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="gbConnection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>575, 760</value>
+  </data>
+  <data name="gbConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>432, 112</value>
+  </data>
+  <data name="gbConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="gbConnection.Text" xml:space="preserve">
+    <value>Serial settings</value>
+  </data>
+  <data name="&gt;&gt;gbConnection.Name" xml:space="preserve">
+    <value>gbConnection</value>
+  </data>
+  <data name="&gt;&gt;gbConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbConnection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gbConnection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>750, 17</value>
+  </metadata>
   <metadata name="digitalSensorBindingSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>542, 17</value>
   </metadata>
@@ -3803,13 +4088,16 @@ set date time
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1607, 849</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>1607, 951</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Form1</value>
+  </data>
+  <data name="&gt;&gt;serialPort1.Name" xml:space="preserve">
+    <value>serialPort1</value>
+  </data>
+  <data name="&gt;&gt;serialPort1.Type" xml:space="preserve">
+    <value>System.IO.Ports.SerialPort, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;digitalSensorBindingSource2.Name" xml:space="preserve">
     <value>digitalSensorBindingSource2</value>

@@ -158,12 +158,23 @@
             this.btnPswdLogin = new System.Windows.Forms.Button();
             this.tbPswd = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbxKey = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.tbxKey = new System.Windows.Forms.TextBox();
             this.tbxPisz = new System.Windows.Forms.TextBox();
+            this.gbConnection = new System.Windows.Forms.GroupBox();
+            this.btnSerialRefresh = new System.Windows.Forms.Button();
+            this.lblSerialStatus = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSerialDisConnect = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbxSelectBaudRate = new System.Windows.Forms.ComboBox();
+            this.cbxSelectCom = new System.Windows.Forms.ComboBox();
+            this.btnSerialConnect = new System.Windows.Forms.Button();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.digitalSensorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -181,6 +192,7 @@
             this.gbSettings.SuspendLayout();
             this.gbPswd.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gbConnection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).BeginInit();
@@ -1090,6 +1102,11 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // tbxKey
+            // 
+            resources.ApplyResources(this.tbxKey, "tbxKey");
+            this.tbxKey.Name = "tbxKey";
+            // 
             // button8
             // 
             resources.ApplyResources(this.button8, "button8");
@@ -1115,16 +1132,89 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // tbxKey
-            // 
-            resources.ApplyResources(this.tbxKey, "tbxKey");
-            this.tbxKey.Name = "tbxKey";
-            // 
             // tbxPisz
             // 
             resources.ApplyResources(this.tbxPisz, "tbxPisz");
             this.tbxPisz.Name = "tbxPisz";
             this.tbxPisz.TextChanged += new System.EventHandler(this.tbxPisz_TextChanged);
+            // 
+            // gbConnection
+            // 
+            this.gbConnection.Controls.Add(this.btnSerialRefresh);
+            this.gbConnection.Controls.Add(this.lblSerialStatus);
+            this.gbConnection.Controls.Add(this.label5);
+            this.gbConnection.Controls.Add(this.btnSerialDisConnect);
+            this.gbConnection.Controls.Add(this.label16);
+            this.gbConnection.Controls.Add(this.label17);
+            this.gbConnection.Controls.Add(this.cbxSelectBaudRate);
+            this.gbConnection.Controls.Add(this.cbxSelectCom);
+            this.gbConnection.Controls.Add(this.btnSerialConnect);
+            resources.ApplyResources(this.gbConnection, "gbConnection");
+            this.gbConnection.Name = "gbConnection";
+            this.gbConnection.TabStop = false;
+            // 
+            // btnSerialRefresh
+            // 
+            resources.ApplyResources(this.btnSerialRefresh, "btnSerialRefresh");
+            this.btnSerialRefresh.Name = "btnSerialRefresh";
+            this.btnSerialRefresh.UseVisualStyleBackColor = true;
+            this.btnSerialRefresh.Click += new System.EventHandler(this.btnSerialRefresh_Click);
+            // 
+            // lblSerialStatus
+            // 
+            resources.ApplyResources(this.lblSerialStatus, "lblSerialStatus");
+            this.lblSerialStatus.Name = "lblSerialStatus";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // btnSerialDisConnect
+            // 
+            resources.ApplyResources(this.btnSerialDisConnect, "btnSerialDisConnect");
+            this.btnSerialDisConnect.Name = "btnSerialDisConnect";
+            this.btnSerialDisConnect.UseVisualStyleBackColor = true;
+            this.btnSerialDisConnect.Click += new System.EventHandler(this.btnSerialDisConnect_Click);
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // cbxSelectBaudRate
+            // 
+            this.cbxSelectBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSelectBaudRate.FormattingEnabled = true;
+            this.cbxSelectBaudRate.Items.AddRange(new object[] {
+            resources.GetString("cbxSelectBaudRate.Items"),
+            resources.GetString("cbxSelectBaudRate.Items1"),
+            resources.GetString("cbxSelectBaudRate.Items2")});
+            resources.ApplyResources(this.cbxSelectBaudRate, "cbxSelectBaudRate");
+            this.cbxSelectBaudRate.Name = "cbxSelectBaudRate";
+            // 
+            // cbxSelectCom
+            // 
+            this.cbxSelectCom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSelectCom.FormattingEnabled = true;
+            resources.ApplyResources(this.cbxSelectCom, "cbxSelectCom");
+            this.cbxSelectCom.Name = "cbxSelectCom";
+            // 
+            // btnSerialConnect
+            // 
+            resources.ApplyResources(this.btnSerialConnect, "btnSerialConnect");
+            this.btnSerialConnect.Name = "btnSerialConnect";
+            this.btnSerialConnect.UseVisualStyleBackColor = true;
+            this.btnSerialConnect.Click += new System.EventHandler(this.btnSerialConnect_Click);
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // digitalSensorBindingSource2
             // 
@@ -1142,6 +1232,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gbConnection);
             this.Controls.Add(this.tbxPisz);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbPswd);
@@ -1176,6 +1267,8 @@
             this.gbPswd.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gbConnection.ResumeLayout(false);
+            this.gbConnection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).EndInit();
@@ -1323,6 +1416,17 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox tbxKey;
         private System.Windows.Forms.TextBox tbxPisz;
+        private System.Windows.Forms.GroupBox gbConnection;
+        private System.Windows.Forms.Button btnSerialRefresh;
+        private System.Windows.Forms.Label lblSerialStatus;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSerialDisConnect;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbxSelectBaudRate;
+        private System.Windows.Forms.ComboBox cbxSelectCom;
+        private System.Windows.Forms.Button btnSerialConnect;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

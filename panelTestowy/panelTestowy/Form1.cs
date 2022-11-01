@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,8 +19,10 @@ namespace panelTestowy
     public partial class Form1 : Form
     {
 
-       
 
+        delegate void serialCalback(string data);
+        private string incomingData;
+        Serial mySerialPort;
 
         DateTime dt = new DateTime(2015, 12, 20);
         List<CheckBox> digitalState = new List<CheckBox>();       
@@ -35,26 +38,10 @@ namespace panelTestowy
         public Form1()
         {
             InitializeComponent();
-            //digitalState.Add(cbDigital1);
-            //digitalState.Add(cbDigital2);
-            //digitalState.Add(cbDigital3);
-            //digitalState.Add(cbDigital4);
-            //digitalState.Add(cbDigital5);
-            //digitalState.Add(cbDigital6);
-            //digitalState.Add(cbDigital7);
-            //digitalState.Add(cbDigital8);
-            //digitalState.Add(cbDigital9);
-            //digitalState.Add(cbDigital10); 
-            //digitalState.Add(cbDigital11);
-            //digitalState.Add(cbDigital12);
-            //digitalState.Add(cbDigital13);
-            //digitalState.Add(cbDigital14);
-            //digitalState.Add(cbDigital15);
-            //digitalState.Add(cbDigital16);
-            //digitalState.Add(cbDigital17);
-            //digitalState.Add(cbDigital18);
-            //digitalState.Add(cbDigital19);
-            //digitalState.Add(cbDigital20);
+
+            mySerialPort = new Serial(cbxSelectCom, cbxSelectBaudRate, btnSerialRefresh,
+                    btnSerialConnect, btnSerialDisConnect, gbConnection, lblSerialStatus, serialPort1);
+            mySerialPort.getSerialPorts();
 
             pbAnalog1.ForeColor = Color.Yellow;
             comboBox1.SelectedIndex = 0;
@@ -123,6 +110,7 @@ namespace panelTestowy
         private void sendData(String dataToSend)
         {
             Console.WriteLine(dataToSend);
+            sendSerialdata(dataToSend);
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -165,10 +153,10 @@ namespace panelTestowy
         private void btnStart_Click(object sender, EventArgs e)
         {
             sendData("@start*");
-            string data = "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.FFFFF.";
-            data += makeCheckSum(data);            
-            data += "*";
-            checkIncomingString(data);
+            //string data = "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.FFFFF.";
+            //data += makeCheckSum(data);            
+            //data += "*";
+            //checkIncomingString(data);
 
             //sensorList[0].setValue(20);
             //sensorList[1].setValue(80);
@@ -181,19 +169,19 @@ namespace panelTestowy
         private void btnStop_Click(object sender, EventArgs e)
         {
             sendData("@stop*");
-            string data = "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.00000.";
-            data += makeCheckSum(data);
-            data += "*";
-            checkIncomingString(data);
+            //string data = "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.00000.";
+            //data += makeCheckSum(data);
+            //data += "*";
+            //checkIncomingString(data);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
             sendData("@reset*");
-            string data = "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.AAAAB.";
-            data += makeCheckSum(data);
-            data += "*";
-            checkIncomingString(data);
+            //string data = "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.AAAAB.";
+            //data += makeCheckSum(data);
+            //data += "*";
+            //checkIncomingString(data);
         }
         private string makeCheckSum(string data)
         {
@@ -218,7 +206,7 @@ namespace panelTestowy
             long.TryParse(d[d.Length - 2], System.Globalization.NumberStyles.HexNumber, null, out result);
             Console.WriteLine(result);
             Console.WriteLine();
-            if (data.Length == result)
+            //if (data.Length == result)
             {
                 
                 // this returns 1322173
@@ -246,18 +234,17 @@ namespace panelTestowy
 
                 // Console.WriteLine(d[8][0]);
                 string revData = ReverseString(d[8]);
+                Console.Write("obrcone ");
                 Console.WriteLine(revData);
 
-                long nr = Int64.Parse(d[8], System.Globalization.NumberStyles.HexNumber);
+                long nr = Int64.Parse(revData, System.Globalization.NumberStyles.HexNumber);
                 Console.WriteLine();
                 int len = (4*d[8].Length) - 1;
-                for (int i = len; i >= 0; i--)
+                for (int i = 0; i <len; i++)
+                //for (int i = len; i >= 0; i--)
                 {
 
-                    //if ((nr & (1 << i)) != 0)
-                    //    digitalState[i].Checked = true;
-                    //else
-                    //    digitalState[i].Checked = false;
+                    
                     if ((nr & (1 << i)) != 0)
                         digitalSensorList[i].changeState(true);
                     else
@@ -427,6 +414,90 @@ namespace panelTestowy
         private void tbxPisz_TextChanged(object sender, EventArgs e)
         {
             tbx = tbxPisz;
+        }
+
+        private void btnSerialConnect_Click(object sender, EventArgs e)
+        {
+            mySerialPort.makeConnestion();
+        }
+
+        private void btnSerialDisConnect_Click(object sender, EventArgs e)
+        {
+            mySerialPort.closeConnection();
+        }
+
+        private void btnSerialRefresh_Click(object sender, EventArgs e)
+        {
+            mySerialPort.getSerialPorts();
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            //incomingData = serialPort1.ReadExisting();
+            incomingData = serialPort1.ReadTo("*");
+            incomingData += "*";
+            this.Invoke(new EventHandler(ShowData));
+        }
+        private void ShowData(object sender, EventArgs e)
+        {
+            sendText(textBox1, incomingData);
+            //Console.WriteLine("tutaj");
+            //Console.WriteLine(incomingData);
+
+        }
+
+        
+
+        private void sendText(string data)
+        {
+            if (this.InvokeRequired)
+            {
+                serialCalback calback = new serialCalback(sendText);
+                this.Invoke(calback, new object[] { data });
+            }
+            else
+            {
+                sendText( data);
+               //Console.WriteLine(data);
+            }
+        }
+        private void sendText(System.Windows.Forms.TextBox textBox, string text)
+        {
+            
+
+            textBox.AppendText(text);
+            if (string.Compare(text, "OK") > 0 || text.Contains("ERROR"))
+                textBox.AppendText("\n");
+            textBox.AppendText(Environment.NewLine);
+            Console.WriteLine(incomingData);
+            checkIncomingString(incomingData);
+            
+        }
+
+       
+        private void sendSerialdata(string data)
+        {
+            Console.WriteLine("przyszlo");
+            Console.WriteLine(data);
+            if (mySerialPort.connected)
+            {
+                try
+                {
+                    serialPort1.Write(data);
+                    serialPort1.Write("\r");
+                    // serialPort1.Write("\n");
+                }
+                catch (TimeoutException)
+                {
+                    //sendText(tbxData, "Sending error");
+                    Console.WriteLine("nie mozna wysac");
+                }
+
+            }
+            else
+                MessageBox.Show("No  conection !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
         }
     }
 }
