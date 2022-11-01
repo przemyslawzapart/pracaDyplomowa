@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\panelTestowy",
+    "\\panelTestowy\\panelTestowy"
   ],
-  "SelectedNode": "\\panelTestowy.sln",
+  "SelectedNode": "\\panelTestowy\\panelTestowy\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

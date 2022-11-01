@@ -25,26 +25,26 @@ namespace panelTestowy
         public Form1()
         {
             InitializeComponent();
-            digitalState.Add(cbDigital1);
-            digitalState.Add(cbDigital2);
-            digitalState.Add(cbDigital3);
-            digitalState.Add(cbDigital4);
-            digitalState.Add(cbDigital5);
-            digitalState.Add(cbDigital6);
-            digitalState.Add(cbDigital7);
-            digitalState.Add(cbDigital8);
-            digitalState.Add(cbDigital9);
-            digitalState.Add(cbDigital10); 
-            digitalState.Add(cbDigital11);
-            digitalState.Add(cbDigital12);
-            digitalState.Add(cbDigital13);
-            digitalState.Add(cbDigital14);
-            digitalState.Add(cbDigital15);
-            digitalState.Add(cbDigital16);
-            digitalState.Add(cbDigital17);
-            digitalState.Add(cbDigital18);
-            digitalState.Add(cbDigital19);
-            digitalState.Add(cbDigital20);
+            //digitalState.Add(cbDigital1);
+            //digitalState.Add(cbDigital2);
+            //digitalState.Add(cbDigital3);
+            //digitalState.Add(cbDigital4);
+            //digitalState.Add(cbDigital5);
+            //digitalState.Add(cbDigital6);
+            //digitalState.Add(cbDigital7);
+            //digitalState.Add(cbDigital8);
+            //digitalState.Add(cbDigital9);
+            //digitalState.Add(cbDigital10); 
+            //digitalState.Add(cbDigital11);
+            //digitalState.Add(cbDigital12);
+            //digitalState.Add(cbDigital13);
+            //digitalState.Add(cbDigital14);
+            //digitalState.Add(cbDigital15);
+            //digitalState.Add(cbDigital16);
+            //digitalState.Add(cbDigital17);
+            //digitalState.Add(cbDigital18);
+            //digitalState.Add(cbDigital19);
+            //digitalState.Add(cbDigital20);
 
             pbAnalog1.ForeColor = Color.Yellow;
             comboBox1.SelectedIndex = 0;
