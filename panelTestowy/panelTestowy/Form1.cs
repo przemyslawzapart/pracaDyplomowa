@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+using Button = System.Windows.Forms.Button;
 
 namespace panelTestowy
 {
@@ -30,10 +31,19 @@ namespace panelTestowy
        
         List<DigitalSensor> digitalSensorList = new List<DigitalSensor>();
         string password = "123";
-        System.Windows.Forms.TextBox tbx;
         bool loginState = false;
-       
+        System.Windows.Forms.TextBox tbx;
+        
 
+        bool stateHand = false;
+        bool stateOff = true;
+        bool stateAuto = false;
+
+
+        List<GroupBox> gbPanelList = new List<GroupBox>();   
+        List<Button> btnPosList = new List<Button>();
+
+        int timerStart_a = 0;
 
         public Form1()
         {
@@ -84,7 +94,7 @@ namespace panelTestowy
 
             tbx = new System.Windows.Forms.TextBox();
 
-            comboBox2.Items.Add("Select digital item");
+            //comboBox2.Items.Add("Select digital item");
 
             foreach (var item in digitalSensorList)
             {
@@ -93,17 +103,18 @@ namespace panelTestowy
             }
             comboBox2.SelectedIndex = 0;
 
-            //var items = new[] {
-            //    new { Text = "report A", Value = "reportA" },
-            //    new { Text = "report B", Value = "reportB" },
-            //    new { Text = "report C", Value = "reportC" },
-            //    new { Text = "report D", Value = "reportD" },
-            //    new { Text = "report E", Value = "reportE" }
-            //};
+            gbPanelList.Add(gbValue);
+            gbPanelList.Add(gbSettings);
+            gbPanelList.Add(gbMessage);
+            gbPanelList.Add(gbConnectionSettings);
+            gbPanelList.Add(gbPswd);
+            
 
-            //foreach (var item in digitalSensorList)
+            btnPosList.Add(btnPosHand);
+            btnPosList.Add(btnPosOff);
+            btnPosList.Add(btnPosAuto);
 
-            //comboBox2.DataSource = items;
+            setBtnPos(1);
 
         }
 
@@ -143,7 +154,7 @@ namespace panelTestowy
         {
             if (radioButton3.Checked)
             {
-                sendData("!A*");
+                
                 gbManual.Enabled = true;
             }
             
@@ -152,7 +163,7 @@ namespace panelTestowy
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            sendData("@start*");
+           // sendData("@start*");
             //string data = "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.FFFFF.";
             //data += makeCheckSum(data);            
             //data += "*";
@@ -253,19 +264,19 @@ namespace panelTestowy
             }   
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked == true)
-                gbValues.Enabled = true;
-            else
-            {
-                gbValues.Enabled = false;
-                comboBox1.SelectedIndex = 0;
-            }
+        //private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (checkBox1.Checked == true)
+        //        gbValues.Enabled = true;
+        //    else
+        //    {
+        //        gbValues.Enabled = false;
+        //        comboBox1.SelectedIndex = 0;
+        //    }
                 
 
-            Console.WriteLine(comboBox1.SelectedIndex);
-        }
+        //    Console.WriteLine(comboBox1.SelectedIndex);
+        //}
 
         private void btnGetAnalogValues_Click(object sender, EventArgs e)
         {
@@ -294,49 +305,67 @@ namespace panelTestowy
 
         }
 
-        private void btnPanelMain_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnPanelSettings_Click(object sender, EventArgs e)
         {
+            setPanel(1);
+////            gbValue.Visible = false;
+//            //gbValue.Size = new Size(0,0);
+//            gbValue.Location = new Point(1000,1000);
+
+////            gbSettings.Visible = true;
+//            gbSettings.Size = new Size(680, 403);
+//            gbSettings.Location = new Point(0, 47);
+//            Console.WriteLine(gbValue.Location);
+
+//            gbConnectionSettings.Visible =false;
+
+        }
+
+        private void btnPanelValues_Click(object sender, EventArgs e)
+        {
+            setPanel(0);
             
-//            gbValue.Visible = false;
-            //gbValue.Size = new Size(0,0);
-            gbValue.Location = new Point(1000,1000);
-
-//            gbSettings.Visible = true;
-            gbSettings.Size = new Size(680, 403);
-            gbSettings.Location = new Point(0, 47);
-            Console.WriteLine(gbValue.Location);
-
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {      
-            gbSetAnalog.Enabled = false;
-            gbValue.Location = new Point(0, 47);
-
- //           gbSettings.Visible = false;
-//            gbSettings.Size = new Size(0,0);
-            gbSettings.Location = new Point(1000, 1000);
-
-            //            gbValue.Visible = true;
-            //            gbValue.Size = new Size(680,403);
-
-            Console.WriteLine(gbSettings.Location);
-
-
-
-
-
-
-
+        private void btnConnectionSettings_Click(object sender, EventArgs e)
+        {
+            setPanel(3);
 
 
         }
 
+        private void setPanel(int index)
+        {
+            int a = 0;
+            foreach (var item in gbPanelList)
+            {
+                if (a++ == index) 
+                { 
+                    item.Visible = true;
+                    item.Location = new Point(0, 50);
+                }
+                else
+                {
+                    item.Visible = false;
+                }   
+            }
+            if(loginState && index == 1)
+            {
+                gbSetAnalog.Enabled = true;
+                lblLogin.Visible = false;
+                
+
+            }  
+            else
+            {
+                gbSetAnalog.Enabled = false;
+                loginState = false;
+                
+            }
+                
+        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //"#A/id*
@@ -367,31 +396,41 @@ namespace panelTestowy
 
         private void btnPswdCancel_Click(object sender, EventArgs e)
         {
-            tbPswd.Text = "";
-            gbPswd.Visible = false;
+            setPanel(1);
         }
 
         private void bntLogin_Click(object sender, EventArgs e)
         {
-            gbPswd.Visible=true;
+            if (!loginState)
+            {
+                setPanel(4);                
+            }
+                
+            else
+                lblLogin.Visible = true;    
         }
 
         private void btnPswdLogin_Click(object sender, EventArgs e)
         {
-            if (String.Compare(tbPswd.Text, password) == 0)
-            {               
-                tbPswd.Text = "";
-                gbPswd.Visible = false;
-                lblPswd.Visible = false;
+            
+            if(String.Compare(password,tbPswd.Text) == 0)
+            {
                 loginState = true;
                 gbSetAnalog.Enabled = true;
+                tbPswd.Text = "";
+                setPanel(1);
             }
             else
-            {                
-                tbPswd.Text = "";
+            {
                 lblPswd.Visible = true;
             }
+            
                 
+
+
+        }
+        private void setLoginState(bool state){
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -458,7 +497,7 @@ namespace panelTestowy
             else
             {
                 sendText( data);
-               //Console.WriteLine(data);
+               Console.WriteLine(data);
             }
         }
         private void sendText(System.Windows.Forms.TextBox textBox, string text)
@@ -498,6 +537,142 @@ namespace panelTestowy
                 MessageBox.Show("No  conection !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
 
+        }
+
+        private void btnPanelMessage_Click(object sender, EventArgs e)
+        {
+            setPanel(2);
+        }
+
+        private void btnPosHand_Click(object sender, EventArgs e)
+        {
+            setBtnPos(0);
+            sendData("!H*");
+        }
+
+        private void btnPosOff_Click(object sender, EventArgs e)
+        {
+            setBtnPos(1);
+            sendData("!0*");
+        }
+
+        private void btnPosAuto_Click(object sender, EventArgs e)
+        {
+            setBtnPos(2);
+            sendData("!A*");
+        }
+        private void setBtnPos(int pos)
+        {
+            int a = 0;
+            foreach (var item in btnPosList)
+            {
+                if(a++ == pos)
+                {
+                    item.Enabled = false;
+                    item.Size = new Size(110,75);
+                    item.BackColor = Color.DodgerBlue; 
+                }
+                else
+                {
+                    item.Enabled = true;
+                    item.Size = new Size(100, 65);
+                    item.BackColor = Color.LightSkyBlue;
+                }
+            }
+            setState(pos);
+
+        }
+        private void setState(int pos)
+        {   
+            if (pos == 0)//hand
+            {   
+                setFontSize(btnStart, true);
+                setFontSize(btnStop, true);
+                
+            }
+            else if(pos == 1)//off
+            {
+                setFontSize(btnStart, false);
+                setFontSize(btnStop, false);
+            }
+            else if (pos == 2)//auto
+            {
+                setFontSize(btnStart, false);
+                setFontSize(btnStop, true);
+            }
+        }
+        private void setFontSize(Button btn, bool state)
+        {
+            int newSizeSmall = 15;
+            int newSizeLarge = 20;
+
+            if (state)
+            {
+                btn.Enabled = true;
+                btn.Font = new Font(btn.Font.FontFamily, newSizeLarge, FontStyle.Bold);
+                btn.Size = new Size(220,70);
+            }
+            else
+            {
+                btn.Enabled = false;
+                btn.Font = new Font(btn.Font.FontFamily, newSizeSmall, FontStyle.Regular);
+                btn.Size = new Size(210, 60);
+            }
+
+        }
+
+        private void btnStart_MouseDown(object sender, MouseEventArgs e)
+        {
+           sendData("@statr/1*");
+            timerStart.Enabled = true;
+        }
+
+        private void btnStart_MouseUp(object sender, MouseEventArgs e)
+        {
+            sendData("@start/0*");
+            timerStart.Enabled=false;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedIndex != 0)
+            {
+                string data = "#D/" + comboBox2.SelectedIndex.ToString() + "*";
+                sendData(data);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPosAuto_MouseHover(object sender, EventArgs e)
+        {
+            //btnPosAuto.Size = new Size(110,75);           
+        }
+
+        private void btnPosAuto_MouseLeave(object sender, EventArgs e)
+        {
+            //btnPosAuto.Size = new Size(100, 65);
+        }
+
+        private void timerStart_Tick(object sender, EventArgs e)
+        {
+            sendData("@statr/1*");
+            //if (timerStart_a > 1000)
+            //{
+            //    
+            //    timerStart_a++;
+            //}
+            //else
+            //{
+            //    timerStart_a = 0;
+            //    timerStart.Enabled = false;
+
+            //}
+                
+            
         }
     }
 }
