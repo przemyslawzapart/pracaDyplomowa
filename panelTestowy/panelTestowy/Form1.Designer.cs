@@ -154,7 +154,7 @@
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.digitalSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.digitalSensorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -162,6 +162,7 @@
             this.ghffghToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.digitalSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bgKey.SuspendLayout();
             this.gbManual.SuspendLayout();
@@ -175,8 +176,9 @@
             this.gbValue.SuspendLayout();
             this.gbSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1466,7 +1468,7 @@
             this.gbValue.Controls.Add(this.gbTime);
             this.gbValue.Location = new System.Drawing.Point(701, 54);
             this.gbValue.Name = "gbValue";
-            this.gbValue.Size = new System.Drawing.Size(680, 403);
+            this.gbValue.Size = new System.Drawing.Size(680, 400);
             this.gbValue.TabIndex = 0;
             this.gbValue.TabStop = false;
             // 
@@ -1477,7 +1479,7 @@
             this.gbSettings.Controls.Add(this.gbSetAnalog);
             this.gbSettings.Location = new System.Drawing.Point(4, 54);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(680, 403);
+            this.gbSettings.Size = new System.Drawing.Size(680, 400);
             this.gbSettings.TabIndex = 1;
             this.gbSettings.TabStop = false;
             // 
@@ -1496,18 +1498,15 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.DataSource = this.digitalSensorBindingSource1;
-            this.comboBox2.DisplayMember = "name";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(28, 71);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(385, 21);
             this.comboBox2.TabIndex = 3;
-            this.comboBox2.ValueMember = "name";
             // 
-            // digitalSensorBindingSource1
+            // digitalSensorBindingSource2
             // 
-            this.digitalSensorBindingSource1.DataSource = typeof(panelTestowy.DigitalSensor);
+            this.digitalSensorBindingSource2.DataSource = typeof(panelTestowy.DigitalSensor);
             // 
             // statusStrip1
             // 
@@ -1568,6 +1567,10 @@
             this.textBox8.TabIndex = 0;
             this.textBox8.Text = "jakis sobie text od wprowadzenia";
             // 
+            // digitalSensorBindingSource1
+            // 
+            this.digitalSensorBindingSource1.DataSource = typeof(panelTestowy.DigitalSensor);
+            // 
             // digitalSensorBindingSource
             // 
             this.digitalSensorBindingSource.DataSource = typeof(panelTestowy.DigitalSensor);
@@ -1606,9 +1609,10 @@
             this.gbSettings.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1750,6 +1754,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.BindingSource digitalSensorBindingSource;
         private System.Windows.Forms.BindingSource digitalSensorBindingSource1;
+        private System.Windows.Forms.BindingSource digitalSensorBindingSource2;
     }
 }
 

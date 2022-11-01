@@ -43,6 +43,7 @@ namespace panelTestowy
         public void setName(string name)
         {
             label.Text = name;
+            this.name = name;
         }
     }
 }

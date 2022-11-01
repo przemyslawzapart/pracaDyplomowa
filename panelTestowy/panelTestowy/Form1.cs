@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace panelTestowy
@@ -84,8 +85,26 @@ namespace panelTestowy
             digitalSensorList[0].setName("pierwsza nazwa");
             digitalSensorList[0].changeState(false);
 
-          
 
+            //comboBox2.Items.Add(digitalSensorList);
+
+            foreach (var item in digitalSensorList)
+            {
+                Console.WriteLine(item.name);
+                comboBox2.Items.Add(item.name);
+            }
+
+            //var items = new[] {
+            //    new { Text = "report A", Value = "reportA" },
+            //    new { Text = "report B", Value = "reportB" },
+            //    new { Text = "report C", Value = "reportC" },
+            //    new { Text = "report D", Value = "reportD" },
+            //    new { Text = "report E", Value = "reportE" }
+            //};
+
+            //foreach (var item in digitalSensorList)
+
+            //comboBox2.DataSource = items;
 
         }
 
@@ -103,11 +122,11 @@ namespace panelTestowy
                 
             
         }
-        private void unsetButton(Button btn)
-        {
-            if(btn.Enabled == true)
-                btn.Enabled = false;    
-        }
+        //private void unsetButton(Button btn)
+        //{
+        //    if(btn.Enabled == true)
+        //        btn.Enabled = false;    
+        //}
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
