@@ -218,9 +218,9 @@ void sendDataToMonitor() {
 		Serial.println(data);
 		Serial2.println(data);
 		sendDataToMonitorTimer = millis();
-		Serial1.println("se 1");
+		//Serial1.println("se 1");
 		
-		Serial3.println("se 3");
+		//Serial3.println("se 3");
 		
 		//% 2049 / 01 / 12.04:44 : 23.50, 8.22, 4.26, 8.10, 8.23, 9.AAAAB.
 	}	

@@ -12,7 +12,7 @@ namespace panelTestowy
 {
     internal class AnalogSensor
     {
-        public float value { get; set; }   
+        public double value { get; set; }   
         public string name { get; set; }    
         public int minValue { get; set; }
         public int maxValue { get; set; }
@@ -28,7 +28,7 @@ namespace panelTestowy
 
         public AnalogSensor(Label _name, Label _value, Label _unit, ProgressBar _progres)
         {
-            value = 0;
+            value = 20;
             minValue = 20;
             maxValue = 70;
             name = "analog";
@@ -43,32 +43,66 @@ namespace panelTestowy
             lblName.Text = name;
             lblValue.Text = value.ToString();
             lblUnit.Text = unit.ToString();
+            pbProgres.Maximum = maxRange;
             pbProgres.Value = (int)value;
 
         }
         public void setValue(double value)
         {
-            if(value < minValue)
+            this.value = value;
+            double a = ((100 / (double)maxRange) * value);
+            if (value < minValue)
                 pbProgres.ForeColor = Color.Yellow;
             else if(value > maxValue)
                 pbProgres.ForeColor = Color.Red;
             else 
                 pbProgres.ForeColor = Color.Green;
-            
-            pbProgres.Value = (int) ((100/maxRange) *value);
-            lblValue.Text = value.ToString("c1");
+            if(pbProgres.Value <= a)
+                pbProgres.Value = (int) a;
+            lblValue.Text = value.ToString();
 
         }
-        public void setNewInstelingen(int _maxValue, int _minValue, int _range, string _name, string _unit)
+        public void setValue()
         {
-            maxRange = maxRange;
+             Console.Write("value ");
+            Console.WriteLine(value);
+            Console.Write("range ");
+            Console.WriteLine(maxRange);
+            Console.Write("progres bar ");
+            double a = ((100 / (float)maxRange) * value);
+            Console.WriteLine(a);
+
+            if (value < minValue)
+                pbProgres.ForeColor = Color.Yellow;
+            else if (value > maxValue)
+                pbProgres.ForeColor = Color.Red;
+            else
+                pbProgres.ForeColor = Color.Green;
+
+            pbProgres.Value = (int)((100 / (float)maxRange) * value);
+            pbProgres.Value = (int)a;
+            lblValue.Text = value.ToString();
+            //Console.WriteLine(value.ToString("c1"));
+
+
+        }
+        //public void setNewInstelingen(int _maxValue, int _minValue, int _range, string _name, string _unit)
+        public void setNewInstelingen(string _name, int _minValue, int _maxValue, int _range,  string _unit)
+        {
+            maxRange = _range;
             maxValue = _maxValue;
             minValue = _minValue;
-            lblName.Text = _name;
+            name = _name;
+            lblName.Text = name;
             unit = _unit;
             lblUnit.Text = unit;
             pbProgres.Maximum = _range;
+            Console.WriteLine(value);
+            setValue();
         }
+
+
+
 
            
 

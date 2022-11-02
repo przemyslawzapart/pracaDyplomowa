@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Button = System.Windows.Forms.Button;
+using ComboBox = System.Windows.Forms.ComboBox;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace panelTestowy
 {
@@ -33,6 +35,9 @@ namespace panelTestowy
         string password = "123";
         bool loginState = false;
         System.Windows.Forms.TextBox tbx;
+
+        string date;
+        string time;
         
 
         //bool stateHand = false;
@@ -42,6 +47,14 @@ namespace panelTestowy
 
         List<GroupBox> gbPanelList = new List<GroupBox>();   
         List<Button> btnPosList = new List<Button>();
+
+        List<TextBox> tbxGeneralSettingsList = new List<TextBox>();
+        List<TextBox> tbxAnalogSettingsList = new List<TextBox>();
+        List<TextBox> tbxDigitalSettingsList = new List<TextBox>();
+
+        List<GroupBox> settingsPanelList = new List<GroupBox>();
+
+        int analogSelectedIndex = 0;
 
         //int timerStart_a = 0;
 
@@ -63,9 +76,9 @@ namespace panelTestowy
             sensorList.Add(new AnalogSensor(lblName5, lblAnalog5, lblUnit5, pbAnalog5));
 
             //sensorList[0].lblName.Text = "Przemek";
-            sensorList[0].setNewInstelingen(70, 50, 200, "pierwszy", "A");
-            sensorList[1].setNewInstelingen(70, 50, 200, "drugi", "V");
-            sensorList[2].setNewInstelingen(70, 50, 200, "trzeci", "Bar");
+           //sensorList[0].setNewInstelingen(70, 50, 200, "pierwszy", "A");
+           //sensorList[1].setNewInstelingen(70, 50, 200, "drugi", "V");
+           // sensorList[2].setNewInstelingen(70, 50, 200, "trzeci", "Bar");
             
             //digitalSensor = new DigitalSensor(lblDigital1, btnDigital1);
             digitalSensorList.Add(new DigitalSensor(lblDigital1, btnDigital1));
@@ -96,26 +109,61 @@ namespace panelTestowy
 
             //comboBox2.Items.Add("Select digital item");
 
-            foreach (var item in digitalSensorList)
-            {
-                Console.WriteLine(item.name);
-                comboBox2.Items.Add(item.name);
-            }
-            comboBox2.SelectedIndex = 0;
+            
+            
 
             gbPanelList.Add(gbValue);
             gbPanelList.Add(gbSettings);
             gbPanelList.Add(gbMessage);
             gbPanelList.Add(gbConnectionSettings);
             gbPanelList.Add(gbPswd);
-            
+            settingsPanelList.Add(gbSettingsGeneral);
+            settingsPanelList.Add(gbSettingsAnalog);
+            settingsPanelList.Add(gbSettingsDigital);
+            settingsPanelList.Add(gbSettingsExtra);
+
 
             btnPosList.Add(btnPosHand);
             btnPosList.Add(btnPosOff);
             btnPosList.Add(btnPosAuto);
 
             setBtnPos(1);
+            int a = 0;
+            makeControlsList(tbxGeneralSettingsList, gbSettingsGeneral);
+            makeControlsList(tbxAnalogSettingsList, gbSettingsAnalog);
+            makeControlsList(tbxDigitalSettingsList, gbSettingsDigital);
 
+            foreach (var item in tbxGeneralSettingsList)
+            {
+                item.Text = a.ToString();
+                item.Enabled = false;
+                a++;
+            }
+            a= 0;
+            foreach (var item in tbxAnalogSettingsList)
+            {
+                item.Text = a.ToString();
+                item.Enabled = false;
+                a++;
+            }
+            a = 0;
+            foreach (var item in tbxDigitalSettingsList)
+            {
+                item.Text = a.ToString();
+                item.Enabled = false;
+                a++;
+            }
+
+        }
+
+        private void makeControlsList<T>(List<T> list, GroupBox groupBox)
+        {
+            List<T> tempList = groupBox.Controls.OfType<T>().ToList();
+            int size = tempList.Count() - 1; // list 9 to 1
+            for (int i = 0; i < tempList.Count(); i++) //reversing list (1 to 9)
+            {
+                list.Add(tempList[size - i]);                
+            }
         }
 
         private void sendData(String dataToSend)
@@ -229,15 +277,17 @@ namespace panelTestowy
                 double a = double.Parse(d[3]);
                 Console.WriteLine(a);
                 
-                lblDate.Text = d[1];
-                lblTime.Text = d[2];
+               //lblDate.Text = d[1];
+                //lblTime.Text = d[2];
+                date = d[1];
+                time = d[2];    
                 //lblAnalog1.Text = d[3];
                 //lblAnalog2.Text = d[4];
                 //lblAnalog3.Text = d[5];
                 //lblAnalog4.Text = d[6];
                 //lblAnalog5.Text = d[7];
                 // int a = TryParse(d[3]);
-                
+
                 sensorList[0].setValue(double.Parse(d[3]));
                 sensorList[1].setValue(double.Parse(d[4]));
                 sensorList[2].setValue(double.Parse(d[5]));
@@ -255,30 +305,36 @@ namespace panelTestowy
                 for (int i = 0; i <len; i++)
                 //for (int i = len; i >= 0; i--)
                 {
+                    //if ((nr & (1 << i)) != 0)
+                    //    digitalSensorList[i].changeState(true);
+                    //else
+                    //    digitalSensorList[i].changeState(false);
 
-                    
                     if ((nr & (1 << i)) != 0)
-                        digitalSensorList[i].changeState(true);
+                       changeDigitalSensorState( digitalSensorList[i],true);
                     else
-                        digitalSensorList[i].changeState(false);
+                        changeDigitalSensorState(digitalSensorList[i],false);
                 }
             }   
         }
 
-        //private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBox1.Checked == true)
-        //        gbValues.Enabled = true;
-        //    else
-        //    {
-        //        gbValues.Enabled = false;
-        //        comboBox1.SelectedIndex = 0;
-        //    }
-                
+        private void changeDigitalSensorState(DigitalSensor sensor, bool state)
+        {
+            if (state)
+                makeLog(sensor);
+        }
+        private void makeLog(DigitalSensor sensor)
+        {
+            string data = getDateTime()+sensor.name;
+            tbxLog.AppendText(data); 
+            tbxLog.AppendText(Environment.NewLine);
 
-        //    Console.WriteLine(comboBox1.SelectedIndex);
-        //}
-
+        }
+        private string getDateTime()
+        {
+            //return "2029/11/25  19:45:88  ";
+            return "   " + date + " " + time + "\t";
+        }
         private void btnGetAnalogValues_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex >0)
@@ -373,7 +429,11 @@ namespace panelTestowy
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //"#A/id*
-            if(comboBox1.SelectedIndex != 0)
+           //comboBox1.Items.Clear();
+            
+            //getSensrosAnalogName(comboBox1);
+analogSelectedIndex = comboBox1.SelectedIndex;
+            if (comboBox1.SelectedIndex != 0)
             {
                 int a = comboBox1.SelectedIndex;
                 string data = "#";
@@ -381,8 +441,9 @@ namespace panelTestowy
                 data += "/";
                 data += a.ToString();
                 data += "*";
-               sendData(data);
+                // sendData(data);
             }
+            
         }
 
         
@@ -643,10 +704,7 @@ namespace panelTestowy
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnPosAuto_MouseHover(object sender, EventArgs e)
         {
@@ -679,6 +737,115 @@ namespace panelTestowy
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            setSettings("#A/1/22/88/100/jakas nazwa/V*");
+        }
+        private void setSettings(string data)
+        {
+            char[] c = { '#', '/', '*' };
+            string[] splitString = data.Split(c);
+
+            foreach (var item in splitString)
+            {
+                Console.WriteLine(item);
+            }
+
+            tbxAnalogSettingsList[0].Text = splitString[6];
+            tbxAnalogSettingsList[1].Text = splitString[3];
+            tbxAnalogSettingsList[2].Text = splitString[4];
+            tbxAnalogSettingsList[3].Text = splitString[5];
+            tbxAnalogSettingsList[4].Text = splitString[7];
+            
+            //sensorList[1].setNewInstelingen(Int16.Parse(splitString[4]), Int16.Parse(splitString[3]), Int16.Parse(splitString[5]), splitString[6], splitString[7]);            
+            sensorList[1].setValue(99);
+        }
+
+        private void btnSendGeneralSettings_Click(object sender, EventArgs e)
+        {
+            setSettingsPanel(0);
+        } 
+
+        private void btnAnalogSettings_Click(object sender, EventArgs e)
+        {
+            setSettingsPanel(1);
+            getSensrosAnalogName(comboBox1);//sensorList
+
+        }      
+
+        private void btnDigitalSettings_Click(object sender, EventArgs e)
+        {
+            setSettingsPanel(2);
+            getSensrosDigitalName(comboBox2);
+        }
+
+        private void btnExtraSettings_Click(object sender, EventArgs e)
+        {
+            setSettingsPanel(3);
+        }
+
+        
+        private void setSettingsPanel(int pos) 
+        {
+            Console.WriteLine(pos);
+            int a = 0;
+            foreach (var item in settingsPanelList)
+            {
+                if (a++ == pos)
+                {
+                    gbSettings.Controls.Add(item);
+                    item.Location = new Point(155, 65);
+                    item.Visible = true;
+                    
+                }
+                else
+                {
+                    item.Visible = false;
+                }
+            }
+        }
+        private void btnSendAnalogSettings_Click(object sender, EventArgs e)
+        {
+            
+            
+            sensorList[analogSelectedIndex].setNewInstelingen(tbxAnalogSettingsList[0].Text, Int16.Parse(tbxAnalogSettingsList[1].Text), Int16.Parse(tbxAnalogSettingsList[2].Text),
+                Int16.Parse(tbxAnalogSettingsList[3].Text),  tbxAnalogSettingsList[4].Text);
+            sensorList[analogSelectedIndex].setValue(Int16.Parse(tbxAnalogSettingsList[5].Text));
+            getSensrosAnalogName(comboBox1);
+
+            int temp = comboBox1.SelectedIndex;
+            getSensrosAnalogName(comboBox1);
+            comboBox1.SelectedIndex = analogSelectedIndex;
+            //comboBox1.SelectedItem = "";
+        }
+
+        private void getSensrosAnalogName(ComboBox cbox)
+        {   cbox.Items.Clear();
+            foreach (var item in sensorList)                                     
+                cbox.Items.Add(item.name);
+        }
+        private void getSensrosDigitalName(ComboBox cbox)
+        {
+            cbox.Items.Clear();
+            foreach (var item in digitalSensorList)
+                cbox.Items.Add(item.name);
+        }
+
+        private void btnSendDigitalSettings_Click(object sender, EventArgs e)
+        {
+            getSensrosDigitalName(comboBox2);
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ;
         }
     }
 }
