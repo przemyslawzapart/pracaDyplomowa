@@ -35,15 +35,15 @@ namespace panelTestowy
         System.Windows.Forms.TextBox tbx;
         
 
-        bool stateHand = false;
-        bool stateOff = true;
-        bool stateAuto = false;
+        //bool stateHand = false;
+        //bool stateOff = true;
+        //bool stateAuto = false;
 
 
         List<GroupBox> gbPanelList = new List<GroupBox>();   
         List<Button> btnPosList = new List<Button>();
 
-        int timerStart_a = 0;
+        //int timerStart_a = 0;
 
         public Form1()
         {
@@ -163,7 +163,7 @@ namespace panelTestowy
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-           // sendData("@start*");
+            sendData("@start*");
             //string data = "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.FFFFF.";
             //data += makeCheckSum(data);            
             //data += "*";
@@ -174,6 +174,7 @@ namespace panelTestowy
             //sensorList[2].setValue(50);
             //sensorList[3].setValue(10);
             //sensorList[4].setValue(95);
+            
             
         }
 
@@ -344,7 +345,7 @@ namespace panelTestowy
                 if (a++ == index) 
                 { 
                     item.Visible = true;
-                    item.Location = new Point(0, 50);
+                    item.Location = new Point(0, 100);
                 }
                 else
                 {
@@ -353,16 +354,19 @@ namespace panelTestowy
             }
             if(loginState && index == 1)
             {
-                gbSetAnalog.Enabled = true;
+               
+                tabSettings.Enabled = true; 
                 lblLogin.Visible = false;
                 
 
             }  
             else
             {
-                gbSetAnalog.Enabled = false;
-                loginState = false;
                 
+                tabSettings.Enabled= false;
+                loginState = false;
+                lblLogin.Visible = false;
+
             }
                 
         }
@@ -390,7 +394,6 @@ namespace panelTestowy
         private void btnPswdReset_Click(object sender, EventArgs e)
         {
             tbPswd.Text = "";
-            //gbPswd.BackColor = SystemColors.ActiveCaption;
             lblPswd.Visible = false;
         }
 
@@ -416,7 +419,8 @@ namespace panelTestowy
             if(String.Compare(password,tbPswd.Text) == 0)
             {
                 loginState = true;
-                gbSetAnalog.Enabled = true;
+                
+                tabSettings.Enabled = true;
                 tbPswd.Text = "";
                 setPanel(1);
             }
@@ -435,16 +439,13 @@ namespace panelTestowy
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            textBox1 = tbx;
-            
-
-
+           // gbTime = tbx;    
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             tbx.Text = "a";
-            tbxKey.Text = "text a";
+            
             //tbxPisz.Text = "rrrr";
 
 
@@ -452,7 +453,7 @@ namespace panelTestowy
 
         private void tbxPisz_TextChanged(object sender, EventArgs e)
         {
-            tbx = tbxPisz;
+            
         }
 
         private void btnSerialConnect_Click(object sender, EventArgs e)
@@ -473,7 +474,7 @@ namespace panelTestowy
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //incomingData = serialPort1.ReadExisting();
-            incomingData = serialPort1.ReadTo("*");
+            incomingData = serialPort1.ReadTo("*");  // to zmienic zeby nie czekalo bo wywali blad
             incomingData += "*";
             this.Invoke(new EventHandler(ShowData));
         }
@@ -482,7 +483,7 @@ namespace panelTestowy
             sendText(textBox1, incomingData);
             //Console.WriteLine("tutaj");
             //Console.WriteLine(incomingData);
-
+            
         }
 
         
@@ -673,6 +674,11 @@ namespace panelTestowy
             //}
                 
             
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

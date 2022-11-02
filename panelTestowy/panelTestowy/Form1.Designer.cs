@@ -62,14 +62,22 @@
             this.lblAnalog2 = new System.Windows.Forms.Label();
             this.lblName2 = new System.Windows.Forms.Label();
             this.lblAnalog1 = new System.Windows.Forms.Label();
-            this.gbTime = new System.Windows.Forms.GroupBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.gbSetAnalog = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSendGeneralSettings = new System.Windows.Forms.Button();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbNoNc = new System.Windows.Forms.GroupBox();
@@ -80,12 +88,6 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnSendDigitalSettings = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.gbValues = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -145,13 +147,17 @@
             this.lblDigital2 = new System.Windows.Forms.Label();
             this.btnDigital2 = new System.Windows.Forms.Button();
             this.lblDigital1 = new System.Windows.Forms.Label();
-            this.gbMain = new System.Windows.Forms.GroupBox();
             this.btnConnectionSettings = new System.Windows.Forms.Button();
             this.btnPanelValues = new System.Windows.Forms.Button();
             this.btnPanelSettings = new System.Windows.Forms.Button();
             this.btnPanelMessage = new System.Windows.Forms.Button();
             this.gbValue = new System.Windows.Forms.GroupBox();
             this.gbSettings = new System.Windows.Forms.GroupBox();
+            this.tabSettings = new System.Windows.Forms.TabControl();
+            this.tpGeneralSettings = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblLogin = new System.Windows.Forms.Label();
             this.bntLogin = new System.Windows.Forms.Button();
             this.gbPswd = new System.Windows.Forms.GroupBox();
             this.lblPswd = new System.Windows.Forms.Label();
@@ -159,13 +165,6 @@
             this.btnPswdReset = new System.Windows.Forms.Button();
             this.btnPswdLogin = new System.Windows.Forms.Button();
             this.tbPswd = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbxKey = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.tbxPisz = new System.Windows.Forms.TextBox();
             this.gbConnection = new System.Windows.Forms.GroupBox();
             this.btnSerialRefresh = new System.Windows.Forms.Button();
             this.lblSerialStatus = new System.Windows.Forms.Label();
@@ -180,26 +179,19 @@
             this.gbConnectionSettings = new System.Windows.Forms.GroupBox();
             this.gbMessage = new System.Windows.Forms.GroupBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.lblLogin = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.btnSendGeneralSettings = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.timerStart = new System.Windows.Forms.Timer(this.components);
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.digitalSensorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timerStart = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gbTime = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.bgKey.SuspendLayout();
             this.gbManual.SuspendLayout();
             this.gbshowValues.SuspendLayout();
-            this.gbTime.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.gbNoNc.SuspendLayout();
@@ -207,18 +199,18 @@
             this.groupBox1.SuspendLayout();
             this.gbValue.SuspendLayout();
             this.gbSettings.SuspendLayout();
+            this.tabSettings.SuspendLayout();
+            this.tpGeneralSettings.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.gbPswd.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.gbConnection.SuspendLayout();
             this.gbConnectionSettings.SuspendLayout();
             this.gbMessage.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).BeginInit();
+            this.gbTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // bgKey
@@ -470,16 +462,6 @@
             resources.ApplyResources(this.lblAnalog1, "lblAnalog1");
             this.lblAnalog1.Name = "lblAnalog1";
             // 
-            // gbTime
-            // 
-            this.gbTime.Controls.Add(this.lblTime);
-            this.gbTime.Controls.Add(this.lblDate);
-            this.gbTime.Controls.Add(this.label4);
-            this.gbTime.Controls.Add(this.label2);
-            resources.ApplyResources(this.gbTime, "gbTime");
-            this.gbTime.Name = "gbTime";
-            this.gbTime.TabStop = false;
-            // 
             // lblTime
             // 
             resources.ApplyResources(this.lblTime, "lblTime");
@@ -489,28 +471,6 @@
             // 
             resources.ApplyResources(this.lblDate, "lblDate");
             this.lblDate.Name = "lblDate";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // gbSetAnalog
-            // 
-            resources.ApplyResources(this.gbSetAnalog, "gbSetAnalog");
-            this.gbSetAnalog.Name = "gbSetAnalog";
-            this.gbSetAnalog.TabStop = false;
             // 
             // groupBox5
             // 
@@ -532,6 +492,73 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
+            // btnSendGeneralSettings
+            // 
+            resources.ApplyResources(this.btnSendGeneralSettings, "btnSendGeneralSettings");
+            this.btnSendGeneralSettings.Name = "btnSendGeneralSettings";
+            this.btnSendGeneralSettings.UseVisualStyleBackColor = true;
+            this.btnSendGeneralSettings.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox14
+            // 
+            resources.ApplyResources(this.textBox14, "textBox14");
+            this.textBox14.Name = "textBox14";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // textBox15
+            // 
+            resources.ApplyResources(this.textBox15, "textBox15");
+            this.textBox15.Name = "textBox15";
+            // 
+            // textBox16
+            // 
+            resources.ApplyResources(this.textBox16, "textBox16");
+            this.textBox16.Name = "textBox16";
+            // 
+            // textBox13
+            // 
+            resources.ApplyResources(this.textBox13, "textBox13");
+            this.textBox13.Name = "textBox13";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // textBox12
+            // 
+            resources.ApplyResources(this.textBox12, "textBox12");
+            this.textBox12.Name = "textBox12";
+            // 
+            // textBox11
+            // 
+            resources.ApplyResources(this.textBox11, "textBox11");
+            this.textBox11.Name = "textBox11";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label3);
@@ -540,7 +567,6 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.textBox10);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.btnSendDigitalSettings);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -598,36 +624,6 @@
             this.btnSendDigitalSettings.Name = "btnSendDigitalSettings";
             this.btnSendDigitalSettings.UseVisualStyleBackColor = true;
             // 
-            // textBox11
-            // 
-            resources.ApplyResources(this.textBox11, "textBox11");
-            this.textBox11.Name = "textBox11";
-            // 
-            // textBox12
-            // 
-            resources.ApplyResources(this.textBox12, "textBox12");
-            this.textBox12.Name = "textBox12";
-            // 
-            // textBox13
-            // 
-            resources.ApplyResources(this.textBox13, "textBox13");
-            this.textBox13.Name = "textBox13";
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
             // gbValues
             // 
             this.gbValues.Controls.Add(this.textBox7);
@@ -636,7 +632,6 @@
             this.gbValues.Controls.Add(this.label12);
             this.gbValues.Controls.Add(this.textBox5);
             this.gbValues.Controls.Add(this.label11);
-            this.gbValues.Controls.Add(this.btnSendAnalogSettings);
             this.gbValues.Controls.Add(this.textBox4);
             this.gbValues.Controls.Add(this.textBox3);
             this.gbValues.Controls.Add(this.textBox2);
@@ -1034,13 +1029,6 @@
             this.lblDigital1.Name = "lblDigital1";
             this.lblDigital1.Click += new System.EventHandler(this.label3_Click);
             // 
-            // gbMain
-            // 
-            this.gbMain.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            resources.ApplyResources(this.gbMain, "gbMain");
-            this.gbMain.Name = "gbMain";
-            this.gbMain.TabStop = false;
-            // 
             // btnConnectionSettings
             // 
             this.btnConnectionSettings.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1078,7 +1066,6 @@
             this.gbValue.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gbValue.Controls.Add(this.groupBox1);
             this.gbValue.Controls.Add(this.gbshowValues);
-            this.gbValue.Controls.Add(this.gbTime);
             resources.ApplyResources(this.gbValue, "gbValue");
             this.gbValue.Name = "gbValue";
             this.gbValue.TabStop = false;
@@ -1086,12 +1073,54 @@
             // gbSettings
             // 
             this.gbSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gbSettings.Controls.Add(this.tabControl1);
+            this.gbSettings.Controls.Add(this.tabSettings);
             this.gbSettings.Controls.Add(this.lblLogin);
             this.gbSettings.Controls.Add(this.bntLogin);
             resources.ApplyResources(this.gbSettings, "gbSettings");
             this.gbSettings.Name = "gbSettings";
             this.gbSettings.TabStop = false;
+            // 
+            // tabSettings
+            // 
+            this.tabSettings.Controls.Add(this.tpGeneralSettings);
+            this.tabSettings.Controls.Add(this.tabPage2);
+            this.tabSettings.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.tabSettings, "tabSettings");
+            this.tabSettings.Name = "tabSettings";
+            this.tabSettings.SelectedIndex = 0;
+            // 
+            // tpGeneralSettings
+            // 
+            this.tpGeneralSettings.Controls.Add(this.groupBox5);
+            resources.ApplyResources(this.tpGeneralSettings, "tpGeneralSettings");
+            this.tpGeneralSettings.Name = "tpGeneralSettings";
+            this.tpGeneralSettings.UseVisualStyleBackColor = true;
+            this.tpGeneralSettings.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.btnGetAnalogValues);
+            this.tabPage2.Controls.Add(this.gbValues);
+            this.tabPage2.Controls.Add(this.btnSendAnalogSettings);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.comboBox2);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.groupBox4);
+            this.tabPage3.Controls.Add(this.btnSendDigitalSettings);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblLogin
+            // 
+            resources.ApplyResources(this.lblLogin, "lblLogin");
+            this.lblLogin.Name = "lblLogin";
             // 
             // bntLogin
             // 
@@ -1145,53 +1174,6 @@
             resources.ApplyResources(this.tbPswd, "tbPswd");
             this.tbPswd.ForeColor = System.Drawing.Color.Red;
             this.tbPswd.Name = "tbPswd";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tbxKey);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // tbxKey
-            // 
-            resources.ApplyResources(this.tbxKey, "tbxKey");
-            this.tbxKey.Name = "tbxKey";
-            // 
-            // button8
-            // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // tbxPisz
-            // 
-            resources.ApplyResources(this.tbxPisz, "tbxPisz");
-            this.tbxPisz.Name = "tbxPisz";
-            this.tbxPisz.TextChanged += new System.EventHandler(this.tbxPisz_TextChanged);
             // 
             // gbConnection
             // 
@@ -1275,7 +1257,6 @@
             // 
             this.gbConnectionSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gbConnectionSettings.Controls.Add(this.gbConnection);
-            this.gbConnectionSettings.Controls.Add(this.gbSetAnalog);
             resources.ApplyResources(this.gbConnectionSettings, "gbConnectionSettings");
             this.gbConnectionSettings.Name = "gbConnectionSettings";
             this.gbConnectionSettings.TabStop = false;
@@ -1295,81 +1276,24 @@
             this.textBox8.ForeColor = System.Drawing.Color.Green;
             this.textBox8.Name = "textBox8";
             // 
-            // lblLogin
+            // timerStart
             // 
-            resources.ApplyResources(this.lblLogin, "lblLogin");
-            this.lblLogin.Name = "lblLogin";
+            this.timerStart.Interval = 200;
+            this.timerStart.Tick += new System.EventHandler(this.timerStart_Tick);
             // 
-            // textBox14
+            // button3
             // 
-            resources.ApplyResources(this.textBox14, "textBox14");
-            this.textBox14.Name = "textBox14";
+            this.button3.BackColor = System.Drawing.Color.OliveDrab;
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // label18
+            // button2
             // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
-            // 
-            // textBox15
-            // 
-            resources.ApplyResources(this.textBox15, "textBox15");
-            this.textBox15.Name = "textBox15";
-            // 
-            // textBox16
-            // 
-            resources.ApplyResources(this.textBox16, "textBox16");
-            this.textBox16.Name = "textBox16";
-            // 
-            // btnSendGeneralSettings
-            // 
-            resources.ApplyResources(this.btnSendGeneralSettings, "btnSendGeneralSettings");
-            this.btnSendGeneralSettings.Name = "btnSendGeneralSettings";
-            this.btnSendGeneralSettings.UseVisualStyleBackColor = true;
-            this.btnSendGeneralSettings.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox5);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Controls.Add(this.btnGetAnalogValues);
-            this.tabPage2.Controls.Add(this.gbValues);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.comboBox2);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.groupBox4);
-            resources.ApplyResources(this.tabPage3, "tabPage3");
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // digitalSensorBindingSource2
             // 
@@ -1383,27 +1307,48 @@
             // 
             this.digitalSensorBindingSource.DataSource = typeof(panelTestowy.DigitalSensor);
             // 
-            // timerStart
+            // label2
             // 
-            this.timerStart.Interval = 200;
-            this.timerStart.Tick += new System.EventHandler(this.timerStart_Tick);
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // gbTime
+            // 
+            this.gbTime.Controls.Add(this.lblTime);
+            this.gbTime.Controls.Add(this.lblDate);
+            this.gbTime.Controls.Add(this.label4);
+            this.gbTime.Controls.Add(this.label2);
+            resources.ApplyResources(this.gbTime, "gbTime");
+            this.gbTime.Name = "gbTime";
+            this.gbTime.TabStop = false;
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.gbMessage);
             this.Controls.Add(this.gbConnectionSettings);
+            this.Controls.Add(this.gbTime);
             this.Controls.Add(this.btnConnectionSettings);
             this.Controls.Add(this.btnPanelValues);
             this.Controls.Add(this.bgKey);
-            this.Controls.Add(this.tbxPisz);
             this.Controls.Add(this.btnPanelSettings);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnPanelMessage);
             this.Controls.Add(this.gbPswd);
             this.Controls.Add(this.gbSettings);
-            this.Controls.Add(this.gbMain);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gbValue);
             this.Controls.Add(this.gbManual);
@@ -1413,8 +1358,6 @@
             this.gbManual.ResumeLayout(false);
             this.gbshowValues.ResumeLayout(false);
             this.gbshowValues.PerformLayout();
-            this.gbTime.ResumeLayout(false);
-            this.gbTime.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1428,22 +1371,22 @@
             this.gbValue.ResumeLayout(false);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();
+            this.tabSettings.ResumeLayout(false);
+            this.tpGeneralSettings.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.gbPswd.ResumeLayout(false);
             this.gbPswd.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.gbConnection.ResumeLayout(false);
             this.gbConnection.PerformLayout();
             this.gbConnectionSettings.ResumeLayout(false);
             this.gbMessage.ResumeLayout(false);
             this.gbMessage.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).EndInit();
+            this.gbTime.ResumeLayout(false);
+            this.gbTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1468,15 +1411,10 @@
         private System.Windows.Forms.Label lblAnalog2;
         private System.Windows.Forms.Label lblName2;
         private System.Windows.Forms.Label lblAnalog1;
-        private System.Windows.Forms.GroupBox gbTime;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblAnalog5;
         private System.Windows.Forms.Label lblName5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox gbSetAnalog;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox gbValues;
         private System.Windows.Forms.TextBox textBox4;
@@ -1544,7 +1482,6 @@
         private System.Windows.Forms.Button btnDigital5;
         private System.Windows.Forms.Label lblDigital4;
         private System.Windows.Forms.Button btnDigital4;
-        private System.Windows.Forms.GroupBox gbMain;
         private System.Windows.Forms.Button btnConnectionSettings;
         private System.Windows.Forms.Button btnPanelValues;
         private System.Windows.Forms.Button btnPanelSettings;
@@ -1580,13 +1517,6 @@
         private System.Windows.Forms.Button btnPswdReset;
         private System.Windows.Forms.Button btnPswdLogin;
         private System.Windows.Forms.Label lblPswd;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox tbxKey;
-        private System.Windows.Forms.TextBox tbxPisz;
         private System.Windows.Forms.GroupBox gbConnection;
         private System.Windows.Forms.Button btnSerialRefresh;
         private System.Windows.Forms.Label lblSerialStatus;
@@ -1612,11 +1542,17 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabSettings;
+        private System.Windows.Forms.TabPage tpGeneralSettings;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Timer timerStart;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox gbTime;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
