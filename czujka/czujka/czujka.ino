@@ -455,8 +455,11 @@ void setAlarm() {
 void checkIncomingData(char* data) {
 	//Serial.println(data[0]);
 	//Serial.println(data[1]);
+	static int _id = 0;
 	char c = data[0];
 	if (c =='#') {
+
+		Serial2.println("#A/2/arduino/11/22/50/pz*");
 		//Serial.println("#");
 		Serial.println("set new analog value");
 		Serial.println(sizeof(data) / sizeof(data[0]));
@@ -498,47 +501,7 @@ void checkIncomingData(char* data) {
 		}
 	}
 
-	/*switch (c) {
-	case '#':
-			Serial.println("tutaj");
-			*data++;
-			char buf[10];
-			int a = 0;
-			while (*data != '*')
-				buf[a++] += *data++;	
-			Serial.print("rozkaz : ");
-			Serial.println(buf);
-			break;		
 	
-	case '!':
-			Serial.println("sprawdz klucz");
-			if (data[1] == 'O') {
-				Serial.println("wylaczona");
-				setKeyPosition(0);
-			}				
-			else if (data[1] == 'A') {
-				Serial.println("utomatycznie");
-				setKeyPosition(1);
-			}				
-			else if (data[1] == 'H') {
-				Serial.println("Hand");
-				setKeyPosition(2);
-			}				
-			break;	
-	case '@':	
-			Serial.println("new value");
-			Serial.println(sizeof(data) / sizeof(data[0]));
-			Serial.println(getIdSensor(data));
-			int id = getIdSensor(data);
-			if (id < sizeof(data) / sizeof(data[0]))
-				AnalogSensorArray[getIdSensor(data)].setNewValue(data);
-			else
-				Serial.println("bledne dane");			
-			break;
-		
-		default:
-			break;
-	}*/
 	
 }
 void setKeyPosition(int pos) {

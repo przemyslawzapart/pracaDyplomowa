@@ -50,43 +50,25 @@ namespace panelTestowy
         public void setValue(double value)
         {
             this.value = value;
-            double a = ((100 / (double)maxRange) * value);
-            if (value < minValue)
-                pbProgres.ForeColor = Color.Yellow;
-            else if(value > maxValue)
-                pbProgres.ForeColor = Color.Red;
-            else 
-                pbProgres.ForeColor = Color.Green;
-            if(pbProgres.Value <= a)
-                pbProgres.Value = (int) a;
-            lblValue.Text = value.ToString();
-
+            setValue(); 
         }
         public void setValue()
         {
-             Console.Write("value ");
-            Console.WriteLine(value);
-            Console.Write("range ");
-            Console.WriteLine(maxRange);
-            Console.Write("progres bar ");
+            setAnalogColer();
             double a = ((100 / (float)maxRange) * value);
-            Console.WriteLine(a);
-
+            if (a < maxRange)
+                pbProgres.Value = (int)a;
+            lblValue.Text = value.ToString();
+        }
+        private void setAnalogColer()
+        {
             if (value < minValue)
                 pbProgres.ForeColor = Color.Yellow;
             else if (value > maxValue)
                 pbProgres.ForeColor = Color.Red;
             else
                 pbProgres.ForeColor = Color.Green;
-
-            pbProgres.Value = (int)((100 / (float)maxRange) * value);
-            pbProgres.Value = (int)a;
-            lblValue.Text = value.ToString();
-            //Console.WriteLine(value.ToString("c1"));
-
-
         }
-        //public void setNewInstelingen(int _maxValue, int _minValue, int _range, string _name, string _unit)
         public void setNewInstelingen(string _name, int _minValue, int _maxValue, int _range,  string _unit)
         {
             maxRange = _range;
@@ -100,11 +82,6 @@ namespace panelTestowy
             Console.WriteLine(value);
             setValue();
         }
-
-
-
-
-           
 
     }
 }

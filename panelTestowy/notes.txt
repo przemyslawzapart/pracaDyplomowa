@@ -16,3 +16,9 @@ Sprawdzanie poprawności danych w panelu sensor
 do przemyślenia:
 	analog sensor musi mieć pole bool alarm 
 	każda klasa musi mieć możliwoś śprawdzania danych wejściowych 
+
+	analog string
+		komenda
+			$G/A/<id>/name/min/max/unit*
+		odpowieddz:
+			$A/<id>/name/min/mak/range*
