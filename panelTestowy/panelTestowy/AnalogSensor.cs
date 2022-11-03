@@ -28,7 +28,7 @@ namespace panelTestowy
 
         public AnalogSensor(Label _name, Label _value, Label _unit, ProgressBar _progres)
         {
-            value = 20;
+            this.value = 20;
             minValue = 20;
             maxValue = 70;
             name = "analog";

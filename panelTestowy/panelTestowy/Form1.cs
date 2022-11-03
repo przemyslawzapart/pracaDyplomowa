@@ -117,6 +117,7 @@ namespace panelTestowy
             gbPanelList.Add(gbMessage);
             gbPanelList.Add(gbConnectionSettings);
             gbPanelList.Add(gbPswd);
+
             settingsPanelList.Add(gbSettingsGeneral);
             settingsPanelList.Add(gbSettingsAnalog);
             settingsPanelList.Add(gbSettingsDigital);
@@ -408,21 +409,15 @@ namespace panelTestowy
                     item.Visible = false;
                 }   
             }
-            if(loginState && index == 1)
-            {
-               
-                tabSettings.Enabled = true; 
-                lblLogin.Visible = false;
-                
-
+            if(loginState && index == 1)//zsalogowany
+            {  
+                lblLogin.Visible = false; 
             }  
-            else
+            else//nastapilo wylogowanie
             {
-                
-                tabSettings.Enabled= false;
                 loginState = false;
+                makeSettingsPanelState(false);
                 lblLogin.Visible = false;
-
             }
                 
         }
@@ -475,23 +470,39 @@ analogSelectedIndex = comboBox1.SelectedIndex;
         }
 
         private void btnPswdLogin_Click(object sender, EventArgs e)
-        {
-            
+        {            
             if(String.Compare(password,tbPswd.Text) == 0)
             {
-                loginState = true;
-                
-                tabSettings.Enabled = true;
-                tbPswd.Text = "";
+//loginState = true;   
+                tbPswd.Text = "123";               
+                //makeSettingsPanelState(true);//moze byc widoczne
+                setloginSettingsState(true);
                 setPanel(1);
             }
             else
             {
                 lblPswd.Visible = true;
+            }        
+        }
+        private void setloginSettingsState(bool state)
+        {
+            if(state)
+                loginTimer.Enabled = true;
+            loginState = state;
+            makeSettingsPanelState(state);
+        }
+        private void makeSettingsPanelState(bool state)
+        {
+            makeCollectionState(tbxGeneralSettingsList, state);
+            makeCollectionState(tbxAnalogSettingsList, state);
+            makeCollectionState(tbxDigitalSettingsList, state);
+        }
+        private void makeCollectionState(List<TextBox> list, bool state)
+        {
+            foreach (var item in list)
+            {
+                item.Enabled = state;
             }
-            
-                
-
 
         }
         private void setLoginState(bool state){
@@ -505,11 +516,7 @@ analogSelectedIndex = comboBox1.SelectedIndex;
 
         private void button5_Click(object sender, EventArgs e)
         {
-            tbx.Text = "a";
-            
-            //tbxPisz.Text = "rrrr";
-
-
+            tbx.Text = "a";   
         }
 
         private void tbxPisz_TextChanged(object sender, EventArgs e)
@@ -718,18 +725,7 @@ analogSelectedIndex = comboBox1.SelectedIndex;
 
         private void timerStart_Tick(object sender, EventArgs e)
         {
-            sendData("@statr/1*");
-            //if (timerStart_a > 1000)
-            //{
-            //    
-            //    timerStart_a++;
-            //}
-            //else
-            //{
-            //    timerStart_a = 0;
-            //    timerStart.Enabled = false;
-
-            //}
+            sendData("@statr/1*"); 
                 
             
         }
@@ -813,17 +809,42 @@ analogSelectedIndex = comboBox1.SelectedIndex;
         }
         private void btnSendAnalogSettings_Click(object sender, EventArgs e)
         {
-            
-            
-            sensorList[analogSelectedIndex].setNewInstelingen(tbxAnalogSettingsList[0].Text, Int16.Parse(tbxAnalogSettingsList[1].Text), Int16.Parse(tbxAnalogSettingsList[2].Text),
-                Int16.Parse(tbxAnalogSettingsList[3].Text),  tbxAnalogSettingsList[4].Text);
-            sensorList[analogSelectedIndex].setValue(Int16.Parse(tbxAnalogSettingsList[5].Text));
-            getSensrosAnalogName(comboBox1);
+            int min = checkDataDecimal(tbxAnalogSettingsList[1]);            
+            int max = checkDataDecimal(tbxAnalogSettingsList[2]);
+            int range = checkDataDecimal(tbxAnalogSettingsList[3]);
 
-            int temp = comboBox1.SelectedIndex;
+            if(min>=0 && max >= 0 && range >= 0 && checkRange(min, max, range))
+            {                
+                sensorList[analogSelectedIndex].setNewInstelingen(tbxAnalogSettingsList[0].Text,min,max,range , tbxAnalogSettingsList[4].Text);
+                lblSettingsMessage.Visible = true;
+                lblSettingsMessage.Text = "ok "; 
+            }
+            else
+            {
+                lblSettingsMessage.Visible = true;
+                lblSettingsMessage.Text = "something wrong ";
+
+            }
             getSensrosAnalogName(comboBox1);
-            comboBox1.SelectedIndex = analogSelectedIndex;
-            //comboBox1.SelectedItem = "";
+            comboBox1.SelectedIndex = analogSelectedIndex;           
+        }
+
+        private bool checkRange(int min, int max, int range)
+        {
+            bool state = true;
+            if (max < min || range < max)
+                state = false;
+            return state;
+
+        }
+        private int checkDataDecimal(TextBox tbx)
+        {
+            //int value = 0;
+            bool state = Int32.TryParse(tbx.Text ,out int value);
+            if(state && (value >= 0))
+                return value;
+            else
+                return -1;
         }
 
         private void getSensrosAnalogName(ComboBox cbox)
@@ -846,6 +867,12 @@ analogSelectedIndex = comboBox1.SelectedIndex;
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             ;
+        }
+
+        private void loginTimer_Tick(object sender, EventArgs e)
+        {
+            loginTimer.Enabled = false;
+            setloginSettingsState(false);
         }
     }
 }
