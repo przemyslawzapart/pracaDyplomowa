@@ -1,0 +1,18 @@
+﻿jak kliknę fdzie indziej to należy sprawdzić poprawność wprowadzania danych
+
+Sprawdzanie poprawności danych w panelu sensor
+- pole value:
+	* musi być cyfra 
+	* musi być int
+	* min < max && min >0
+	* max >min && max <=0
+	* max range >= max
+	* value < max range 
+
+- pole name
+	* nie więcej niż 10 znaków
+	* mogą być wszystkie
+
+do przemyślenia:
+	analog sensor musi mieć pole bool alarm 
+	każda klasa musi mieć możliwoś śprawdzania danych wejściowych 
