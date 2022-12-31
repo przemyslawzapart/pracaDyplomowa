@@ -22,7 +22,7 @@ namespace panelTestowy
             this.button = button;
             this.label = label;            
 
-            name = "digital ingang";
+            name = "digital ingangg";
             state = false;
             enabled = true;   
             color = Color.Red;

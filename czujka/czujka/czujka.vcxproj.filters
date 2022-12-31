@@ -30,12 +30,18 @@
     <ClInclude Include="AnalogSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DigitalSensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AnalogSensor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DigitalSensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -22,6 +22,8 @@ class SensorClass
 	 bool reset;
 	 const char* unit;
 	 unsigned long resetTimer;
+	 bool state;
+	
 
  public:
 	SensorClass(int pinPosition, const char* name, const char* unit);
@@ -34,6 +36,7 @@ class SensorClass
 	void resetSensor();
 	void show();
 	void init();
+	String getSettings();
 };
 
 //extern SensorClass Sensor;

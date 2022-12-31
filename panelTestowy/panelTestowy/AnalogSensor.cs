@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,10 +29,11 @@ namespace panelTestowy
 
         public AnalogSensor(Label _name, Label _value, Label _unit, ProgressBar _progres)
         {
-            this.value = 20;
+            
+            this.value = 0;
             minValue = 20;
             maxValue = 70;
-            name = "analog";
+            name = _name.Text;
             unit = "V";
             enabled = true;
             lblValue = _value;
@@ -58,7 +60,23 @@ namespace panelTestowy
             double a = ((100 / (float)maxRange) * value);
             if (a < maxRange)
                 pbProgres.Value = (int)a;
+            pbProgres.Value = (int)value;
             lblValue.Text = value.ToString();
+            Console.WriteLine("a wynosi : {0}", (int)a);
+
+        }
+        public void setValue(String valueStr)
+        {
+            Console.WriteLine("klasa analog hex : {0}", valueStr);
+            //Double.TryParse(valueStr, out double v);
+            //value = v;
+            
+
+            value = Convert.ToInt32(valueStr, 16);
+            value = value / 10;
+            Console.WriteLine("klasa analog value : {0}", value);
+
+            setValue();
         }
         private void setAnalogColer()
         {
@@ -73,7 +91,7 @@ namespace panelTestowy
         {
             maxRange = _range;
             maxValue = _maxValue;
-            minValue = _minValue;
+            minValue = _minValue ;
             name = _name;
             lblName.Text = name;
             unit = _unit;

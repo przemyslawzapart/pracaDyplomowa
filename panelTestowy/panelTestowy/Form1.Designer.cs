@@ -41,20 +41,23 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblName1 = new System.Windows.Forms.Label();
             this.gbshowValues = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
+            this.pbAnalog8 = new System.Windows.Forms.ProgressBar();
+            this.pbAnalog7 = new System.Windows.Forms.ProgressBar();
+            this.pbAnalog6 = new System.Windows.Forms.ProgressBar();
+            this.lblUnit8 = new System.Windows.Forms.Label();
+            this.lblUnit7 = new System.Windows.Forms.Label();
+            this.lblUnit6 = new System.Windows.Forms.Label();
+            this.lblAnalog8 = new System.Windows.Forms.Label();
+            this.lblName8 = new System.Windows.Forms.Label();
+            this.lblAnalog7 = new System.Windows.Forms.Label();
+            this.lblName7 = new System.Windows.Forms.Label();
+            this.lblAnalog6 = new System.Windows.Forms.Label();
+            this.lblName6 = new System.Windows.Forms.Label();
             this.pbAnalog5 = new System.Windows.Forms.ProgressBar();
             this.pbAnalog4 = new System.Windows.Forms.ProgressBar();
             this.pbAnalog3 = new System.Windows.Forms.ProgressBar();
@@ -75,23 +78,27 @@
             this.lblName2 = new System.Windows.Forms.Label();
             this.lblAnalog1 = new System.Windows.Forms.Label();
             this.gbSettingsAnalog = new System.Windows.Forms.GroupBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnSendAnalogSettings = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.btnSendDefoultAnalogSettings = new System.Windows.Forms.Button();
             this.btnSendGeneralSettings = new System.Windows.Forms.Button();
             this.btnSendDigitalSettings = new System.Windows.Forms.Button();
             this.btnGetAnalogValues = new System.Windows.Forms.Button();
             this.btnDigital1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblDigital20 = new System.Windows.Forms.Label();
             this.btnDigital20 = new System.Windows.Forms.Button();
             this.lblDigital19 = new System.Windows.Forms.Label();
@@ -136,15 +143,21 @@
             this.btnPanelSettings = new System.Windows.Forms.Button();
             this.btnPanelMessage = new System.Windows.Forms.Button();
             this.gbValue = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.lblSettingsMessage = new System.Windows.Forms.Label();
             this.btnExtraSettings = new System.Windows.Forms.Button();
             this.btnDigitalSettings = new System.Windows.Forms.Button();
             this.btnAnalogSettings = new System.Windows.Forms.Button();
+            this.lblLogin = new System.Windows.Forms.Label();
+            this.bntLogin = new System.Windows.Forms.Button();
             this.gbSettingsGeneral = new System.Windows.Forms.GroupBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.button4 = new System.Windows.Forms.Button();
             this.textBox14 = new System.Windows.Forms.TextBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label36 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -155,8 +168,11 @@
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.lblLogin = new System.Windows.Forms.Label();
-            this.bntLogin = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.gbPswd = new System.Windows.Forms.GroupBox();
             this.lblPswd = new System.Windows.Forms.Label();
             this.btnPswdCancel = new System.Windows.Forms.Button();
@@ -175,20 +191,22 @@
             this.btnSerialConnect = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.gbConnectionSettings = new System.Windows.Forms.GroupBox();
+            this.btnGetAllSettings = new System.Windows.Forms.Button();
             this.gbMessage = new System.Windows.Forms.GroupBox();
             this.tbxLog = new System.Windows.Forms.TextBox();
             this.timerStart = new System.Windows.Forms.Timer(this.components);
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnDateTime = new System.Windows.Forms.Button();
             this.gbSettingsDigital = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbSettingsDigitalNoNc = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.gbSettingsExtra = new System.Windows.Forms.GroupBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -201,16 +219,40 @@
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.loginTimer = new System.Windows.Forms.Timer(this.components);
-            this.cbSettingsDigitalNoNc = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.timerSendData = new System.Windows.Forms.Timer(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
             this.digitalSensorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.digitalSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bgKey.SuspendLayout();
             this.gbManual.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.gbshowValues.SuspendLayout();
             this.gbSettingsAnalog.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -223,6 +265,8 @@
             this.gbMessage.SuspendLayout();
             this.gbSettingsDigital.SuspendLayout();
             this.gbSettingsExtra.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).BeginInit();
@@ -263,7 +307,6 @@
             // gbManual
             // 
             this.gbManual.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gbManual.Controls.Add(this.panel1);
             this.gbManual.Controls.Add(this.btnPosAuto);
             this.gbManual.Controls.Add(this.btnPosOff);
             this.gbManual.Controls.Add(this.btnPosHand);
@@ -310,6 +353,8 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnReset_MouseDown);
+            this.btnReset.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnReset_MouseUp);
             // 
             // btnStart
             // 
@@ -330,6 +375,29 @@
             this.btnStop.Name = "btnStop";
             this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnStop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseDown);
+            this.btnStop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnStop_MouseUp);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.Controls.Add(this.button1);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            this.panel1.MouseHover += new System.EventHandler(this.panel1_MouseHover);
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblName1
             // 
@@ -338,18 +406,18 @@
             // 
             // gbshowValues
             // 
-            this.gbshowValues.Controls.Add(this.progressBar1);
-            this.gbshowValues.Controls.Add(this.progressBar2);
-            this.gbshowValues.Controls.Add(this.progressBar3);
-            this.gbshowValues.Controls.Add(this.label21);
-            this.gbshowValues.Controls.Add(this.label22);
-            this.gbshowValues.Controls.Add(this.label23);
-            this.gbshowValues.Controls.Add(this.label24);
-            this.gbshowValues.Controls.Add(this.label25);
-            this.gbshowValues.Controls.Add(this.label26);
-            this.gbshowValues.Controls.Add(this.label27);
-            this.gbshowValues.Controls.Add(this.label28);
-            this.gbshowValues.Controls.Add(this.label29);
+            this.gbshowValues.Controls.Add(this.pbAnalog8);
+            this.gbshowValues.Controls.Add(this.pbAnalog7);
+            this.gbshowValues.Controls.Add(this.pbAnalog6);
+            this.gbshowValues.Controls.Add(this.lblUnit8);
+            this.gbshowValues.Controls.Add(this.lblUnit7);
+            this.gbshowValues.Controls.Add(this.lblUnit6);
+            this.gbshowValues.Controls.Add(this.lblAnalog8);
+            this.gbshowValues.Controls.Add(this.lblName8);
+            this.gbshowValues.Controls.Add(this.lblAnalog7);
+            this.gbshowValues.Controls.Add(this.lblName7);
+            this.gbshowValues.Controls.Add(this.lblAnalog6);
+            this.gbshowValues.Controls.Add(this.lblName6);
             this.gbshowValues.Controls.Add(this.pbAnalog5);
             this.gbshowValues.Controls.Add(this.pbAnalog4);
             this.gbshowValues.Controls.Add(this.pbAnalog3);
@@ -374,77 +442,77 @@
             this.gbshowValues.Name = "gbshowValues";
             this.gbshowValues.TabStop = false;
             // 
-            // progressBar1
+            // pbAnalog8
             // 
-            this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.progressBar1.ForeColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.progressBar1, "progressBar1");
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.Value = 50;
+            this.pbAnalog8.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pbAnalog8.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.pbAnalog8, "pbAnalog8");
+            this.pbAnalog8.Name = "pbAnalog8";
+            this.pbAnalog8.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.pbAnalog8.Value = 50;
             // 
-            // progressBar2
+            // pbAnalog7
             // 
-            this.progressBar2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.progressBar2.ForeColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.progressBar2, "progressBar2");
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar2.Value = 50;
+            this.pbAnalog7.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pbAnalog7.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.pbAnalog7, "pbAnalog7");
+            this.pbAnalog7.Name = "pbAnalog7";
+            this.pbAnalog7.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.pbAnalog7.Value = 50;
             // 
-            // progressBar3
+            // pbAnalog6
             // 
-            this.progressBar3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.progressBar3.ForeColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.progressBar3, "progressBar3");
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar3.Value = 50;
+            this.pbAnalog6.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pbAnalog6.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.pbAnalog6, "pbAnalog6");
+            this.pbAnalog6.Name = "pbAnalog6";
+            this.pbAnalog6.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.pbAnalog6.Value = 50;
             // 
-            // label21
+            // lblUnit8
             // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
+            resources.ApplyResources(this.lblUnit8, "lblUnit8");
+            this.lblUnit8.Name = "lblUnit8";
             // 
-            // label22
+            // lblUnit7
             // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
+            resources.ApplyResources(this.lblUnit7, "lblUnit7");
+            this.lblUnit7.Name = "lblUnit7";
             // 
-            // label23
+            // lblUnit6
             // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
+            resources.ApplyResources(this.lblUnit6, "lblUnit6");
+            this.lblUnit6.Name = "lblUnit6";
             // 
-            // label24
+            // lblAnalog8
             // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
+            resources.ApplyResources(this.lblAnalog8, "lblAnalog8");
+            this.lblAnalog8.Name = "lblAnalog8";
             // 
-            // label25
+            // lblName8
             // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
+            resources.ApplyResources(this.lblName8, "lblName8");
+            this.lblName8.Name = "lblName8";
             // 
-            // label26
+            // lblAnalog7
             // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
+            resources.ApplyResources(this.lblAnalog7, "lblAnalog7");
+            this.lblAnalog7.Name = "lblAnalog7";
             // 
-            // label27
+            // lblName7
             // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
+            resources.ApplyResources(this.lblName7, "lblName7");
+            this.lblName7.Name = "lblName7";
             // 
-            // label28
+            // lblAnalog6
             // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
+            resources.ApplyResources(this.lblAnalog6, "lblAnalog6");
+            this.lblAnalog6.Name = "lblAnalog6";
             // 
-            // label29
+            // lblName6
             // 
-            resources.ApplyResources(this.label29, "label29");
-            this.label29.Name = "label29";
+            resources.ApplyResources(this.lblName6, "lblName6");
+            this.lblName6.Name = "lblName6";
             // 
             // pbAnalog5
             // 
@@ -488,6 +556,7 @@
             this.pbAnalog1.ForeColor = System.Drawing.Color.Red;
             resources.ApplyResources(this.pbAnalog1, "pbAnalog1");
             this.pbAnalog1.Name = "pbAnalog1";
+            this.pbAnalog1.Step = 1;
             this.pbAnalog1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pbAnalog1.Value = 50;
             this.pbAnalog1.Click += new System.EventHandler(this.pbAnalog1_Click);
@@ -564,24 +633,53 @@
             // 
             // gbSettingsAnalog
             // 
-            this.gbSettingsAnalog.Controls.Add(this.button5);
+            this.gbSettingsAnalog.Controls.Add(this.textBox6);
+            this.gbSettingsAnalog.Controls.Add(this.textBox5);
+            this.gbSettingsAnalog.Controls.Add(this.textBox4);
+            this.gbSettingsAnalog.Controls.Add(this.textBox3);
+            this.gbSettingsAnalog.Controls.Add(this.textBox2);
             this.gbSettingsAnalog.Controls.Add(this.label2);
             this.gbSettingsAnalog.Controls.Add(this.label14);
             this.gbSettingsAnalog.Controls.Add(this.btnSendAnalogSettings);
             this.gbSettingsAnalog.Controls.Add(this.comboBox1);
-            this.gbSettingsAnalog.Controls.Add(this.textBox16);
             this.gbSettingsAnalog.Controls.Add(this.label13);
-            this.gbSettingsAnalog.Controls.Add(this.textBox17);
-            this.gbSettingsAnalog.Controls.Add(this.textBox18);
-            this.gbSettingsAnalog.Controls.Add(this.textBox20);
             this.gbSettingsAnalog.Controls.Add(this.label18);
-            this.gbSettingsAnalog.Controls.Add(this.textBox21);
             this.gbSettingsAnalog.Controls.Add(this.label19);
             this.gbSettingsAnalog.Controls.Add(this.label20);
             resources.ApplyResources(this.gbSettingsAnalog, "gbSettingsAnalog");
             this.gbSettingsAnalog.Name = "gbSettingsAnalog";
             this.gbSettingsAnalog.TabStop = false;
             this.gbSettingsAnalog.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // textBox6
+            // 
+            resources.ApplyResources(this.textBox6, "textBox6");
+            this.textBox6.Name = "textBox6";
+            // 
+            // textBox5
+            // 
+            resources.ApplyResources(this.textBox5, "textBox5");
+            this.textBox5.Name = "textBox5";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            // 
+            // textBox3
+            // 
+            resources.ApplyResources(this.textBox3, "textBox3");
+            this.textBox3.Name = "textBox3";
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // label14
             // 
@@ -598,51 +696,19 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2"),
-            resources.GetString("comboBox1.Items3"),
-            resources.GetString("comboBox1.Items4"),
-            resources.GetString("comboBox1.Items5")});
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // textBox16
-            // 
-            resources.ApplyResources(this.textBox16, "textBox16");
-            this.textBox16.Name = "textBox16";
             // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
             // 
-            // textBox17
-            // 
-            resources.ApplyResources(this.textBox17, "textBox17");
-            this.textBox17.Name = "textBox17";
-            // 
-            // textBox18
-            // 
-            resources.ApplyResources(this.textBox18, "textBox18");
-            this.textBox18.Name = "textBox18";
-            // 
-            // textBox20
-            // 
-            resources.ApplyResources(this.textBox20, "textBox20");
-            this.textBox20.Name = "textBox20";
-            // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
-            // 
-            // textBox21
-            // 
-            resources.ApplyResources(this.textBox21, "textBox21");
-            this.textBox21.Name = "textBox21";
             // 
             // label19
             // 
@@ -653,6 +719,13 @@
             // 
             resources.ApplyResources(this.label20, "label20");
             this.label20.Name = "label20";
+            // 
+            // btnSendDefoultAnalogSettings
+            // 
+            resources.ApplyResources(this.btnSendDefoultAnalogSettings, "btnSendDefoultAnalogSettings");
+            this.btnSendDefoultAnalogSettings.Name = "btnSendDefoultAnalogSettings";
+            this.btnSendDefoultAnalogSettings.UseVisualStyleBackColor = true;
+            this.btnSendDefoultAnalogSettings.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // btnSendGeneralSettings
             // 
@@ -684,6 +757,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblDigital20);
             this.groupBox1.Controls.Add(this.btnDigital20);
             this.groupBox1.Controls.Add(this.lblDigital19);
@@ -728,6 +803,16 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // lblDigital20
             // 
@@ -998,18 +1083,12 @@
             // gbValue
             // 
             this.gbValue.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gbValue.Controls.Add(this.groupBox3);
             this.gbValue.Controls.Add(this.groupBox1);
             this.gbValue.Controls.Add(this.gbshowValues);
             resources.ApplyResources(this.gbValue, "gbValue");
             this.gbValue.Name = "gbValue";
             this.gbValue.TabStop = false;
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // gbSettings
             // 
@@ -1018,10 +1097,10 @@
             this.gbSettings.Controls.Add(this.btnExtraSettings);
             this.gbSettings.Controls.Add(this.btnDigitalSettings);
             this.gbSettings.Controls.Add(this.btnAnalogSettings);
-            this.gbSettings.Controls.Add(this.gbSettingsGeneral);
             this.gbSettings.Controls.Add(this.btnSendGeneralSettings);
             this.gbSettings.Controls.Add(this.lblLogin);
             this.gbSettings.Controls.Add(this.bntLogin);
+            this.gbSettings.Controls.Add(this.gbSettingsGeneral);
             resources.ApplyResources(this.gbSettings, "gbSettings");
             this.gbSettings.Name = "gbSettings";
             this.gbSettings.TabStop = false;
@@ -1052,10 +1131,30 @@
             this.btnAnalogSettings.UseVisualStyleBackColor = true;
             this.btnAnalogSettings.Click += new System.EventHandler(this.btnAnalogSettings_Click);
             // 
+            // lblLogin
+            // 
+            resources.ApplyResources(this.lblLogin, "lblLogin");
+            this.lblLogin.Name = "lblLogin";
+            // 
+            // bntLogin
+            // 
+            this.bntLogin.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            resources.ApplyResources(this.bntLogin, "bntLogin");
+            this.bntLogin.Name = "bntLogin";
+            this.bntLogin.UseVisualStyleBackColor = false;
+            this.bntLogin.Click += new System.EventHandler(this.bntLogin_Click);
+            // 
             // gbSettingsGeneral
             // 
+            this.gbSettingsGeneral.Controls.Add(this.comboBox8);
+            this.gbSettingsGeneral.Controls.Add(this.dateTimePicker2);
+            this.gbSettingsGeneral.Controls.Add(this.btnGetAnalogValues);
+            this.gbSettingsGeneral.Controls.Add(this.button4);
+            this.gbSettingsGeneral.Controls.Add(this.btnSendDefoultAnalogSettings);
             this.gbSettingsGeneral.Controls.Add(this.textBox14);
+            this.gbSettingsGeneral.Controls.Add(this.comboBox7);
             this.gbSettingsGeneral.Controls.Add(this.textBox13);
+            this.gbSettingsGeneral.Controls.Add(this.comboBox6);
             this.gbSettingsGeneral.Controls.Add(this.label36);
             this.gbSettingsGeneral.Controls.Add(this.textBox12);
             this.gbSettingsGeneral.Controls.Add(this.label37);
@@ -1070,15 +1169,194 @@
             this.gbSettingsGeneral.Name = "gbSettingsGeneral";
             this.gbSettingsGeneral.TabStop = false;
             // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Items.AddRange(new object[] {
+            resources.GetString("comboBox8.Items"),
+            resources.GetString("comboBox8.Items1"),
+            resources.GetString("comboBox8.Items2"),
+            resources.GetString("comboBox8.Items3"),
+            resources.GetString("comboBox8.Items4"),
+            resources.GetString("comboBox8.Items5"),
+            resources.GetString("comboBox8.Items6"),
+            resources.GetString("comboBox8.Items7"),
+            resources.GetString("comboBox8.Items8"),
+            resources.GetString("comboBox8.Items9"),
+            resources.GetString("comboBox8.Items10"),
+            resources.GetString("comboBox8.Items11"),
+            resources.GetString("comboBox8.Items12"),
+            resources.GetString("comboBox8.Items13"),
+            resources.GetString("comboBox8.Items14"),
+            resources.GetString("comboBox8.Items15"),
+            resources.GetString("comboBox8.Items16"),
+            resources.GetString("comboBox8.Items17"),
+            resources.GetString("comboBox8.Items18"),
+            resources.GetString("comboBox8.Items19"),
+            resources.GetString("comboBox8.Items20"),
+            resources.GetString("comboBox8.Items21"),
+            resources.GetString("comboBox8.Items22"),
+            resources.GetString("comboBox8.Items23"),
+            resources.GetString("comboBox8.Items24"),
+            resources.GetString("comboBox8.Items25"),
+            resources.GetString("comboBox8.Items26"),
+            resources.GetString("comboBox8.Items27"),
+            resources.GetString("comboBox8.Items28"),
+            resources.GetString("comboBox8.Items29"),
+            resources.GetString("comboBox8.Items30"),
+            resources.GetString("comboBox8.Items31"),
+            resources.GetString("comboBox8.Items32"),
+            resources.GetString("comboBox8.Items33"),
+            resources.GetString("comboBox8.Items34"),
+            resources.GetString("comboBox8.Items35"),
+            resources.GetString("comboBox8.Items36"),
+            resources.GetString("comboBox8.Items37"),
+            resources.GetString("comboBox8.Items38"),
+            resources.GetString("comboBox8.Items39"),
+            resources.GetString("comboBox8.Items40"),
+            resources.GetString("comboBox8.Items41"),
+            resources.GetString("comboBox8.Items42"),
+            resources.GetString("comboBox8.Items43"),
+            resources.GetString("comboBox8.Items44"),
+            resources.GetString("comboBox8.Items45"),
+            resources.GetString("comboBox8.Items46"),
+            resources.GetString("comboBox8.Items47"),
+            resources.GetString("comboBox8.Items48"),
+            resources.GetString("comboBox8.Items49"),
+            resources.GetString("comboBox8.Items50"),
+            resources.GetString("comboBox8.Items51"),
+            resources.GetString("comboBox8.Items52"),
+            resources.GetString("comboBox8.Items53"),
+            resources.GetString("comboBox8.Items54"),
+            resources.GetString("comboBox8.Items55"),
+            resources.GetString("comboBox8.Items56"),
+            resources.GetString("comboBox8.Items57"),
+            resources.GetString("comboBox8.Items58"),
+            resources.GetString("comboBox8.Items59")});
+            resources.ApplyResources(this.comboBox8, "comboBox8");
+            this.comboBox8.Name = "comboBox8";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Value = new System.DateTime(2022, 12, 29, 0, 0, 0, 0);
+            // 
+            // button4
+            // 
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // textBox14
             // 
             resources.ApplyResources(this.textBox14, "textBox14");
             this.textBox14.Name = "textBox14";
             // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            resources.GetString("comboBox7.Items"),
+            resources.GetString("comboBox7.Items1"),
+            resources.GetString("comboBox7.Items2"),
+            resources.GetString("comboBox7.Items3"),
+            resources.GetString("comboBox7.Items4"),
+            resources.GetString("comboBox7.Items5"),
+            resources.GetString("comboBox7.Items6"),
+            resources.GetString("comboBox7.Items7"),
+            resources.GetString("comboBox7.Items8"),
+            resources.GetString("comboBox7.Items9"),
+            resources.GetString("comboBox7.Items10"),
+            resources.GetString("comboBox7.Items11"),
+            resources.GetString("comboBox7.Items12"),
+            resources.GetString("comboBox7.Items13"),
+            resources.GetString("comboBox7.Items14"),
+            resources.GetString("comboBox7.Items15"),
+            resources.GetString("comboBox7.Items16"),
+            resources.GetString("comboBox7.Items17"),
+            resources.GetString("comboBox7.Items18"),
+            resources.GetString("comboBox7.Items19"),
+            resources.GetString("comboBox7.Items20"),
+            resources.GetString("comboBox7.Items21"),
+            resources.GetString("comboBox7.Items22"),
+            resources.GetString("comboBox7.Items23"),
+            resources.GetString("comboBox7.Items24"),
+            resources.GetString("comboBox7.Items25"),
+            resources.GetString("comboBox7.Items26"),
+            resources.GetString("comboBox7.Items27"),
+            resources.GetString("comboBox7.Items28"),
+            resources.GetString("comboBox7.Items29"),
+            resources.GetString("comboBox7.Items30"),
+            resources.GetString("comboBox7.Items31"),
+            resources.GetString("comboBox7.Items32"),
+            resources.GetString("comboBox7.Items33"),
+            resources.GetString("comboBox7.Items34"),
+            resources.GetString("comboBox7.Items35"),
+            resources.GetString("comboBox7.Items36"),
+            resources.GetString("comboBox7.Items37"),
+            resources.GetString("comboBox7.Items38"),
+            resources.GetString("comboBox7.Items39"),
+            resources.GetString("comboBox7.Items40"),
+            resources.GetString("comboBox7.Items41"),
+            resources.GetString("comboBox7.Items42"),
+            resources.GetString("comboBox7.Items43"),
+            resources.GetString("comboBox7.Items44"),
+            resources.GetString("comboBox7.Items45"),
+            resources.GetString("comboBox7.Items46"),
+            resources.GetString("comboBox7.Items47"),
+            resources.GetString("comboBox7.Items48"),
+            resources.GetString("comboBox7.Items49"),
+            resources.GetString("comboBox7.Items50"),
+            resources.GetString("comboBox7.Items51"),
+            resources.GetString("comboBox7.Items52"),
+            resources.GetString("comboBox7.Items53"),
+            resources.GetString("comboBox7.Items54"),
+            resources.GetString("comboBox7.Items55"),
+            resources.GetString("comboBox7.Items56"),
+            resources.GetString("comboBox7.Items57"),
+            resources.GetString("comboBox7.Items58"),
+            resources.GetString("comboBox7.Items59")});
+            resources.ApplyResources(this.comboBox7, "comboBox7");
+            this.comboBox7.Name = "comboBox7";
+            // 
             // textBox13
             // 
             resources.ApplyResources(this.textBox13, "textBox13");
             this.textBox13.Name = "textBox13";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            resources.GetString("comboBox6.Items"),
+            resources.GetString("comboBox6.Items1"),
+            resources.GetString("comboBox6.Items2"),
+            resources.GetString("comboBox6.Items3"),
+            resources.GetString("comboBox6.Items4"),
+            resources.GetString("comboBox6.Items5"),
+            resources.GetString("comboBox6.Items6"),
+            resources.GetString("comboBox6.Items7"),
+            resources.GetString("comboBox6.Items8"),
+            resources.GetString("comboBox6.Items9"),
+            resources.GetString("comboBox6.Items10"),
+            resources.GetString("comboBox6.Items11"),
+            resources.GetString("comboBox6.Items12"),
+            resources.GetString("comboBox6.Items13"),
+            resources.GetString("comboBox6.Items14"),
+            resources.GetString("comboBox6.Items15"),
+            resources.GetString("comboBox6.Items16"),
+            resources.GetString("comboBox6.Items17"),
+            resources.GetString("comboBox6.Items18"),
+            resources.GetString("comboBox6.Items19"),
+            resources.GetString("comboBox6.Items20"),
+            resources.GetString("comboBox6.Items21"),
+            resources.GetString("comboBox6.Items22"),
+            resources.GetString("comboBox6.Items23")});
+            resources.ApplyResources(this.comboBox6, "comboBox6");
+            this.comboBox6.Name = "comboBox6";
             // 
             // label36
             // 
@@ -1130,18 +1408,85 @@
             resources.ApplyResources(this.label41, "label41");
             this.label41.Name = "label41";
             // 
-            // lblLogin
+            // dateTimePicker1
             // 
-            resources.ApplyResources(this.lblLogin, "lblLogin");
-            this.lblLogin.Name = "lblLogin";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // bntLogin
+            // monthCalendar1
             // 
-            this.bntLogin.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            resources.ApplyResources(this.bntLogin, "bntLogin");
-            this.bntLogin.Name = "bntLogin";
-            this.bntLogin.UseVisualStyleBackColor = false;
-            this.bntLogin.Click += new System.EventHandler(this.bntLogin_Click);
+            resources.ApplyResources(this.monthCalendar1, "monthCalendar1");
+            this.monthCalendar1.Name = "monthCalendar1";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            resources.GetString("comboBox5.Items"),
+            resources.GetString("comboBox5.Items1"),
+            resources.GetString("comboBox5.Items2"),
+            resources.GetString("comboBox5.Items3"),
+            resources.GetString("comboBox5.Items4"),
+            resources.GetString("comboBox5.Items5"),
+            resources.GetString("comboBox5.Items6"),
+            resources.GetString("comboBox5.Items7"),
+            resources.GetString("comboBox5.Items8"),
+            resources.GetString("comboBox5.Items9"),
+            resources.GetString("comboBox5.Items10"),
+            resources.GetString("comboBox5.Items11"),
+            resources.GetString("comboBox5.Items12"),
+            resources.GetString("comboBox5.Items13"),
+            resources.GetString("comboBox5.Items14"),
+            resources.GetString("comboBox5.Items15"),
+            resources.GetString("comboBox5.Items16"),
+            resources.GetString("comboBox5.Items17"),
+            resources.GetString("comboBox5.Items18"),
+            resources.GetString("comboBox5.Items19"),
+            resources.GetString("comboBox5.Items20"),
+            resources.GetString("comboBox5.Items21"),
+            resources.GetString("comboBox5.Items22"),
+            resources.GetString("comboBox5.Items23"),
+            resources.GetString("comboBox5.Items24"),
+            resources.GetString("comboBox5.Items25"),
+            resources.GetString("comboBox5.Items26"),
+            resources.GetString("comboBox5.Items27"),
+            resources.GetString("comboBox5.Items28"),
+            resources.GetString("comboBox5.Items29"),
+            resources.GetString("comboBox5.Items30")});
+            resources.ApplyResources(this.comboBox5, "comboBox5");
+            this.comboBox5.Name = "comboBox5";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            resources.GetString("comboBox4.Items"),
+            resources.GetString("comboBox4.Items1"),
+            resources.GetString("comboBox4.Items2"),
+            resources.GetString("comboBox4.Items3"),
+            resources.GetString("comboBox4.Items4"),
+            resources.GetString("comboBox4.Items5"),
+            resources.GetString("comboBox4.Items6"),
+            resources.GetString("comboBox4.Items7"),
+            resources.GetString("comboBox4.Items8"),
+            resources.GetString("comboBox4.Items9"),
+            resources.GetString("comboBox4.Items10"),
+            resources.GetString("comboBox4.Items11")});
+            resources.ApplyResources(this.comboBox4, "comboBox4");
+            this.comboBox4.Name = "comboBox4";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            resources.GetString("comboBox3.Items"),
+            resources.GetString("comboBox3.Items1"),
+            resources.GetString("comboBox3.Items2"),
+            resources.GetString("comboBox3.Items3")});
+            resources.ApplyResources(this.comboBox3, "comboBox3");
+            this.comboBox3.Name = "comboBox3";
             // 
             // gbPswd
             // 
@@ -1271,11 +1616,16 @@
             // 
             this.gbConnectionSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gbConnectionSettings.Controls.Add(this.gbConnection);
-            this.gbConnectionSettings.Controls.Add(this.btnGetAnalogValues);
-            this.gbConnectionSettings.Controls.Add(this.bgKey);
             resources.ApplyResources(this.gbConnectionSettings, "gbConnectionSettings");
             this.gbConnectionSettings.Name = "gbConnectionSettings";
             this.gbConnectionSettings.TabStop = false;
+            // 
+            // btnGetAllSettings
+            // 
+            resources.ApplyResources(this.btnGetAllSettings, "btnGetAllSettings");
+            this.btnGetAllSettings.Name = "btnGetAllSettings";
+            this.btnGetAllSettings.UseVisualStyleBackColor = true;
+            this.btnGetAllSettings.Click += new System.EventHandler(this.btnGetAllSettings_Click);
             // 
             // gbMessage
             // 
@@ -1304,18 +1654,12 @@
             this.button3.Name = "button3";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnDateTime
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.btnDateTime.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.btnDateTime, "btnDateTime");
+            this.btnDateTime.Name = "btnDateTime";
+            this.btnDateTime.UseVisualStyleBackColor = false;
             // 
             // gbSettingsDigital
             // 
@@ -1329,6 +1673,20 @@
             resources.ApplyResources(this.gbSettingsDigital, "gbSettingsDigital");
             this.gbSettingsDigital.Name = "gbSettingsDigital";
             this.gbSettingsDigital.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // cbSettingsDigitalNoNc
+            // 
+            this.cbSettingsDigitalNoNc.FormattingEnabled = true;
+            this.cbSettingsDigitalNoNc.Items.AddRange(new object[] {
+            resources.GetString("cbSettingsDigitalNoNc.Items"),
+            resources.GetString("cbSettingsDigitalNoNc.Items1")});
+            resources.ApplyResources(this.cbSettingsDigitalNoNc, "cbSettingsDigitalNoNc");
+            this.cbSettingsDigitalNoNc.Name = "cbSettingsDigitalNoNc";
             // 
             // comboBox2
             // 
@@ -1352,10 +1710,18 @@
             resources.ApplyResources(this.label35, "label35");
             this.label35.Name = "label35";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // gbSettingsExtra
             // 
             this.gbSettingsExtra.Controls.Add(this.label42);
-            this.gbSettingsExtra.Controls.Add(this.button4);
             this.gbSettingsExtra.Controls.Add(this.textBox28);
             this.gbSettingsExtra.Controls.Add(this.textBox29);
             this.gbSettingsExtra.Controls.Add(this.label43);
@@ -1375,12 +1741,6 @@
             // 
             resources.ApplyResources(this.label42, "label42");
             this.label42.Name = "label42";
-            // 
-            // button4
-            // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // textBox28
             // 
@@ -1442,38 +1802,199 @@
             this.loginTimer.Interval = 60000;
             this.loginTimer.Tick += new System.EventHandler(this.loginTimer_Tick);
             // 
-            // cbSettingsDigitalNoNc
+            // timerSendData
             // 
-            this.cbSettingsDigitalNoNc.FormattingEnabled = true;
-            this.cbSettingsDigitalNoNc.Items.AddRange(new object[] {
-            resources.GetString("cbSettingsDigitalNoNc.Items"),
-            resources.GetString("cbSettingsDigitalNoNc.Items1")});
-            resources.ApplyResources(this.cbSettingsDigitalNoNc, "cbSettingsDigitalNoNc");
-            this.cbSettingsDigitalNoNc.Name = "cbSettingsDigitalNoNc";
+            this.timerSendData.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label1
+            // button5
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            this.button5.BackColor = System.Drawing.Color.LightCoral;
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // button6
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            this.button6.BackColor = System.Drawing.Color.LightCoral;
+            resources.ApplyResources(this.button6, "button6");
+            this.button6.Name = "button6";
+            this.button6.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // button7
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button7.BackColor = System.Drawing.Color.Lime;
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // button8
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
-            this.panel1.MouseHover += new System.EventHandler(this.panel1_MouseHover);
+            this.button8.BackColor = System.Drawing.Color.LightCoral;
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Lime;
+            resources.ApplyResources(this.button9, "button9");
+            this.button9.Name = "button9";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.comboBox5);
+            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.comboBox4);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.button10);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.button11);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.button12);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.button13);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.button14);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.button15);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.button16);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.button17);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.button18);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button10, "button10");
+            this.button10.Name = "button10";
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button11, "button11");
+            this.button11.Name = "button11";
+            this.button11.UseVisualStyleBackColor = false;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button12, "button12");
+            this.button12.Name = "button12";
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button13, "button13");
+            this.button13.Name = "button13";
+            this.button13.UseVisualStyleBackColor = false;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button14, "button14");
+            this.button14.Name = "button14";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button15, "button15");
+            this.button15.Name = "button15";
+            this.button15.UseVisualStyleBackColor = false;
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button16, "button16");
+            this.button16.Name = "button16";
+            this.button16.UseVisualStyleBackColor = false;
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button17, "button17");
+            this.button17.Name = "button17";
+            this.button17.UseVisualStyleBackColor = false;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.button18, "button18");
+            this.button18.Name = "button18";
+            this.button18.UseVisualStyleBackColor = false;
             // 
             // digitalSensorBindingSource2
             // 
@@ -1491,11 +2012,23 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGetAllSettings);
+            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.bgKey);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.gbSettingsExtra);
             this.Controls.Add(this.gbSettingsAnalog);
             this.Controls.Add(this.gbSettingsDigital);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDateTime);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.gbMessage);
             this.Controls.Add(this.gbConnectionSettings);
@@ -1507,12 +2040,12 @@
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.gbValue);
             this.Controls.Add(this.gbManual);
-            this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.bgKey.ResumeLayout(false);
             this.bgKey.PerformLayout();
             this.gbManual.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.gbshowValues.ResumeLayout(false);
             this.gbshowValues.PerformLayout();
             this.gbSettingsAnalog.ResumeLayout(false);
@@ -1535,6 +2068,9 @@
             this.gbSettingsDigital.PerformLayout();
             this.gbSettingsExtra.ResumeLayout(false);
             this.gbSettingsExtra.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalSensorBindingSource)).EndInit();
@@ -1657,20 +2193,20 @@
         private System.Windows.Forms.Button btnSendGeneralSettings;
         private System.Windows.Forms.Timer timerStart;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDateTime;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.ProgressBar progressBar3;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ProgressBar pbAnalog8;
+        private System.Windows.Forms.ProgressBar pbAnalog7;
+        private System.Windows.Forms.ProgressBar pbAnalog6;
+        private System.Windows.Forms.Label lblUnit8;
+        private System.Windows.Forms.Label lblUnit7;
+        private System.Windows.Forms.Label lblUnit6;
+        private System.Windows.Forms.Label lblAnalog8;
+        private System.Windows.Forms.Label lblName8;
+        private System.Windows.Forms.Label lblAnalog7;
+        private System.Windows.Forms.Label lblName7;
+        private System.Windows.Forms.Label lblAnalog6;
+        private System.Windows.Forms.Label lblName6;
         private System.Windows.Forms.Button btnAnalogSettings;
         private System.Windows.Forms.GroupBox gbSettingsGeneral;
         private System.Windows.Forms.Label label36;
@@ -1680,7 +2216,7 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.GroupBox gbSettingsDigital;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSendDefoultAnalogSettings;
         private System.Windows.Forms.Button btnExtraSettings;
         private System.Windows.Forms.Button btnDigitalSettings;
         private System.Windows.Forms.TextBox textBox14;
@@ -1689,13 +2225,8 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBox27;
@@ -1724,6 +2255,52 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGetAllSettings;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Timer timerSendData;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button18;
     }
 }
 

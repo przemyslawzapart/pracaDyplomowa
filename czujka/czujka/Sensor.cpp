@@ -24,6 +24,7 @@ SensorClass::SensorClass(int pinPosition, int ledPosition,const char* name, cons
 	previousValue = false;
 	errorState = false;
 	reset = false;
+	state = true;	//true - NO , false - NC
 
 	pinMode(pinPosition, INPUT_PULLUP);
 	pinMode(ledPosition, OUTPUT);
@@ -92,6 +93,21 @@ void SensorClass::resetSensor() {
 	previousValue = false;
 	reset = true;
 	resetTimer = millis();
+}
+String SensorClass::getSettings() {
+	char buf[20];
+	String data = "#D/";
+	sprintf(buf, "%d", id);
+	data += buf;
+	data += "/";
+	data += name;
+	data += "/";
+	if(state)
+		data += "1";
+	else
+		data += "0";
+	data += "*";
+	return data;
 
 }
 //SensorClass Sensor;

@@ -15,17 +15,20 @@
 class AnalogSensorClass 
 {
  protected:
+	 int id;
 	 int pinPosition;
 	 float value;
-	 float minValue;
-	 float maxValue;
+	 int minValue;
+	 int maxValue;
+	 int range;
 	 int error;
-	 const char* name;	 
-	 const char* unit;
+	 char* name;	 
+	 char* unit;
 	 bool errorState;
 	 bool previousState;	 
 	 bool reset;
 	 unsigned long resetTimer;
+	 bool enabled;
 
  public:
 	void init();
@@ -37,6 +40,8 @@ class AnalogSensorClass
 	void resetAnalogSensor();
 	void setNewValue(const char*newValue);
 	void show();
+	String getSettings();
+	void setNewValue(const char* _name, int minValue, int maxValue, int range, const char* unit);
 };
 
 //extern AnalogSensorClass AnalogSensor;

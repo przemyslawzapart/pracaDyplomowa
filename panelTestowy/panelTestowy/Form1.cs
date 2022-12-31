@@ -38,6 +38,8 @@ namespace panelTestowy
 
         string date;
         string time;
+
+        bool firstStart = true;
         
 
         //bool stateHand = false;
@@ -54,9 +56,17 @@ namespace panelTestowy
 
         List<GroupBox> settingsPanelList = new List<GroupBox>();
 
+        List<Button>buttonStateList = new List<Button>();
+
         int analogSelectedIndex = 0;
 
         //int timerStart_a = 0;
+        bool startButtonStatus = false;
+        bool stopButtonStatus = false;
+        bool resetButtonStatus = false;
+        // List<bool>buttonState = new List<bool>();
+        bool[] buttonState = new bool[3];//start stop reset
+        bool[] keyStateArray = new bool[3];
 
         public Form1()
         {
@@ -73,24 +83,27 @@ namespace panelTestowy
             mySerialPort.getSerialPorts();
 
             pbAnalog1.ForeColor = Color.Yellow;
-            comboBox1.SelectedIndex = 0;
+            //comboBox1.SelectedIndex = 0;
                       
             sensorList.Add(new AnalogSensor(lblName1, lblAnalog1, lblUnit1, pbAnalog1));
             sensorList.Add(new AnalogSensor(lblName2, lblAnalog2, lblUnit2, pbAnalog2));
             sensorList.Add(new AnalogSensor(lblName3, lblAnalog3, lblUnit3, pbAnalog3));
             sensorList.Add(new AnalogSensor(lblName4, lblAnalog4, lblUnit4, pbAnalog4));
             sensorList.Add(new AnalogSensor(lblName5, lblAnalog5, lblUnit5, pbAnalog5));
+            sensorList.Add(new AnalogSensor(lblName6, lblAnalog6, lblUnit6, pbAnalog6));            
+            sensorList.Add(new AnalogSensor(lblName7, lblAnalog7, lblUnit7, pbAnalog7));
+            sensorList.Add(new AnalogSensor(lblName8, lblAnalog8, lblUnit8, pbAnalog8));
 
             //sensorList[0].lblName.Text = "Przemek";
-           //sensorList[0].setNewInstelingen(70, 50, 200, "pierwszy", "A");
-           //sensorList[1].setNewInstelingen(70, 50, 200, "drugi", "V");
-           // sensorList[2].setNewInstelingen(70, 50, 200, "trzeci", "Bar");
-            
+            //sensorList[0].setNewInstelingen(70, 50, 200, "pierwszy", "A");
+            //sensorList[1].setNewInstelingen(70, 50, 200, "drugi", "V");
+            // sensorList[2].setNewInstelingen(70, 50, 200, "trzeci", "Bar");
+
             //digitalSensor = new DigitalSensor(lblDigital1, btnDigital1);
             digitalSensorList.Add(new DigitalSensor(lblDigital1, btnDigital1));
             digitalSensorList.Add(new DigitalSensor(lblDigital2, btnDigital2));
             digitalSensorList.Add(new DigitalSensor(lblDigital3, btnDigital3));
-            digitalSensorList.Add(new DigitalSensor(lblDigital4, btnDigital4));
+            digitalSensorList.Add(new DigitalSensor(lblDigital4, btnDigital4)); 
             digitalSensorList.Add(new DigitalSensor(lblDigital5, btnDigital5));
             digitalSensorList.Add(new DigitalSensor(lblDigital6, btnDigital6));
             digitalSensorList.Add(new DigitalSensor(lblDigital7, btnDigital7));
@@ -134,6 +147,14 @@ namespace panelTestowy
             btnPosList.Add(btnPosOff);
             btnPosList.Add(btnPosAuto);
 
+
+            buttonStateList.Add(btnPosHand);
+            buttonStateList.Add(btnPosOff);
+            buttonStateList.Add(btnPosAuto);
+            buttonStateList.Add(btnStart);
+            buttonStateList.Add(btnStop);   
+            buttonStateList.Add(btnReset);
+
             setBtnPos(1);
             int a = 0;
             makeControlsList(tbxGeneralSettingsList, gbSettingsGeneral);
@@ -162,6 +183,12 @@ namespace panelTestowy
                 a++;
             }
 
+            getSensrosAnalogName(comboBox1);
+
+            //keyState[0] = false;
+            //keyState[1] = false;
+            //keyState[2] = false;
+
         }
 
         private void makeControlsList<T>(List<T> list, GroupBox groupBox)
@@ -176,7 +203,7 @@ namespace panelTestowy
 
         private void sendData(String dataToSend)
         {
-            Console.WriteLine(dataToSend);
+            //Console.WriteLine(dataToSend);
             sendSerialdata(dataToSend);
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -219,7 +246,7 @@ namespace panelTestowy
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            sendData("@start*");
+            //sendData("@start*");
             //string data = "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.FFFFF.";
             //data += makeCheckSum(data);            
             //data += "*";
@@ -230,26 +257,29 @@ namespace panelTestowy
             //sensorList[2].setValue(50);
             //sensorList[3].setValue(10);
             //sensorList[4].setValue(95);
+            buttonState[0] = true;
             
             
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            sendData("@stop*");
+            // sendData("@stop*");
             //string data = "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.00000.";
             //data += makeCheckSum(data);
             //data += "*";
             //checkIncomingString(data);
+            buttonState[1] = true;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            sendData("@reset*");
+            //sendData("@reset*");
             //string data = "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.AAAAB.";
             //data += makeCheckSum(data);
             //data += "*";
             //checkIncomingString(data);
+            buttonState[2] = true;
         }
         private string makeCheckSum(string data)
         {
@@ -263,78 +293,186 @@ namespace panelTestowy
             return new string(srtVarable.Reverse().ToArray());
         }
         private void checkIncomingString(string data)
-        {
-            
-            Console.WriteLine(data);
+        {            
+            Console.WriteLine("data przysly : {0}",data);
+            //data.TrimEnd();
+            //data.TrimStart();
+            //Console.WriteLine("1: {0} 2: {1} 3: {2} 4: {3}", data[0], data[1], data[2], data[3]);
+            //char[] p = { '\n',' ' };
+            //data.Trim(p);
+            //Console.WriteLine(data);
+            //Console.WriteLine("1: {0} 2: {1} 3: {2} 4: {3}", data[0], data[1], data[2], data[3]);
+            //char[] c = { '.', '*', '!', '%' };
+            //string[] d = data.Split(c);
+            //foreach (var item in d)
+            //{
+            //    Console.WriteLine("item : {0}", item);
+            //}
 
-            string res = data.Substring(2, 1);
-            Console.WriteLine("pierwszy wyraz to -{0}- : ",res);
 
-            if (String.Compare(res, "#") == 0)
+
+
+            string res = data.Substring(0, 1);
+            Console.WriteLine("pierwszy znak : {0} , {1}", res, data);
+            Console.WriteLine("pierwszy wyraz to 1: {0}, 2: {1} , 3: {2} , 4: {3}  : ", data[0], data[1], data[2], data[3]);
+            if (String.Compare(res, "$") == 0)
             {
-                setSettings(data);
+                digitalSettings(data);
                 return;
             }
-                    
-            Console.WriteLine(data);
-            char[] c = {'.','*','!','%'};
-            string[]d = data.Split(c);
-            Console.WriteLine(d.Length);
-            Console.WriteLine(d[d.Length - 2]);
-            long result;
-            long.TryParse(d[d.Length - 2], System.Globalization.NumberStyles.HexNumber, null, out result);
-            Console.WriteLine(result);
-            Console.WriteLine();
-            //if (data.Length == result)
+            else if (String.Compare(res, "@") == 0)
             {
-                
-                // this returns 1322173
-                //float intValue = int.Parse(d[3]);
-                //float f = 0;
-                //float.TryParse(d[3],out f);
-                //string a = d[3].Replace('.','.');
-               
-                double a = double.Parse(d[3]);
-                Console.WriteLine(a);
-                
-               //lblDate.Text = d[1];
-                //lblTime.Text = d[2];
-                date = d[1];
-                time = d[2];    
-                //lblAnalog1.Text = d[3];
-                //lblAnalog2.Text = d[4];
-                //lblAnalog3.Text = d[5];
-                //lblAnalog4.Text = d[6];
-                //lblAnalog5.Text = d[7];
-                // int a = TryParse(d[3]);
+                analogSettings(data);
+            }
+            else if (String.Compare(res, "#") == 0)
+            {
+                setValues(data);
+            }
 
-                sensorList[0].setValue(double.Parse(d[3]));
-                sensorList[1].setValue(double.Parse(d[4]));
-                sensorList[2].setValue(double.Parse(d[5]));
-                sensorList[3].setValue(double.Parse(d[6]));
-                sensorList[4].setValue(double.Parse(d[7]));
+        }
 
-                // Console.WriteLine(d[8][0]);
-                string revData = ReverseString(d[8]);
-                Console.Write("obrcone ");
-                Console.WriteLine(revData);
+        private void setValues(string data)
+        {
+            Console.WriteLine("incoming  data : {0}", data);
+            char[] separator = { '#', '/', '*' };
+            string[] splitString = data.Split(separator);
+            foreach (var item in splitString)
+            {
+                Console.WriteLine("value    = {0}", item);
+            }
+            //setDate(splitString[1]);
+            //setTime(splitString[2]);
+            setDateTime(splitString[1], splitString[2]);
+            setRpm(splitString[3]);
+            setEnginMessage(splitString[4]);
+            setDigitalIn(splitString[5]);
+            setDigitalOut(splitString[6]);
 
-                long nr = Int64.Parse(revData, System.Globalization.NumberStyles.HexNumber);
-                Console.WriteLine();
-                int len = (4*d[8].Length) - 1;
-                for (int i = 0; i <len; i++)
+            sensorList[0].setValue(splitString[7]);
+            sensorList[1].setValue(splitString[8]);
+            sensorList[2].setValue(splitString[9]); 
+            sensorList[3].setValue(splitString[10]);                
+            //sensorList[4].setValue(splitString[11]);
+            //sensorList[5].setValue(splitString[12]);
+            //sensorList[6].setValue(splitString[13]);
+            //sensorList[7].setValue(splitString[14]);
+
+        }
+
+        private void setDateTime(string v1, string v2)
+        {
+            String date = v1 + " / " + v2;
+           // btnDateTime.Text = date;
+        }
+
+        private void setAnalogValue(string v)
+        {
+            Console.WriteLine("anlog {0}",v);
+        }
+
+        private void setDigitalOut(string v)
+        {
+
+            Console.WriteLine("digital out {0}: ",v);
+          //  Int32.TryParse(v, out int val);
+
+            //int val = Convert.ToInt32(v, 16);
+            //Console.WriteLine("val = {0}", val);
+            //for (int i = 0; i < 16; i++)
+            //{
+            //    if ((val & (1 << i)) != 0)
+            //    {
+            //        digitalSensorList[i].changeState(true);
+            //        Console.Write("1");
+            //    }
+
+            //    else
+            //    {
+            //        digitalSensorList[i].changeState(false);
+            //        Console.Write("0");
+            //    }
+
+            //}
+
+            //Console.WriteLine();
+        }
+
+        private void setDigitalIn(string v)
+        {
+
+            Console.WriteLine("digial in : {0}",v);
+            int val = Convert.ToInt32(v, 16);
+            Console.WriteLine("val = {0}", val);
+            for (int i = 0; i < 16; i++)
+            {
+                if ((val & (1 << i)) != 0)
                 {
-                    //if ((nr & (1 << i)) != 0)
-                    //    digitalSensorList[i].changeState(true);
-                    //else
-                    //    digitalSensorList[i].changeState(false);
-                    
-                    if ((nr & (1 << i)) != 0)
-                       changeDigitalSensorState( digitalSensorList[i],true);
-                    else
-                        changeDigitalSensorState(digitalSensorList[i],false);
+                    digitalSensorList[i].changeState(false);
+                    Console.Write("1");
                 }
-            }   
+
+                else
+                {
+                    digitalSensorList[i].changeState(true);
+                    Console.Write("0");
+                }
+
+            }
+
+            Console.WriteLine();
+
+        }
+
+        private void setEnginMessage(string v)
+        {
+
+            Console.WriteLine(v);
+        }
+
+        private void setTime(string v)
+        {
+            btnDateTime.Text = 
+            time = v;
+            Console.WriteLine(v);
+        }
+
+        private void setDate(string v)
+        {
+            date = v;
+            Console.WriteLine(v);
+        }
+
+        private void setRpm(string rpm)
+        {
+            Console.WriteLine(rpm);
+        }
+
+        private void analogSettings(string data)
+        {
+            Console.WriteLine("analog data : {0}", data);
+            char[] separator = { '@', '/', '*' };
+            string[] splitString = data.Split(separator);
+
+            foreach (var item in splitString)
+            {
+                Console.WriteLine("data    = {0}", item);
+            }
+
+            int id = Int32.Parse(splitString[2]);
+            sensorList[id].setNewInstelingen(splitString[3], Int32.Parse(splitString[5]), Int32.Parse(splitString[6]), Int32.Parse(splitString[7]), splitString[4]);
+            setAnalogSettings(id);
+        }
+
+        private void digitalSettings(string data)
+        {
+            Console.WriteLine("digital data : {0}",data);
+            char[] separator= { '$', '/', '*'};
+            string[] splitString = data.Split(separator);
+
+            Console.WriteLine("id   = {0}, name = {1}, state = {2} ", splitString[2], splitString[3], splitString[4]);
+
+            int id = Int32.Parse(splitString[2]);
+            digitalSensorList[id].setName(splitString[3]);            
         }
 
         private void changeDigitalSensorState(DigitalSensor sensor, bool state)
@@ -357,15 +495,17 @@ namespace panelTestowy
         }
         private void btnGetAnalogValues_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex >0)
-            {
-                string data = "@";
-                data += comboBox1.SelectedIndex.ToString();
-                data += "/value*";
-                sendData(data);
-            }
-            
-            
+
+            getAllData();
+            //if (comboBox1.SelectedIndex >0)
+            //{
+            //    string data = "@";
+            //    data += comboBox1.SelectedIndex.ToString();
+            //    data += "/value*";
+            //    sendData(data);
+            //}
+
+
         }
 
         private void pbAnalog1_Click(object sender, EventArgs e)
@@ -388,6 +528,10 @@ namespace panelTestowy
         private void btnPanelSettings_Click(object sender, EventArgs e)
         {
             setPanel(1);
+
+            setSettingsPanel(0);
+            getSensrosAnalogName(comboBox1);//sensorList
+
         }
 
         private void btnPanelValues_Click(object sender, EventArgs e)
@@ -430,17 +574,23 @@ namespace panelTestowy
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {          
-            analogSelectedIndex = comboBox1.SelectedIndex-1;
+            
 
             if (comboBox1.SelectedIndex > 0)
             {
+                analogSelectedIndex = comboBox1.SelectedIndex-1;
+
                 btnSendAnalogSettings.Enabled = true;
-                int a = comboBox1.SelectedIndex;
-                string dataToSend = "$G/A/" + analogSelectedIndex.ToString() + "*";
-                Console.WriteLine(dataToSend);
+                int a = analogSelectedIndex;
+               //a--;
+                //string dataToSend = "#/G/A/" + analogSelectedIndex.ToString() + "*";
+                string dataToSend = "@/A/" + a.ToString() + "*";
+               // Console.WriteLine(dataToSend);
+                sendData(dataToSend);
+                comboBox1.SelectedIndex = 0;
             }
-            else 
-                btnSendAnalogSettings.Enabled = false;
+           // else 
+               //btnSendAnalogSettings.Enabled = false;
 
 
         }
@@ -529,11 +679,21 @@ namespace panelTestowy
         private void btnSerialConnect_Click(object sender, EventArgs e)
         {
             mySerialPort.makeConnestion();
+            if (mySerialPort.connected)
+            {
+                timerSendData.Enabled = true;
+                getAllData();
+
+            }
+                
         }
 
         private void btnSerialDisConnect_Click(object sender, EventArgs e)
         {
             mySerialPort.closeConnection();
+            if (!mySerialPort.connected)
+                timerSendData.Enabled =false;
+
         }
 
         private void btnSerialRefresh_Click(object sender, EventArgs e)
@@ -545,8 +705,36 @@ namespace panelTestowy
         {
             //incomingData = serialPort1.ReadExisting();
             incomingData = serialPort1.ReadTo("*");  // to zmienic zeby nie czekalo bo wywali blad
-            incomingData += "*";
+            //data += "*";
+            //Console.WriteLine(data);
+            //String data = "";
+            //char d = (char)serialPort1.ReadChar();
+
+            //data += d;
+
+            //while (d!='*')
+            //{
+            //    d = (char)serialPort1.ReadChar();
+            //    data += d;
+
+            //}
+            //Console.WriteLine(data);
+
+            // incomingData += "*";
+            //char incomingData = serialPort1.ReadExisting();
+            // char data = (char)serialPort1.ReadChar();
+            // incomingData += data;
+            // if(data == '*')
             this.Invoke(new EventHandler(ShowData));
+            // incomingData = "";
+
+
+           // String d = serialPort1.ReadExisting();
+           // Console.WriteLine(d);
+           //// String data = d.Trim('@', '*');
+           // Console.WriteLine(d);
+            //checkIncomingString(data);
+
         }
         private void ShowData(object sender, EventArgs e)
         {
@@ -581,14 +769,25 @@ namespace panelTestowy
             textBox.AppendText(Environment.NewLine);
             Console.WriteLine(incomingData);
             checkIncomingString(incomingData);
+
+            if (firstStart)
+            {
+                getAllData();
+                firstStart = false;
+            }
+            
             
         }
+        private void getAllData()
+        {
+            //tutaj wyslij zapytanie do czujki +
+            sendData("@Q*");
+        }
 
-       
         private void sendSerialdata(string data)
         {
-            Console.WriteLine("przyszlo");
-            Console.WriteLine(data);
+            //Console.WriteLine("przyszlo");
+           // Console.WriteLine(data);
             if (mySerialPort.connected)
             {
                 try
@@ -607,7 +806,6 @@ namespace panelTestowy
             else
                 MessageBox.Show("No  conection !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-
         }
 
         private void btnPanelMessage_Click(object sender, EventArgs e)
@@ -618,7 +816,9 @@ namespace panelTestowy
         private void btnPosHand_Click(object sender, EventArgs e)
         {
             setBtnPos(0);
-            sendData("!H*");
+            // sendData("!H*");
+            
+
         }
 
         private void btnPosOff_Click(object sender, EventArgs e)
@@ -637,18 +837,21 @@ namespace panelTestowy
             int a = 0;
             foreach (var item in btnPosList)
             {
-                if(a++ == pos)
+                if(a == pos)
                 {
                     item.Enabled = false;
                     item.Size = new Size(110,75);
-                    item.BackColor = Color.DodgerBlue; 
+                    item.BackColor = Color.DodgerBlue;
+                    keyStateArray[a] = true;
                 }
                 else
                 {
                     item.Enabled = true;
                     item.Size = new Size(100, 65);
                     item.BackColor = Color.LightSkyBlue;
+                    keyStateArray[a] = false;
                 }
+                a++;
             }
             setState(pos);
 
@@ -692,24 +895,15 @@ namespace panelTestowy
 
         }
 
-        private void btnStart_MouseDown(object sender, MouseEventArgs e)
-        {
-           sendData("@statr/1*");
-            timerStart.Enabled = true;
-        }
-
-        private void btnStart_MouseUp(object sender, MouseEventArgs e)
-        {
-            sendData("@start/0*");
-            timerStart.Enabled=false;
-        }
+       
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox2.SelectedIndex != 0)
             {
-                string data = "#D/" + comboBox2.SelectedIndex.ToString() + "*";
+                string data = "@/D/" + comboBox2.SelectedIndex.ToString() + "*";
                 sendData(data);
+                Console.WriteLine(data);
             }
         }
 
@@ -744,34 +938,75 @@ namespace panelTestowy
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            setSettings("#A/3/new/22/88/100/VQ*");
+
+            //ustawieni fabryczne sa na procku wiec nie trzeba wysyłac
+
+
+            //setSettings("#A/3/new/22/88/100/VQ*");
+
+            //setSettings("#A/0/Battery 1/16/30/100/V*");
+            //setSettings("#A/1/Battery 2/16/30/100/V*");
+            //setSettings("#A/2/Press pomp/5/10/100/Bar*");
+            //setSettings("#A/3/Oil press/4/10/100/Bar*");
+            ////setSettings("#A/4/new/22/88/100/VQ*");
+            ////setSettings("#A/5/new/22/88/100/VQ*");
+            ////setSettings("#A/6/new/22/88/100/VQ*");
+            ////setSettings("#A/7/new/22/88/100/VQ*");
+            ////setSettings("#A/8/new/22/88/100/VQ*");
+
+            //sendData("#/S/A/0/Battery 1/16/30/100/V*");
+            //sendData("#/S/A/1/Battery 2/16/30/100/V*");
+            //sendData("#/S/A/2/Press pomp/5/10/100/Bar*");
+            //sendData("#/S/A/3/Oil press/4/10/100/Bar*");
+
+
+
         }
         private void setSettings(string data)
         {
+            
             char[] c = { '#', '/', '*' };
             string[] splitString = data.Split(c);
-
-            if (Int32.TryParse(splitString[2], out int id) && Int32.TryParse(splitString[4], out int min) &&
-                Int32.TryParse(splitString[5], out int max) && Int32.TryParse(splitString[6], out int range) && checkRange(min, max, range))
+            foreach (string s in splitString)
+                Console.WriteLine("data : {0} ",s);
+            if (String.Compare(splitString[1], "A") == 0)
             {
-                sensorList[id].setNewInstelingen(splitString[3], min, max, range, splitString[7]);
-                setAnalogSettings(id);
-            }            
-                      
+                if (Int32.TryParse(splitString[2], out int id) && Int32.TryParse(splitString[4], out int min) &&
+                    Int32.TryParse(splitString[5], out int max) && Int32.TryParse(splitString[6], out int range) && checkRange(min, max, range))
+                {
+                    sensorList[id].setNewInstelingen(splitString[3], min, max, range, splitString[7]);
+                    setAnalogSettings(id);
+                    getSensrosAnalogName(comboBox1);
+                    //getSensrosDigitalName(comboBox1);
+                }
+            }
+            else if (String.Compare(splitString[1], "D") == 0)
+            {
+                
+                if (Int32.TryParse(splitString[2], out int id))
+                {
+                    digitalSensorList[id].setName(splitString[3]);
+                    
+                }
+            }
+
+
+        }
+        private void setDigitalSettings(string data)
+        {
+
         }
         private void setAnalogSettings(int id)
         {
             tbxAnalogSettingsList[0].Text = sensorList[id].name;
-            tbxAnalogSettingsList[1].Text = sensorList[id].minValue.ToString();
-            tbxAnalogSettingsList[2].Text = sensorList[id].maxValue.ToString();
-            tbxAnalogSettingsList[3].Text = sensorList[id].maxRange.ToString();
-            tbxAnalogSettingsList[4].Text = sensorList[id].unit;
+            tbxAnalogSettingsList[1].Text = sensorList[id].unit;
+            tbxAnalogSettingsList[2].Text = sensorList[id].minValue.ToString();
+            tbxAnalogSettingsList[3].Text = sensorList[id].maxValue.ToString();
+            tbxAnalogSettingsList[4].Text = sensorList[id].maxRange.ToString();
+           
         }
 
-        private void btnSendGeneralSettings_Click(object sender, EventArgs e)
-        {
-            setSettingsPanel(0);
-        } 
+       
 
         private void btnAnalogSettings_Click(object sender, EventArgs e)
         {
@@ -784,6 +1019,10 @@ namespace panelTestowy
         {
             setSettingsPanel(2);
             getSensrosDigitalName(comboBox2);
+            string data = "@/D/0*";
+            sendData(data);
+
+
         }
 
         private void btnExtraSettings_Click(object sender, EventArgs e)
@@ -813,14 +1052,15 @@ namespace panelTestowy
         }
         private void btnSendAnalogSettings_Click(object sender, EventArgs e)
         {
-            int min = checkDataDecimal(tbxAnalogSettingsList[1]);            
-            int max = checkDataDecimal(tbxAnalogSettingsList[2]);
-            int range = checkDataDecimal(tbxAnalogSettingsList[3]);
+            int min = checkDataDecimal(tbxAnalogSettingsList[2]);            
+            int max = checkDataDecimal(tbxAnalogSettingsList[3]);
+            int range = checkDataDecimal(tbxAnalogSettingsList[4]);
 
+            Console.WriteLine(" {0} , {1} , {2} ", min, max, range);
             if(min>=0 && max >= 0 && range >= 0 && checkRange(min, max, range))
             {
                 
-                sensorList[analogSelectedIndex].setNewInstelingen(tbxAnalogSettingsList[0].Text,min,max,range , tbxAnalogSettingsList[4].Text);
+                sensorList[analogSelectedIndex].setNewInstelingen(tbxAnalogSettingsList[0].Text,min,max,range , tbxAnalogSettingsList[1].Text);
                 lblSettingsMessage.Visible = true;
                 lblSettingsMessage.Text = "ok "; 
                 getSensrosAnalogName(comboBox1);
@@ -829,7 +1069,7 @@ namespace panelTestowy
                 Console.WriteLine("tutaj 2");
                 //$S/A/<id>/name/min/max/unit*
 
-                string dataToSend = "#/A/"+analogSelectedIndex.ToString() + "/";
+                string dataToSend = "#A/"+analogSelectedIndex.ToString() + "/";
                 int a = 0;
                 
                 foreach (var item in tbxAnalogSettingsList)
@@ -882,8 +1122,14 @@ namespace panelTestowy
         private void getSensrosAnalogName(ComboBox cbox)
         {   cbox.Items.Clear();
             cbox.Items.Add("Select analog Sensor");
-            foreach (var item in sensorList)                                     
+            int a = 0;
+            foreach (var item in sensorList)
+            {
                 cbox.Items.Add(item.name);
+                Console.WriteLine("ale lipa {0}",a++);
+            }     
+            
+
         }
         private void getSensrosDigitalName(ComboBox cbox)
         {
@@ -895,6 +1141,7 @@ namespace panelTestowy
         private void btnSendDigitalSettings_Click(object sender, EventArgs e)
         {
             getSensrosDigitalName(comboBox2);
+            Console.WriteLine();
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -916,6 +1163,139 @@ namespace panelTestowy
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
             panel1.BackColor = Color.Violet;
+        }
+
+        private void btnGetAllSettings_Click(object sender, EventArgs e)
+        {
+            getAllData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //tutaj wysylaj dane do kasty
+            //@start, stop, reset,h,o,a*
+            sendButtonState();
+
+
+        }
+        private void sendButtonState()
+        {
+            String data = "!";
+            data += setState(buttonState);
+            data += setState(keyStateArray);
+            //foreach (var item in buttonState)
+            //{
+            //    if (item)
+            //        data += "1";
+            //    else
+            //        data += "0";
+            //}
+
+            //foreach (var item in keyStateArray)
+            //{
+
+            //}
+            data += "*";
+            Console.WriteLine(data);
+            sendData(data);
+        }
+        private String setState(bool[]buttons)
+        {
+            int value = 0;
+            String data = "";
+
+
+            int i = 0;
+            foreach (var item in buttons)
+            {
+                if (item)
+                    value |= (1 << i);
+                // data += "1";
+
+                //else
+                //    // data += "0";
+                    i++;
+            }     data = value.ToString("X");    
+            return data;
+        } 
+        private void btnStart_MouseDown(object sender, MouseEventArgs e)
+        {
+            // sendData("@statr/1*");
+            // timerStart.Enabled = true;
+            startButtonStatus = true;
+            buttonState[0] = true;
+            sendButtonState();
+        }
+
+        private void btnStart_MouseUp(object sender, MouseEventArgs e)
+        {
+            //sendData("@start/0*");
+            //timerStart.Enabled=false;
+            //startButtonStatus = false;
+            buttonState[0] = false;
+            sendButtonState();
+        }
+        private void btnStop_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonState[1] = true;
+            sendButtonState();
+        }
+
+        private void btnStop_MouseUp(object sender, MouseEventArgs e)
+        {
+            buttonState[1] = false;
+            sendButtonState();
+        }
+
+        private void btnReset_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonState[2] = true;
+            sendButtonState();
+        }
+
+        private void btnReset_MouseUp(object sender, MouseEventArgs e)
+        {
+            buttonState[2] = false;
+            sendButtonState();
+        }
+
+        private void setStatus(int state)
+        {
+            if (state == 0)
+                chaneButton(Color.Red, "Error");
+            else if (state == 1)
+                chaneButton(Color.Green, "Running");
+            else if (state == 2)
+                chaneButton(Color.LightBlue, "Ready");
+
+            
+        }
+
+        private void chaneButton(Color color, string text)
+        {
+            String status = "Status : ";
+            status += text;
+            button3.BackColor = color;
+            button3.Text = status;
+        }
+
+        private void btnSendGeneralSettings_Click(object sender, EventArgs e)
+        {
+            setSettingsPanel(0);
+            getSensrosAnalogName(comboBox1);//sensorList
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            string data = dateTimePicker1.Value.ToString();
+            string time = dateTimePicker1.MinDate.ToString();
+            Console.WriteLine(data);
+            Console.WriteLine(time);    
         }
     }
 }

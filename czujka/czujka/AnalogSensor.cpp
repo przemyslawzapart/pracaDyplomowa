@@ -17,6 +17,10 @@ AnalogSensorClass::AnalogSensorClass(int pinPosition,int minValue, int maxValue,
 	errorState = false;
 	reset = false;
 	pinMode(pinPosition, INPUT_PULLUP);
+	static int _id = 0;
+	this->id = _id++;
+	this->range = 100;
+	this->enabled = true;
 }
 
 float AnalogSensorClass::getValue() {
@@ -64,13 +68,24 @@ void AnalogSensorClass::resetAnalogSensor() {
 	reset = true;
 	resetTimer = millis();
 }
-
+void AnalogSensorClass::setNewValue(const char* _name,int minValue, int maxValue,int range,  const char* unit) {
+	//this->name = name;
+	strcpy(name, _name);
+	this->minValue = minValue;
+	this->maxValue = maxValue;
+	this->range = range;
+	this->unit = unit;
+}
 void AnalogSensorClass::setNewValue(const char* newValue) {
+
+
+
+
 
 	//Serial.println(newValue);
 	//show();	
 	
-	char valueToSet[10]{ 0 };
+	/*char valueToSet[10]{ 0 };
 	char value[10]{ 0 };
 	int i = 0;
 	while (*newValue != '/')
@@ -92,7 +107,7 @@ void AnalogSensorClass::setNewValue(const char* newValue) {
 		minValue = atoi(value);
 	else if (strcmp(valueToSet, "unit") == 0)
 		unit = value;		 
-	show();
+	show();*/
 }
 
 void  AnalogSensorClass::show() {
@@ -107,6 +122,31 @@ void  AnalogSensorClass::show() {
 
 }
 void AnalogSensorClass::init(){}
+String AnalogSensorClass::getSettings() {
+	//"#A/3/new/22/88/100/VQ*"
+	char buf[10];
+	String data = "#A/";
+	sprintf(buf, "%d", id);
+	data += buf;
+	data += "/";
+	data += name;
+	data += "/";
+	sprintf(buf, "%d", minValue);
+	data += buf;
+	data += "/";
+
+	sprintf(buf, "%d", maxValue);
+	data += buf;
+	data += "/";
+	sprintf(buf, "%d", range);
+	data += buf;
+	data += "/";
+	data += unit;
+	data += "*";
+	return data;
+
+
+}
 
 
 //AnalogSensorClass AnalogSensor;

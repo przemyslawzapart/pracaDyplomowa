@@ -16,6 +16,7 @@
 
 
 */
+#include "DigitalSensor.h"
 #include "AnalogSensor.h"
 #include "Sensor.h"
 
@@ -49,6 +50,8 @@ bool keyOffState = false;
 bool keyHandState = false;
 bool keyAutoState = false;
 
+bool keyStateArray[3]{ 0 };
+
 bool runningStatus = false;
 bool startingStatus = false;
 bool starter1Status = false;
@@ -62,18 +65,50 @@ bool battery = true;
 
 bool startReset = false;
 
-SensorClass battery1(33,24, "Start", "V");
-SensorClass battery2(34,23, "Stop", "V");
-SensorClass battery3(35,30, "Reset", "V");
+bool handStartMode = false;//jezeli wcisnieto start
+bool stopMode = false;//jezeli wcisinieto stop
+bool resetMode = false;
+bool buttonStateArray[] = {handStartMode,stopMode,resetMode};
+
+SensorClass battery1(33,24, "Pomp Pres 1", "V");
+SensorClass battery2(34,23, "Fuel", "V");
+SensorClass battery3(35,30, "Oil", "V");
 SensorClass battery4(36, 31, "battery 1", "V");
 SensorClass battery5(37, 32, "battery 2", "V");
-SensorClass battery6(45, 48, "Druk", "V");
-SensorClass sensorArray[] = {battery1,battery2, battery3, battery4, battery5, battery6 };
+SensorClass battery6(45, 48, "Flow", "V");
+
+SensorClass battery7(45, 48, "Digital 7", "V");
+SensorClass battery8(45, 48, "Digital 8", "V");
+SensorClass battery9(45, 48, "Digital 9", "V");
+SensorClass battery10(45, 48, "Digital 10", "V");
+SensorClass battery11(45, 48, "Digital 11", "V");
+SensorClass battery12(45, 48, "Digital 12", "V");
+SensorClass battery13(45, 48, "Digital 13", "V");
+SensorClass battery14(45, 48, "Digital 14", "V");
+SensorClass battery15(45, 48, "Digital 15", "V");
+SensorClass battery16(45, 48, "Digital 16", "V");
+SensorClass battery17(45, 48, "Digital 17", "V");
+SensorClass battery18(45, 48, "Digital 18", "V");
+SensorClass battery19(45, 48, "Digital 19", "V");
+SensorClass battery20(45, 48, "Digital 20", "V");
+
+
+SensorClass sensorArray[] = {battery1,battery2, battery3, battery4, battery5, battery6,battery7,battery8, battery9, battery10, 
+							 battery11, battery12,battery13,battery14, battery15, battery16, battery17, battery18,battery19, battery20 };
+
+
 //SensorClass sensorArray[] = {battery6,battery5, battery4, battery3, battery2, battery1 };
 
-AnalogSensorClass analog1(A0,16,300,"analog1","V");
-AnalogSensorClass analog2(A0, 16, 300, "analog2", "V");
-AnalogSensorClass AnalogSensorArray[] = {analog1, analog2};
+AnalogSensorClass analog1(A0, 16, 30, "Battery 1", "V");
+AnalogSensorClass analog2(A1, 40, 80, "Battery 2", "V");
+AnalogSensorClass analog3(A2, 40, 80, "Press pomp", "B");
+AnalogSensorClass analog4(A3, 40, 80, "Oil press", "B");
+AnalogSensorClass analog5(A4, 40, 80, "Fuel level", "%");
+AnalogSensorClass analog6(A5, 40, 80, "Temperature", "B");
+AnalogSensorClass analog7(A5, 0,  1,  "ana user 2","/");
+AnalogSensorClass analog8(A5, 0, 1, "ana user 2", "/");
+
+AnalogSensorClass AnalogSensorArray[] = {analog1, analog2,analog3, analog4,analog5, analog6,analog7, analog8 };
 
 
 unsigned long timer = 0;
@@ -120,15 +155,18 @@ void loop() {
 		startReset = false;
 	}
 
-	if (keyOffState) {
+	//if (keyOffState) {
+	if (keyStateArray[1]) {//key off
 		;	
 	}
-	else if (keyAutoState && !startReset) {		
+	//else if (keyAutoState && !startReset) {	
+	else if (keyStateArray[2] && !startReset) {//key auto
 		if (getWaterPressState() && !runningStatus && !startingErrorStatus ) {
 			starting();
 		}
 	}
-	else if (keyHandState) {
+	//else if (keyHandState) {
+	else if (keyStateArray[0]) {//key hand
 		if (!runningStatus && !startingErrorStatus && !startReset) {
 			while (handStartSignal()) {//start Signal
 				handStart();
@@ -164,6 +202,7 @@ void getEngineSensorState() {
 	//getkeyPosition();
 	checkReset();	
 	sendDataToMonitor();
+	serialEvent2();
 	
 }
 bool getWaterPressState() {
@@ -182,7 +221,8 @@ void runningMode() {
 		getEngineSensorState();
 		serialEvent2();
 
-		if ((keyAutoState && stopSignal() && !getWaterPressState() && !engineStoppingStatus) || (keyHandState && stopSignal() && !engineStoppingStatus)) {
+		//if ((keyAutoState && stopSignal() && !getWaterPressState() && !engineStoppingStatus) || (keyHandState && stopSignal() && !engineStoppingStatus)) {
+		if ((keyStateArray[2] && stopSignal() && !getWaterPressState() && !engineStoppingStatus) || (keyStateArray[0] && stopSignal() && !engineStoppingStatus)) {
 			state = HIGH;
 			sendStopSignal();
 			engineStoppingStatus = true;
@@ -203,17 +243,17 @@ void sendDataToMonitor() {
 		char data[50]{ 0 };
 		char temp[20]{ 0 };
 		if(a==0)
-			strcpy(data, "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.000");
+			strcpy(data, "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.");
 		if(a==1)
-			strcpy(data, "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.555");
+			strcpy(data, "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.");
 		else if (a == 2) 
-			strcpy(data, "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.aaa");
+			strcpy(data, "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.");
 		a++;
 		if (a == 3)
 			a = 0;
 		getDigitalStateHex(temp);
 		strcat(data, temp);
-		strcat(data, ".37*");
+		strcat(data, "000.37*");
 		Serial.print("data to send : ");
 		Serial.println(data);
 		Serial2.println(data);
@@ -227,16 +267,22 @@ void sendDataToMonitor() {
 }
 void sendStopSignal() {
 	digitalWrite(outputArray[2], HIGH);  //send stop signal
+	Serial.println("stop");
 }
 void setRunningStatus() {
 	if (digitalRead(outputArray[RUNNING]));
 		digitalWrite(outputArray[RUNNING], HIGH);
 }
 bool handStartSignal() {
-	return sensorArray[0].Value();
+	//return sensorArray[0].Value();
+	//return handStartMode;
+	return buttonStateArray[0];
 }
 bool stopSignal() {
-	return sensorArray[2].Value();
+	//return sensorArray[2].Value();
+	//return stopMode;
+	return buttonStateArray[1];
+
 }
 void handStart() {
 	digitalWrite(outputArray[STARTING], HIGH);
@@ -420,10 +466,12 @@ void checkSensorState() {
 }
 void checkReset() {
 	//if (digitalRead(10)) {
-	if (resetState) {
+	//if (resetState) {
+	if(buttonStateArray[2]){
 		if (!resetFlag) {
 			resetFlag = true;
-			resetState = false;
+			//resetState = false;
+			buttonStateArray[2] = false;
 			//battery2.resetSensor();
 			Serial.println("reset"); 
 			if (startingErrorStatus) {
@@ -451,34 +499,210 @@ void setAlarm() {
 		;
 	}
 }
+void checkRecivedAnalog(char* data) {
+	
+	Serial.println(data);
 
+	
+	char separator[] = "#/*";
+	char* schowek;
+	
+	schowek = strtok(data, separator);
+	
+
+
+	if (strcmp(schowek, "S") == 0) {
+		/*Serial.println("set : ");
+		Serial.println(data);*/
+		//show(data);
+		schowek = strtok(NULL, separator);
+		if (strcmp(schowek, "A") == 0) {
+			
+			Serial.println("set analog");
+			schowek = strtok(NULL, separator); //1 id
+			int id = atoi(schowek);
+			//Serial.println(id);
+			//Serial.println(schowek);
+			schowek = strtok(NULL, separator); //2 name
+			const char* name = schowek;
+			//Serial.println(name);
+			schowek = strtok(NULL, separator); //3 min
+			//Serial.println(schowek);
+			int min = atoi(schowek);
+			schowek = strtok(NULL, separator); //4 max
+			//Serial.println(schowek);
+			int max = atoi(schowek);
+			schowek = strtok(NULL, separator); //5range
+			//Serial.println(schowek);
+			int range = atoi(schowek);
+			schowek = strtok(NULL, separator); //6 unit
+			const char* unit =  schowek;
+			//strcmp(unit, schowek);
+			//Serial.println(name);
+			//strcmp(name, schowek);
+			//Serial.println(unit);
+			//Serial.println(name);
+			//strcmp(name, schowek);
+			//Serial.println(unit);
+			AnalogSensorArray[id].setNewValue(name,min,max,range,unit);
+		}
+		else if (strcmp(schowek, "D") == 0) {
+			Serial.println("set digital");
+			schowek = strtok(NULL, separator); //1 id
+			int id = atoi(schowek);
+			Serial.println(schowek);
+		} 
+		else{
+			Serial.println("jakis blad set");
+		}
+
+	}
+		
+	else if(strcmp(schowek, "G")==0) {
+		schowek = strtok(NULL, separator);
+		if (strcmp(schowek, "A") == 0) {
+			Serial.println("get analog");
+			schowek = strtok(NULL, separator);
+			Serial.print("id = ");
+			int id = atoi(schowek);
+			Serial.println(id);
+			if (id < 8) {
+				String set = AnalogSensorArray[id].getSettings();
+				Serial.println(set);
+				Serial2.println(set);
+			}
+			
+		}
+		else if (strcmp(schowek, "D") == 0) {
+			Serial.println("get digital");
+			schowek = strtok(NULL, separator);
+			Serial.println(schowek);
+			int id = atoi(schowek);
+			String set = sensorArray[id].getSettings();
+			Serial.println(set);
+			Serial2.println(set);
+
+		}
+		else if (strcmp(schowek, "Q") == 0) {
+			for (size_t i = 0; i < 8; i++)
+			{
+				String dataToSend = AnalogSensorArray[i].getSettings();
+				//Serial.println(dataToSend);
+				Serial2.println(dataToSend);
+			}
+
+			for (size_t i = 0; i < 20; i++)
+			{
+				String dataToSend = sensorArray[i].getSettings();
+				Serial2.println(dataToSend);
+			}
+		}
+		else {
+			Serial.println("jakis blad get");
+		}
+		
+	}
+}
+void show(const char* data) {
+	Serial.print("data tutaj : ");
+	Serial.println(data);
+}
+void checkRecivedDigital(char* data) {
+	Serial.println("przyszedl digital : ");
+	
+}
+void checkRecivedCommand(char* data) {
+	Serial.println(data);
+}
+void serialEvent2() {
+	static String data = "";
+	while (Serial2.available()) {
+		char c = (char)Serial2.read();
+		//Serial.print(c);
+		data += c;
+		if (c == '*') {
+			//Serial.print("incoming data : ");
+			//Serial.println(data);
+			data.trim();
+			const char* dataChar = data.c_str();
+			checkIncomingData((char*)dataChar);
+			data = "";
+		}
+	}
+}
 void checkIncomingData(char* data) {
 	//Serial.println(data[0]);
 	//Serial.println(data[1]);
 	static int _id = 0;
 	char c = data[0];
 	if (c =='#') {
+		checkRecivedAnalog(data);
+		//if (data[2] == 'S')
+		//{
+		//				
+		//}
+		//else if (data[2] == 'G') {
+		//	//checkRecivedDigital(data);
+		//	checkRecivedAnalog(data);
+		//}
+		//else if (data[2] == 'C') {//moze lepszym pomys?em bedzie wysy?anie stanu wszystkich przyciskow
+		//	checkRecivedCommand(data);
+		//}
 
-		Serial2.println("#A/2/arduino/11/22/50/pz*");
+		// Serial2.println("#A/2/arduino/11/22/50/pz*");
 		//Serial.println("#");
-		Serial.println("set new analog value");
+		/*Serial.println("set new analog value");
 		Serial.println(sizeof(data) / sizeof(data[0]));
 		Serial.println(getIdSensor(data));
 		int id = getIdSensor(data);
 		if (id < sizeof(data) / sizeof(data[0]))
-			AnalogSensorArray[getIdSensor(data)].setNewValue(data);
-		else
-			Serial.println("bledne dane");
+			AnalogSensorArray[getIdSensor(data)].setNewValue(data);// nie wiem co ja chacia?em tutaj osiagnac
+			Serial.println("bledne dane");*/
 	}
 	else if (c == '@') {
 		//Serial.println("@");
-		Serial.println("new comand : ");
-		*data++;
+		Serial.print("new comand : ");
+		Serial.println(data);
+
+		for (int i = 0; i < 3; i++) {
+			if (data[i + 1] == '1')
+				buttonStateArray[i] = true;
+			else
+				buttonStateArray[i] = false;
+
+		}
+		for (int i = 0; i < 3; i++) {
+			if (data[i + 4] == '1')
+				keyStateArray[i] = true;
+			else
+				keyStateArray[i] = false;
+
+		}
+
+
+
+
+
+
+		//erial.print()
+		
+		
+		
+		//if(data[1] =='1')
+
+		/**data++;
 		char *buf;
 		buf = strtok(data, "*");		
-		Serial.println(buf);
-		if (strcmp(buf, "reset") == 0)
+		Serial.println(buf);*/
+		/*if (strcmp(buf, "reset") == 0)
 			resetState = true;
+		else if (strcmp(buf, "start") == 0)
+			handStartMode = true;
+		else if (strcmp(buf, "stop") == 0)
+			stopMode = true;*/
+
+
+
 	}
 	else if (c == '$') {
 		Serial.println("$");
@@ -538,21 +762,3 @@ int getIdSensor(const char* data) {
 	return id;
 }
 
-void serialEvent2(){
-	static String data = "";
-	while(Serial2.available()){
-		char c = (char)Serial2.read();
-		Serial.print(c);
-		data += c;
-		if (c == '*') {
-			Serial.print("incoming data : ");
-			Serial.println(data);
-			data.trim();
-			const char* dataChar = data.c_str();
-			checkIncomingData((char*)dataChar);
-			data = "";
-		}
-			
-		
-	}
-}
