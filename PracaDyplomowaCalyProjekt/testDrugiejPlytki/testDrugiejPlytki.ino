@@ -88,13 +88,21 @@ void getDigitalValue() {
 }
 void setDigitalValue(const char* data) {
 	unsigned int value = (unsigned int)strtol(data, NULL, 2);
-	for (size_t i = sizeof(digitalOut) / sizeof(digitalOut[0]); i >0; i--)
+	/*for (size_t i = sizeof(digitalOut) / sizeof(digitalOut[0]); i >0; i--)
 	{
 		int position = i - 1;
 		if ((value & (1 << position)) != 0)
 			digitalWrite(digitalOut[position], HIGH);
 		else 
 			digitalWrite(digitalOut[position], LOW);
+	}*/
+
+	for (size_t i = 0; i <  sizeof(digitalOut) / sizeof(digitalOut[0]); i++)
+	{		
+		if ((value & (1 << i)) != 0)
+			digitalWrite(digitalOut[i], HIGH);
+		else
+			digitalWrite(digitalOut[i], LOW);
 	}
 }
 void setDigitalPotentiometr(uint8_t position, char* value) {	

@@ -65,8 +65,8 @@ bool DigitalSensorClass::getState() {
 
 bool DigitalSensorClass::getValue() {
 	//return digitalRead(pinPosition);
-	Serial.print("value : ");
-	Serial.println(value);
+	/*Serial.print("value : ");
+	Serial.println(value);*/
 
 	checkValue();
 	return errorState;
@@ -108,7 +108,7 @@ void DigitalSensorClass::resetSensor() {
 	previousValue = false;
 	reset = true;
 	resetTimer = millis();
-	Serial.println("reste sensor -----------------------------");
+	//Serial.println("reste sensor -----------------------------");
 }
 
 

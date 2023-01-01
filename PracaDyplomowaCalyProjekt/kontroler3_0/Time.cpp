@@ -39,6 +39,10 @@ void TimeClass::hexTime(char* buffer) {
     strcat(buffer, temp);
 
 }
+void TimeClass::getTimeStamp(char* buffer) {
+    dt = clock.getDateTime();
+    sprintf(buffer, "%02d-%02d-%02d %02d:%02d:%02d/", dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second);
+}
 void TimeClass::timeStamp(char* buffer) {
     getNewTime();
     char buf[25];

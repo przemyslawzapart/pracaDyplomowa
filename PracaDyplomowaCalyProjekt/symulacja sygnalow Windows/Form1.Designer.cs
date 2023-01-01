@@ -55,23 +55,31 @@
             this.btnAnalog2min = new System.Windows.Forms.Button();
             this.btnAnalog3min = new System.Windows.Forms.Button();
             this.gbDigitalSensors = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.button19 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -107,14 +115,6 @@
             this.btnSerialConnect = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timersendData = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbDigitalSensors.SuspendLayout();
             this.gbConnection.SuspendLayout();
@@ -426,6 +426,74 @@
             this.gbDigitalSensors.TabStop = false;
             this.gbDigitalSensors.Text = "Digital states";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(224, 393);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 25);
+            this.button1.TabIndex = 41;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(224, 362);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 25);
+            this.button2.TabIndex = 42;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(224, 331);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(25, 25);
+            this.button3.TabIndex = 43;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(224, 300);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(25, 25);
+            this.button24.TabIndex = 44;
+            this.button24.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(258, 306);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(29, 13);
+            this.label32.TabIndex = 48;
+            this.label32.Text = "Error";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(258, 337);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(29, 13);
+            this.label33.TabIndex = 47;
+            this.label33.Text = "Stop";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(258, 399);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(42, 13);
+            this.label34.TabIndex = 45;
+            this.label34.Text = "Alarm 0";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(258, 368);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(38, 13);
+            this.label35.TabIndex = 46;
+            this.label35.Text = "Ready";
+            // 
             // button16
             // 
             this.button16.Location = new System.Drawing.Point(19, 399);
@@ -444,15 +512,6 @@
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(19, 337);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(25, 25);
-            this.button18.TabIndex = 15;
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -462,50 +521,32 @@
             this.label12.TabIndex = 40;
             this.label12.Text = "System pressure";
             // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(19, 306);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(25, 25);
-            this.button19.TabIndex = 16;
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(265, 60);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.Size = new System.Drawing.Size(69, 13);
             this.label13.TabIndex = 39;
-            this.label13.Text = "Charger 2";
+            this.label13.Text = "Charger 2 fail";
             // 
-            // label2
+            // button18
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 405);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Alarm 0";
+            this.button18.Location = new System.Drawing.Point(19, 337);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(25, 25);
+            this.button18.TabIndex = 15;
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(265, 28);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 13);
+            this.label14.Size = new System.Drawing.Size(69, 13);
             this.label14.TabIndex = 38;
-            this.label14.Text = "Charger 1";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 374);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Alarm 1";
+            this.label14.Text = "Charger 1 fail";
             // 
             // label15
             // 
@@ -516,15 +557,6 @@
             this.label15.TabIndex = 37;
             this.label15.Text = "Thermosat";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 343);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Alarm 2";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -534,14 +566,14 @@
             this.label18.TabIndex = 36;
             this.label18.Text = "Flow raw water";
             // 
-            // label6
+            // button19
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 312);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Alarm 3";
+            this.button19.Location = new System.Drawing.Point(19, 306);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(25, 25);
+            this.button19.TabIndex = 16;
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // label19
             // 
@@ -552,6 +584,15 @@
             this.label19.TabIndex = 35;
             this.label19.Text = "Fuel tank leak";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(53, 312);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "starter 1";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -560,6 +601,15 @@
             this.label20.Size = new System.Drawing.Size(90, 13);
             this.label20.TabIndex = 34;
             this.label20.Text = "Fuel valve closed";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(53, 343);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Satrter 2";
             // 
             // label21
             // 
@@ -570,6 +620,15 @@
             this.label21.TabIndex = 33;
             this.label21.Text = "Fuel level low";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(53, 405);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Running";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -578,6 +637,16 @@
             this.label22.Size = new System.Drawing.Size(82, 13);
             this.label22.TabIndex = 32;
             this.label22.Text = "Engint temp low";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 374);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Staring";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label23
             // 
@@ -591,7 +660,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(265, 91);
+            this.label11.Location = new System.Drawing.Point(268, 251);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 13);
             this.label11.TabIndex = 30;
@@ -600,47 +669,47 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(271, 245);
+            this.label10.Location = new System.Drawing.Point(265, 189);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.Size = new System.Drawing.Size(52, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Heating";
+            this.label10.Text = "Battery 2 ";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(271, 214);
+            this.label9.Location = new System.Drawing.Point(265, 158);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 13);
+            this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 28;
-            this.label9.Text = "Stop";
+            this.label9.Text = "Battery 1 ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(271, 183);
+            this.label8.Location = new System.Drawing.Point(265, 128);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Starter 2";
+            this.label8.Text = "Starter 2 fail";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(271, 152);
+            this.label7.Location = new System.Drawing.Point(265, 97);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 26;
-            this.label7.Text = "Starter 1";
+            this.label7.Text = "Starter 1 fail";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(265, 122);
+            this.label1.Location = new System.Drawing.Point(268, 214);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 21;
-            this.label1.Text = "user 2";
+            this.label1.Text = "rpm";
             // 
             // button23
             // 
@@ -907,74 +976,6 @@
             // timersendData
             // 
             this.timersendData.Tick += new System.EventHandler(this.timersendData_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(224, 393);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 25);
-            this.button1.TabIndex = 41;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(224, 362);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 25);
-            this.button2.TabIndex = 42;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(224, 331);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 25);
-            this.button3.TabIndex = 43;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button24
-            // 
-            this.button24.Location = new System.Drawing.Point(224, 300);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(25, 25);
-            this.button24.TabIndex = 44;
-            this.button24.UseVisualStyleBackColor = true;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(258, 306);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(42, 13);
-            this.label32.TabIndex = 48;
-            this.label32.Text = "Alarm 3";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(258, 337);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(42, 13);
-            this.label33.TabIndex = 47;
-            this.label33.Text = "Alarm 2";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(258, 399);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(42, 13);
-            this.label34.TabIndex = 45;
-            this.label34.Text = "Alarm 0";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(258, 368);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(42, 13);
-            this.label35.TabIndex = 46;
-            this.label35.Text = "Alarm 1";
             // 
             // Form1
             // 

@@ -75,24 +75,40 @@ void loop() {
 
 		}
 	}	
-	for (size_t i = sizeof(digitalIn) / sizeof(digitalIn[0]); i >0 ; i--)
+
+	for (size_t i = 0; i < sizeof(digitalIn) / sizeof(digitalIn[0]); i++)
 	{
-		int pos = i - 1;
+		int pos = i;
 		bool state = digitalRead(digitalIn[pos]);
 
 		if (state) {
 			Serial.print(1);
 			digitalDataIn |= (1 << pos);
 		}
-			
+
 		else {
 			Serial.print(0);
 			digitalDataIn &= ~(1 << pos);
 		}
-		//Serial.print(digitalRead(digitalIn[i]));
-		
-		
 	}
+	//for (size_t i = sizeof(digitalIn) / sizeof(digitalIn[0]); i >0 ; i--)
+	//{
+	//	int pos = i - 1;
+	//	bool state = digitalRead(digitalIn[pos]);
+
+	//	if (state) {
+	//		Serial.print(1);
+	//		digitalDataIn |= (1 << pos);
+	//	}
+	//		
+	//	else {
+	//		Serial.print(0);
+	//		digitalDataIn &= ~(1 << pos);
+	//	}
+	//	//Serial.print(digitalRead(digitalIn[i]));
+	//	
+	//	
+	//}
 	Serial.print(" = ");
 	Serial.println(digitalDataIn ,HEX);
 

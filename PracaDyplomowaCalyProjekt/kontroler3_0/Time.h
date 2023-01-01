@@ -26,6 +26,7 @@ class TimeClass
     void hexTime(char* buffer);           //make time in HEX format <YYDDMMHHIISS>
     void setNewTime(char* newTime);       //set new time to RTC module
     void getYear(char* buffer);
+    void getTimeStamp(char* buffer);
 };
 
 extern TimeClass Time;

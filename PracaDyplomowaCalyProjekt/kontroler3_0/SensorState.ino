@@ -2,53 +2,36 @@
 void getStnsorState() {
 	//serialEvent();
 	checkReset();
-	for (size_t i = sizeof(digitalSensorArray) / sizeof(digitalSensorArray[0]); i > 0; i--)
-	{		
-		int position = i - 1;
-		bool currentState = digitalSensorArray[position].getValue();
-		bool previousState = digitalInputState & (1 << position);
+	for (size_t i = 0; i < sizeof(digitalSensorArray) / sizeof(digitalSensorArray[0]); i++)
+	{
+		
+		bool currentState = digitalSensorArray[i].getValue();
+		bool previousState = digitalInputState & (1 << i);
 
 		if (currentState != previousState) {
 			if (currentState) {
-				Serial.println("ustaw jakiegos bita ________________");
+				//Serial.println("ustaw jakiegos bita ________________");
 				if (!firstStart) {
-					SendToSd(position);
-
+					SendToSd(i);
 				}
-				
-				digitalInputState |= (1 << position);
+
+				digitalInputState |= (1 << i);
 			}
 			else {
-				digitalInputState &= ~(1 << position);
+				digitalInputState &= ~(1 << i);
 			}
-
-
 		}
-
-	//	if (!digitalSensorArray[position].getValue())
-	//	{
-	//		digitalInputState &= ~(1 << position);
-	//		//setBit(digitalInputState, position);
-	//		//Serial.print(1);
-	//	}
-	//		
-	//	else
-	//	{
-	//		//unSetBit(digitalInputState, position);
-	//		digitalInputState |= (1 << position);
-	//		//Serial.print(0);
-	//	}
-	//		
 	}
-	Serial.println();
-	Serial.println(digitalInputState ,BIN);
-	Serial.println(digitalInputState, HEX);
+	//Serial.println(digitalInputState ,BIN);
+	//Serial.println(digitalInputState, HEX);
 	for (size_t i = 0; i < sizeof(digitalOutArray) / sizeof(digitalOutArray[0]); i++)  //tutaj trzeba sobie dopracoac co i jak 
 	{
-		if (!digitalRead(digitalOutArray[i]))
-			setBit(digitalOutputState, i);
+		if (digitalRead(digitalOutArray[i]))
+			digitalOutputState |= (1 << i);
+			//setBit(digitalOutputState, i);
 		else
-			unSetBit(digitalOutputState, i);
+			digitalOutputState &= ~(1 << i);
+			//unSetBit(digitalOutputState, i);
 	}
 
 	for (size_t i = 0; i < sizeof(analogSensorArray) / sizeof(analogSensorArray[0]); i++)
@@ -63,14 +46,15 @@ void getStnsorState() {
 }
 
 void checkReset() {
-	if (keyReset) {
-		Serial.println("reset hier !!!!!!!!!!!!!!");
+	if (keyReset) {		
 		if (!resetFlag) {
 			SendToSd("Reset");
 			resetFlag = true;
 			resetState = false;
 			//battery2.resetSensor();
 			Serial.println("reset");
+			setErrorState(false);
+
 			if (startingErrorStatus) {
 				startReset = true;
 				resetTimer = millis();

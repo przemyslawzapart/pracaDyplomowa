@@ -7,10 +7,12 @@ void sendDataToPanel() {
 
 }
 void makeStringToPanel(char* data) {
+	char time[25];
 	strcpy(data, "#");
-	getTime(data);
+	getTime(time);
+	strcat(data, time);
 	addRpm(data);//rpm
-	addIntValueToString(data, engineState);//???
+	addIntValueToString(data, engineErrorStatus);//???
 	addIntValueToString(data, digitalInputState);
 	addIntValueToString(data, digitalOutputState);
 	makeAnalogStringToPanel(data);
@@ -18,7 +20,8 @@ void makeStringToPanel(char* data) {
 }
 void getTime(char* data) {
 	//strcat(data, "22-05-01/12:14:33/");
-	time.timeStamp(data);
+	//time.timeStamp(data);
+	time.getTimeStamp(data);
 }
 void addRpm(char* data) {
 	strcat(data, "FFF");

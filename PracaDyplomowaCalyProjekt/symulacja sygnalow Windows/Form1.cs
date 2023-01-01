@@ -129,9 +129,20 @@ namespace symulacja_sygnalow_Windows
         private void makeStringToSend()
         {
             String data = "#";
-            for (int i = 0; i < 16; i++)
+
+            //for (int i = 0; i < 16; i++)
+            //{
+            //    if (digitalSensorList[i].getState())
+            //        data += "1";
+            //    else
+            //        data += "0";
+
+            //}
+
+            for (int i = 16; i > 0; i--)
             {
-                if (digitalSensorList[i].getState())
+                int pos = i - 1;
+                if (digitalSensorList[pos].getState())
                     data += "1";
                 else
                     data += "0";
