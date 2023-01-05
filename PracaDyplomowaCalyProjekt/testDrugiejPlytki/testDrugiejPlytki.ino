@@ -27,15 +27,26 @@ int analogValue[] = { 0,0,0,0 };
 
 char data[35];
 
+int rpmPin = A0;
+unsigned long rpmTimer = 0;
+unsigned long rpmFrequency = 1000; // 600 - ,500-540,400-720, 300-,200-960,100-2640, 200-1360, 50-4950
+bool rpmState = false;
+bool rpmSendValue = false;
+
+
 void setup() {
 	Serial.begin(19200);
-
+	Serial2.begin(19200);
+	Serial2.println("start");
 	for (size_t i = 0; i < sizeof(digitalIn) / sizeof(digitalIn[0]); i++)
 	{
 		pinMode(digitalIn[i], INPUT_PULLUP);
 		pinMode(digitalOut[i], OUTPUT);
 		digitalWrite(digitalOut[i], LOW);
 	}
+
+	pinMode(rpmPin, OUTPUT);
+	digitalWrite(rpmPin, HIGH);
 }
 
 
@@ -44,6 +55,15 @@ void loop() {
 	if (millis() - timerSendData > 100) {//send data every 100ms
 		timerSendData = millis();
 		makeDataString();
+		//Serial2.println("petla loop");
+	}
+	if (micros() - rpmTimer > rpmFrequency && rpmSendValue) {
+		rpmTimer = micros();
+		digitalWrite(rpmPin, rpmState);
+		if (rpmState)
+			rpmState = false;
+		else
+			rpmState = true;
 	}
 	
 }
@@ -59,6 +79,7 @@ void makeDataString() {
 }
 void checkRecivedData(char* data) {
 	//#ffff/aa/bb/cc/dd/cs*
+	Serial2.println(data);
 		char split[] = "#/*";
 		char* value;		
 		value = strtok(data, split);		
@@ -71,6 +92,13 @@ void checkRecivedData(char* data) {
 		setDigitalPotentiometr(2, value);
 		value = strtok(NULL, split);
 		setDigitalPotentiometr(3, value);
+		value = strtok(NULL, split);
+		rpmFrequency = atoi(value);
+		if (rpmFrequency == 0)
+			rpmSendValue = false;
+		else
+			rpmSendValue = true;
+
 }
 void getDigitalValue() {
 	 for (size_t i = sizeof(digitalIn) / sizeof(digitalIn[0]); i > 0; i--)
@@ -85,6 +113,18 @@ void getDigitalValue() {
 			digitalDataIn &= ~(1 << pinPosition);
 		}
 	}
+	 for (size_t i = sizeof(digitalOut) / sizeof(digitalOut[0]); i > 0; i--)
+	 {
+		 int pinPosition = i - 1;
+		 bool state = digitalRead(digitalOut[pinPosition]);
+
+		 if (state) {
+			 digitalDataOut |= (1 << pinPosition);
+		 }
+		 else {
+			 digitalDataOut &= ~(1 << pinPosition);
+		 }
+	 }
 }
 void setDigitalValue(const char* data) {
 	unsigned int value = (unsigned int)strtol(data, NULL, 2);
@@ -125,6 +165,7 @@ void setDigitalPotentiometr(uint8_t position, char* value) {
 void serialEvent() {
 	static String data = "";
 	while (Serial.available()) {
+		//Serial2.println("event");
 		char c = (char)Serial.read();
 		data += c;
 		if (c == '*') {

@@ -5,6 +5,8 @@
 #include<EEPROM.h>
 #include "Arduino.h"
 
+#define EEPROM_START_ANALOG     	1400
+
 int value = 0;
 
 
@@ -25,45 +27,25 @@ AnalogSensorClass::AnalogSensorClass(int pinPosition) {
 
 void AnalogSensorClass::getValuesFromEeprom() {
 	//int i = id;
-	int adr = 600 + (id * 30);
-	//Serial.print("id: ");
-	//Serial.println(this->id);
-	//Serial.print("adr 1: ");
-	//Serial.println(adr);
-	////Global.saveToEprom(adr, "nazwa");
-	//char data[20];
+	int adr = EEPROM_START_ANALOG + (id * 30);
 	Global.getFromEeprom(adr, name);
-	//char c = (char)EEPROM.read(adr++);
-	//int index = 0;
-	//while (c != 0) {
-	//	Serial.println(c);
-	//	name[index++] = c;
-	//	c = (char)EEPROM.read(adr++);
-	//}
-	//	
-	//
-	////strcpy(name, data);
-	////Global.getFromEeprom(adr, name);
 	adr += 15;
-	//adr = 400 + (id * 45);
-	/*unit[0] = (char)EEPROM.read(adr);
-	Serial.print("adr 2: ");
-	Serial.println(adr);*/
-	/*Global.saveToEprom(adr, "uni");
-	Global.getFromEeprom(adr, data);
-	strcpy(unit, data);*/
-	//Global.saveToEprom(adr, "PPPP");
 	Global.getFromEeprom(adr, unit);
-	//strcpy(unit, "HHH");
 	adr += 5;
 	minValue = EEPROM.read(adr);
 	adr += 3;
 	maxValue = EEPROM.read(adr);
 	adr += 3;
 	range = EEPROM.read(adr);
+
+	Serial.println(name);
+	Serial.println(unit);
+	Serial.println(minValue);
+	Serial.println(maxValue);
+	Serial.println(range);
 }
 void AnalogSensorClass::changeValues(char *_name, char *_unit, int _min, int _max, int _range) {
-	int adr = 600 + (id * 30);
+	int adr = EEPROM_START_ANALOG + (id * 30);
 	Global.saveToEprom(adr, _name);
 	adr += 15;
 	Global.saveToEprom(adr, _unit);
@@ -75,6 +57,7 @@ void AnalogSensorClass::changeValues(char *_name, char *_unit, int _min, int _ma
 	EEPROM.update(adr, _range);
 
 	getValuesFromEeprom();
+
 
 }
 char AnalogSensorClass::getSettingsValues(char *buffer) {

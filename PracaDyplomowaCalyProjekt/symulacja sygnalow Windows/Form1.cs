@@ -15,7 +15,6 @@ namespace symulacja_sygnalow_Windows
     public partial class Form1 : Form
     {
         delegate void serialCalback(string data);
-        private string incomingData;
         Serial mySerialPort;
 
         List<Button> digitalButtonsList = new List<Button>();
@@ -96,28 +95,79 @@ namespace symulacja_sygnalow_Windows
             Console.WriteLine("got data {0} : ",data);
             chekcIncomingString(data);
         }
+        int getIntValue(string value)
+        {
+            try
+            {
+                int number = Convert.ToInt32(value, 16);
+                Console.WriteLine("{0} --> {1}", value, number);
+                return number;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("{0}: FormatException", value);
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("{0}: OverflowException", value);
+            }
+            return -1;
+        }
         private void chekcIncomingString(String data)
         {
+            data = data.Trim();
             Console.WriteLine("data : {0} : ", data);
             char[] separator = { '#', '/','*'};
             String[] dataList = data.Split(separator);
-            //Console.WriteLine("digital in  : {0}  ", dataList[1]);//digital in
-            //Console.WriteLine("sigital out : {0}  ", dataList[2]);//digital out
-            //Console.WriteLine("check sum   : {0}  ", dataList[3]);//check sum
-            //Console.WriteLine("hex to int  : {0}  ", Convert.ToInt32(dataList[3], 16));
+            if (dataList.Count() ==0 )
+                return;
 
-            Int64 digitalIn = Convert.ToInt32(dataList[1],16); 
+            if (String.IsNullOrEmpty(dataList[1]))
+                return;
+            Console.WriteLine("digital in  : {0}  ", dataList[1]);//digital in
+            if (String.IsNullOrEmpty(dataList[2]))
+                return;
+            Console.WriteLine("sigital out : {0}  ", dataList[2]);//digital out
+            if (String.IsNullOrEmpty(dataList[3]))
+                return;
+            Console.WriteLine("check sum   : {0}  ", dataList[3]);//check sum
+            Console.WriteLine("hex to int  : {0}  ", Convert.ToInt32(dataList[3], 16));
 
+            //Int64 digitalIn = Convert.ToInt32(dataList[1],16);
+            //foreach (var item in dataList)
+            //{
+            //    Console.WriteLine("item : ", item);
+            //}
+            Console.WriteLine("list size {0} : ", dataList.Count());
+            
+            if (String.IsNullOrEmpty(dataList[1]))
+                return;
+            Int64 digitalIn = getIntValue(dataList[1]);
+            if (digitalIn < 0)
+                return;
             //Console.WriteLine("inncoming {0} : ", digitalIn);
             //Console.WriteLine("digital in  {0} , global in {1}", digitalIn, digitalInGlobal);
             for (int i = 0; i <8; i++)
-            {      
-                if( (digitalIn & (1<<i)) != (digitalInGlobal & (1<<i)))
+            {
+                //if( (digitalIn & (1<<i)) != (digitalInGlobal & (1<<i)))
+                //{
+                //    Console.WriteLine("sa rozne {0} , {1} ,{2} , {3}   ", digitalIn, digitalInGlobal, (digitalIn & (1 << i)), (digitalInGlobal & (1 << i)));
+                //    changeDigitalState(16 +i);               
+                //}
+
+                if ((digitalIn & (1 << i)) == 0)
                 {
-                    //Console.WriteLine("sa rozne {0} , {1} ,{2} , {3}   ", digitalIn, digitalInGlobal, (digitalIn & (1 << i)), (digitalInGlobal & (1 << i)));
-                    changeDigitalState(16 +i);               
+                    digitalSensorList[16 + i].setState(true);
+
+
                 }
-                    
+
+                else
+                    digitalSensorList[16 + i].setState(false);
+
+                digitalSensorList[16 + i].changeState();
+
+
             }
              digitalInGlobal = digitalIn;                       
         }
@@ -158,6 +208,15 @@ namespace symulacja_sygnalow_Windows
                 data += analogValueList[i].ToString();
                 data += "/";
             }
+
+            if(radioButton1.Checked)
+                data += "0/";
+            else if(radioButton2.Checked)   
+                data += "500/";
+            else if(radioButton3.Checked)
+                data += "200/";
+            else if(radioButton4.Checked)
+                data += "100/";
 
             data += "*";
             sendSerialdata(data);

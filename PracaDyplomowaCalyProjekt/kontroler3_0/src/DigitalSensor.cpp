@@ -74,7 +74,7 @@ bool DigitalSensorClass::getValue() {
 
 void DigitalSensorClass::checkValue() {	
 	value = digitalRead(pinPosition);
-	if (reset && (millis() - resetTimer > 3000)) {
+	if (reset && (millis() - resetTimer > 2000)) {
 		reset = false;		
 	}
 	else if (!reset) {

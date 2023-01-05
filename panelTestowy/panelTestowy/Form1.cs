@@ -25,6 +25,8 @@ namespace panelTestowy
 
         delegate void serialCalback(string data);
         private string incomingData;
+
+
         Serial mySerialPort;
 
         DateTime dt = new DateTime(2015, 12, 20);
@@ -82,8 +84,9 @@ namespace panelTestowy
                     btnSerialConnect, btnSerialDisConnect, gbConnection, lblSerialStatus, serialPort1);
             mySerialPort.getSerialPorts();
 
+            //mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+
             pbAnalog1.ForeColor = Color.Yellow;
-            //comboBox1.SelectedIndex = 0;
                       
             sensorList.Add(new AnalogSensor(lblName1, lblAnalog1, lblUnit1, pbAnalog1));
             sensorList.Add(new AnalogSensor(lblName2, lblAnalog2, lblUnit2, pbAnalog2));
@@ -94,12 +97,6 @@ namespace panelTestowy
             sensorList.Add(new AnalogSensor(lblName7, lblAnalog7, lblUnit7, pbAnalog7));
             sensorList.Add(new AnalogSensor(lblName8, lblAnalog8, lblUnit8, pbAnalog8));
 
-            //sensorList[0].lblName.Text = "Przemek";
-            //sensorList[0].setNewInstelingen(70, 50, 200, "pierwszy", "A");
-            //sensorList[1].setNewInstelingen(70, 50, 200, "drugi", "V");
-            // sensorList[2].setNewInstelingen(70, 50, 200, "trzeci", "Bar");
-
-            //digitalSensor = new DigitalSensor(lblDigital1, btnDigital1);
             digitalSensorList.Add(new DigitalSensor(lblDigital1, btnDigital1));
             digitalSensorList.Add(new DigitalSensor(lblDigital2, btnDigital2));
             digitalSensorList.Add(new DigitalSensor(lblDigital3, btnDigital3));
@@ -124,12 +121,7 @@ namespace panelTestowy
             digitalSensorList[0].setName("pierwsza nazwa");
             digitalSensorList[0].changeState(false);
 
-            tbx = new System.Windows.Forms.TextBox();
-
-            //comboBox2.Items.Add("Select digital item");
-
-            
-            
+            tbx = new System.Windows.Forms.TextBox();    
 
             gbPanelList.Add(gbValue);
             gbPanelList.Add(gbSettings);
@@ -184,12 +176,10 @@ namespace panelTestowy
             }
 
             getSensrosAnalogName(comboBox1);
-
-            //keyState[0] = false;
-            //keyState[1] = false;
-            //keyState[2] = false;
-
         }
+
+
+       
 
         private void makeControlsList<T>(List<T> list, GroupBox groupBox)
         {
@@ -203,7 +193,6 @@ namespace panelTestowy
 
         private void sendData(String dataToSend)
         {
-            //Console.WriteLine(dataToSend);
             sendSerialdata(dataToSend);
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -213,24 +202,14 @@ namespace panelTestowy
                 sendData("!0*");
                 gbManual.Enabled = false;
             }
-                
-            
         }
-        //private void unsetButton(Button btn)
-        //{
-        //    if(btn.Enabled == true)
-        //        btn.Enabled = false;    
-        //}
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if(radioButton2.Checked)
             {
                 sendData("!H*");
                 gbManual.Enabled = true;
-            }
-             
-            
+            }    
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -240,45 +219,20 @@ namespace panelTestowy
                 
                 gbManual.Enabled = true;
             }
-            
-            
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            //sendData("@start*");
-            //string data = "%2022/11/03.10:52:33.22,5.100.3,9.44,9.24,0.FFFFF.";
-            //data += makeCheckSum(data);            
-            //data += "*";
-            //checkIncomingString(data);
-
-            //sensorList[0].setValue(20);
-            //sensorList[1].setValue(80);
-            //sensorList[2].setValue(50);
-            //sensorList[3].setValue(10);
-            //sensorList[4].setValue(95);
-            buttonState[0] = true;
-            
-            
+            buttonState[0] = true;  
         }
 
         private void btnStop_Click(object sender, EventArgs e)
-        {
-            // sendData("@stop*");
-            //string data = "%2033/10/12.14:11:15.75,7.32,4.55.88,9.66,6.00000.";
-            //data += makeCheckSum(data);
-            //data += "*";
-            //checkIncomingString(data);
+        {           
             buttonState[1] = true;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
-        {
-            //sendData("@reset*");
-            //string data = "%2049/01/12.04:44:23.50,8.22,4.26,8.10,8.23,9.AAAAB.";
-            //data += makeCheckSum(data);
-            //data += "*";
-            //checkIncomingString(data);
+        {            
             buttonState[2] = true;
         }
         private string makeCheckSum(string data)
@@ -701,10 +655,52 @@ namespace panelTestowy
             mySerialPort.getSerialPorts();
         }
 
+        private void chekcIncomingString(String data)
+        {
+            Console.WriteLine("data : {0} : ", data);
+
+            char[] separator = { '$', '/', '*' };
+            string[] splitString = data.Split(separator);
+
+            foreach (var item in splitString)
+            {
+                Console.WriteLine(item);
+            }
+
+            //Console.WriteLine("id   = {0}, name = {1}, state = {2} ", splitString[2], splitString[3], splitString[4]);
+
+            //int id = Int32.Parse(splitString[2]);
+            //digitalSensorList[id].setName(splitString[3]);
+        }
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+             
+            incomingData = serialPort1.ReadTo("*");
+            
+
+                Console.WriteLine(incomingData);
+                this.Invoke(new EventHandler(ShowData)); 
+                
+
+
+
+
+           ////String data = d.Trim('@', '*');
+           // Console.WriteLine("got data {0} : ", incomingData);
+           //  //chekcIncomingString(incomingData);
+           //  
+
+
+
+            // String d = serialPort1.ReadExisting();
+            // Console.WriteLine(d);
+            // String data = d.Trim('@', '*');
+            // Console.WriteLine("got data {0} : ", data);
+            //// chekcIncomingString(data);
+            //// this.Invoke(new EventHandler(ShowData));
+
             //incomingData = serialPort1.ReadExisting();
-            incomingData = serialPort1.ReadTo("*");  // to zmienic zeby nie czekalo bo wywali blad
+            //incomingData = serialPort1.ReadTo("*");  // to zmienic zeby nie czekalo bo wywali blad
             //data += "*";
             //Console.WriteLine(data);
             //String data = "";
@@ -725,23 +721,25 @@ namespace panelTestowy
             // char data = (char)serialPort1.ReadChar();
             // incomingData += data;
             // if(data == '*')
-            this.Invoke(new EventHandler(ShowData));
+
             // incomingData = "";
 
 
-           // String d = serialPort1.ReadExisting();
-           // Console.WriteLine(d);
-           //// String data = d.Trim('@', '*');
-           // Console.WriteLine(d);
+            // String d = serialPort1.ReadExisting();
+            // Console.WriteLine(d);
+            //// String data = d.Trim('@', '*');
+            // Console.WriteLine(d);
             //checkIncomingString(data);
 
         }
         private void ShowData(object sender, EventArgs e)
         {
-            sendText(textBox1, incomingData);
+
+           // chekcIncomingString(incomingData);
+
+            sendText(incomingData);
             //Console.WriteLine("tutaj");
             //Console.WriteLine(incomingData);
-            
         }
 
         
@@ -755,29 +753,48 @@ namespace panelTestowy
             }
             else
             {
-                sendText( data);
-               Console.WriteLine(data);
+              //  sendText(1, data);
+               Console.WriteLine("send data {0}",data);
             }
         }
-        private void sendText(System.Windows.Forms.TextBox textBox, string text)
+        private void sendText( int a ,string text)
         {
-            
 
-            textBox.AppendText(text);
-            if (string.Compare(text, "OK") > 0 || text.Contains("ERROR"))
-                textBox.AppendText("\n");
-            textBox.AppendText(Environment.NewLine);
+
+            //textBox.AppendText(text);
+            //if (string.Compare(text, "OK") > 0 || text.Contains("ERROR"))
+            //    textBox.AppendText("\n");
+            //textBox.AppendText(Environment.NewLine);
             Console.WriteLine(incomingData);
-            checkIncomingString(incomingData);
+           // incomingData = "";
+            //checkIncomingString(incomingData);
 
-            if (firstStart)
-            {
-                getAllData();
-                firstStart = false;
-            }
+            //if (firstStart)
+            //{
+            //    getAllData();
+            //    firstStart = false;
+            //}
+
+        }    
+        //} private void sendText(System.Windows.Forms.TextBox textBox, string text)
+        //{
+            
+
+        //    textBox.AppendText(text);
+        //    if (string.Compare(text, "OK") > 0 || text.Contains("ERROR"))
+        //        textBox.AppendText("\n");
+        //    textBox.AppendText(Environment.NewLine);
+        //    Console.WriteLine(incomingData);
+        //    checkIncomingString(incomingData);
+
+        //    if (firstStart)
+        //    {
+        //        getAllData();
+        //        firstStart = false;
+        //    }
             
             
-        }
+        //}
         private void getAllData()
         {
             //tutaj wyslij zapytanie do czujki +

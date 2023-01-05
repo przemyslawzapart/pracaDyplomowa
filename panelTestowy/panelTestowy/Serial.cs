@@ -20,6 +20,7 @@ namespace panelTestowy
         public Label status { get; set; }
         public SerialPort port { get; set; }
         public bool connected { get; set; }
+        //public SerialDataReceivedEventHandler DataReceived { get; internal set; }
 
         public Serial (ComboBox portCom, ComboBox baudRate, Button refresh, 
                         Button connect, Button disconnect, GroupBox groupbox, Label status, SerialPort port)
@@ -33,7 +34,23 @@ namespace panelTestowy
             this.status = status;
             this.port = port;
             connected = false;
+           // DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
         }
+
+        //private static void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        //{
+        //    SerialPort sp = (SerialPort)sender;
+        //    //string indata = sp.ReadExisting();
+        //    string indata = sp.ReadTo("*");
+        //    Console.WriteLine("Data Received handler : {0}", indata);
+
+
+        //    //incomingData(indata);
+        //}
+
+
+
+
 
         public void makeConnestion()
         {

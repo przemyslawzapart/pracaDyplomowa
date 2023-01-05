@@ -1,12 +1,13 @@
 void serialEvent2() {
+	
 	static String data = "";
 	while (Serial2.available()) {
 		char c = (char)Serial2.read();
 		data += c;
 		if (c == '*') {
 
-			/*Serial.print("incoming data 2 : ");
-			Serial.println(data);*/
+			Serial.print("incoming data 2 : ");
+			Serial.println(data);
 
 			data.trim();
 			const char* dataChar = data.c_str();
@@ -60,7 +61,7 @@ void SetNweValue(char* data) {
 		//Serial.print("new srn = ");
 		char b[20];
 		getSerialNumber(b);
-		Serial.print(b);
+		//Serial.print(b);
 	}
 	else if (strcmp(schowek, "A") == 0) {
 		int id = atoi(strtok(NULL, korektor));
@@ -71,7 +72,12 @@ void SetNweValue(char* data) {
 		int range = atoi(strtok(NULL, korektor));
 
 		analogSensorArray[id].changeValues(name, unit, min, max, range);
-		analogSensorArray[id].show();
+		char buf[45];
+		analogSensorArray[id].getSettingsValues(buf);
+		Serial.print(buf);
+		Serial2.print(buf);
+
+		//analogSensorArray[id].show();
 	}
 	else if (strcmp(schowek, "D") == 0) {
 		int id = atoi(strtok(NULL, korektor));
@@ -79,7 +85,12 @@ void SetNweValue(char* data) {
 		int contact = atoi(strtok(NULL, korektor));
 
 		digitalSensorArray[id].changeValue(name, contact);
-		digitalSensorArray[id].show();
+		//digitalSensorArray[id].show();
+		char buf[45];
+		digitalSensorArray[id].getSettingsValues(buf);
+		Serial.print(buf);
+		Serial2.print(buf);
+
 	}
 	else if (strcmp(schowek, "T") == 0) {
 		schowek = strtok(NULL, korektor);
@@ -98,14 +109,21 @@ void getValue(char* data) {
 		char buf[45];
 		analogSensorArray[id].getSettingsValues(buf);
 		Serial.print(buf);
-		//Serial2.print(buf);
+		Serial2.print(buf);
 	}
 	if (strcmp(schowek, "D") == 0) {
 		int id = atoi(strtok(NULL, korektor));
 		char buf[45];
 		digitalSensorArray[id].getSettingsValues(buf);
 		Serial.print(buf);
-		//Serial2.print(buf);
+		Serial2.print(buf);
+	}
+	if (strcmp(schowek, "O") == 0) {
+		int id = atoi(strtok(NULL, korektor));
+		char buf[45];
+		digitalSensorArrayOutput[id].getSettingsValues(buf);
+		Serial.print(buf);
+		Serial2.print(buf);
 	}
 	if (strcmp(schowek, "S") == 0) {
 		char buf[12];
@@ -115,8 +133,9 @@ void getValue(char* data) {
 		strcat(bufferToSend, buf);
 		strcat(bufferToSend, "*");
 		Serial.print(bufferToSend);
-		//Serial2.print(bufferToSend);
+		Serial2.print(bufferToSend);
 	}
+
 	if (strcmp(schowek, "Q") == 0) { //send all data to panel
 		//Serial.println("wyslij wszystko");
 		sendAllSettingsToPanel();
@@ -171,43 +190,62 @@ void sendAllSettingsToPanel() {
 	{
 		char data[100];
 		digitalSensorArray[i].getSettingsValues(data);
-		Serial.print(data);
+		Serial.println(data);
 
-		//Serial2.print(data);
+		Serial2.println(data);
 	}
 	//Serial.println("analog : ");
 	for (size_t i = 0; i < sizeof(analogSensorArray) / sizeof(analogSensorArray[0]); i++)
 	{
 		char data[100];
 		analogSensorArray[i].getSettingsValues(data);
-		Serial.print(data);
-		//Serial2.print(data);
+		Serial.println(data);
+		Serial2.println(data);
 	}
+	for (size_t i = 0; i < 16; i++) {
+		char data[100];
+		getEepromName('!',EEPROM_START_ENGINE_STATE, data, i),
+			Serial.println(data);
+			Serial2.println(data);
+	}
+	for (size_t i = 0; i < sizeof(digitalOutArray) / sizeof(digitalOutArray[0]); i++) {
+		char data[100];
+		getEepromName('&',EEPROM_START_DIGITAL_OUTPUT, data, i),
+		Serial.println(data);
+		Serial2.println(data);
+	}
+
+
 	char data[100];
 	char buf[20];
-	strcpy(data, "%S/");
+	strcpy(data, "%/S/");
 	getSerialNumber(buf);
 	strcat(data, buf);
 	strcat(data, "*");
-	Serial.print(data);
-	//Serial2.print(data);
+	Serial.println(data);
+	Serial2.println(data);
 
-	strcpy(data, "%V/");
+	strcpy(data, "%/V/");
 	getVersionSoftware(buf);
 	strcat(data, buf);
 	strcat(data, "*");
-	Serial.print(data);
-	//Serial2.print(data);
+	Serial.println(data);
+	Serial2.println(data);
+
+
 
 
 }
 void setSerialNumber(char* serialNumber) {
-	Global.saveToEprom(20, serialNumber);
+	Global.saveToEprom(EEPROM_ADR_SERIAL_NUMBER, serialNumber);
 
 }
 void getSerialNumber(char* serialNumber) {
-	Global.getFromEeprom(20, serialNumber);
+	Global.getFromEeprom(EEPROM_ADR_SERIAL_NUMBER, serialNumber);
 }
 void getVersionSoftware(char* versionSoftware) {
-	Global.getFromEeprom(40, versionSoftware);
+	Global.getFromEeprom(EEPROM_ADR_SOFTWARE_VERSION, versionSoftware);
+}
+void getAmountOfTheet(char* amountOfTheet) {
+	EEPROM.read(EEPROM_ADR_AMOUNT_OF_THEET);
 }

@@ -3,7 +3,12 @@ void sendDataToPanel() {
 	char dataToSend[300];
 	makeStringToPanel(dataToSend);
 	Serial.println(dataToSend);
-	Serial2.print(dataToSend);
+	Serial2.println(dataToSend);
+	//digitalWrite(8, HIGH);
+	/*for (size_t i = 0; i < sizeof(digitalOutArray) / sizeof(digitalOutArray[0]); i++)
+	{
+		digitalWrite(digitalOutArray[i])
+	}*/
 
 }
 void makeStringToPanel(char* data) {
@@ -24,8 +29,9 @@ void getTime(char* data) {
 	time.getTimeStamp(data);
 }
 void addRpm(char* data) {
-	strcat(data, "FFF");
-	strcat(data, "/");
+	char buf[5];
+	sprintf(buf, "%d/",rpmValue);
+	strcat(data, buf);
 }
 void addIntValueToString(char* data, int value) {
 	char buf[5];

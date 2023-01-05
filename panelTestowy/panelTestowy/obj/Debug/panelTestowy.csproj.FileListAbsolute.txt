@@ -46,7 +46,6 @@ G:\github\panelTestowy\panelTestowy\bin\Debug\panelTestowy.exe.config
 G:\github\panelTestowy\panelTestowy\bin\Debug\panelTestowy.exe
 G:\github\panelTestowy\panelTestowy\bin\Debug\panelTestowy.pdb
 G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.AssemblyReference.cache
-G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.SuggestedBindingRedirects.cache
 G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.Form1.resources
 G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.Properties.Resources.resources
 G:\github\panelTestowy\panelTestowy\obj\Debug\panelTestowy.csproj.GenerateResource.cache
