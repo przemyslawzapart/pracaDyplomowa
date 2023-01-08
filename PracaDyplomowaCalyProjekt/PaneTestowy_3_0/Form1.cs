@@ -21,7 +21,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Button = System.Windows.Forms.Button;
 using ComboBox = System.Windows.Forms.ComboBox;
 using TextBox = System.Windows.Forms.TextBox;
-
+//https://in.pinterest.com/pin/200199145921297441/ - icona
 namespace PaneTestowy_3_0
 {
     public partial class Form1 : Form
@@ -121,7 +121,7 @@ namespace PaneTestowy_3_0
             {
                 int newSize = 5;
                 digitalInButton[i].Font = new Font(digitalInButton[i].Font.FontFamily, newSize);
-                digitalInButton[i].Text = i.ToString();
+                //digitalInButton[i].Text = i.ToString();
                // digitalInLabel[i].BackColor = Color.Aqua;
                 digitalSensorList.Add(new DigitalSensor(digitalInLabel[i], digitalInButton[i]));
                 digitalSensorList[i].setName("Digital input");
@@ -135,9 +135,9 @@ namespace PaneTestowy_3_0
             {
                 int newSize = 5;
                 digitalOutButton[i].Font = new Font(digitalOutButton[i].Font.FontFamily, newSize);
-                digitalOutButton[i].Text = i.ToString();
+               // digitalOutButton[i].Text = i.ToString();
                 //digitalOutLabel[i].BackColor = Color.AliceBlue;
-                digitalOutputList.Add(new DigitalSensor(digitalOutLabel[i], digitalOutButton[i], Color.Sienna, Color.Violet));
+                digitalOutputList.Add(new DigitalSensor(digitalOutLabel[i], digitalOutButton[i], Color.Red, Color.LightCyan));
                 digitalOutputList[i].setName("Digital output");
             }
 
@@ -150,9 +150,9 @@ namespace PaneTestowy_3_0
             {
                 int newSize = 5;
                 engineStateButton[i].Font = new Font(digitalOutButton[i].Font.FontFamily, newSize);
-                engineStateButton[i].Text = i.ToString();
+                //engineStateButton[i].Text = i.ToString();
                 //digitalOutLabel[i].BackColor = Color.AliceBlue;
-                engineStateList.Add(new DigitalSensor(engineStateLabel[i], engineStateButton[i], Color.RoyalBlue, Color.SeaGreen));
+                engineStateList.Add(new DigitalSensor(engineStateLabel[i], engineStateButton[i], Color.Red, Color.LightGreen));
                 engineStateList[i].setName("Engine state");
             }
 
@@ -200,13 +200,16 @@ namespace PaneTestowy_3_0
 
         private void sendSerialdata(string data)
         {
-            Console.WriteLine("Sending : {0}", data);
+            
             if (mySerialPort.connected)
             {
                 try
                 {
+                
                     serialPort1.Write(data);
-                  //  serialPort1.Write("\n");
+                    serialPort1.Write("\n");
+                    Console.WriteLine("Sending : {0}", data);
+
                 }
                 catch (TimeoutException)
                 {
@@ -258,7 +261,6 @@ namespace PaneTestowy_3_0
             //string indata = serialPort1.ReadExisting();
             try{
                 string indata = serialPort1.ReadLine();
-                // Console.WriteLine(indata);
                 var threadParameters = new ThreadStart(delegate { setString(indata); });
                 var thread2 = new Thread(threadParameters);
                 thread2.Start();//nowy wątek aby zapisać dane
@@ -268,20 +270,25 @@ namespace PaneTestowy_3_0
                 Console.WriteLine("UnauthorizedAccessException: „Odmowa dostępu do portu 'COM9'.” :{0}", ex);
                 MessageBox.Show("dsfdsg","cos nie dziala", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             }
-            
+            catch (IOException ex)
+            {
+                Console.WriteLine("IOException: „Odmowa dostępu do portu 'COM9'.” :{0}", ex);
+                MessageBox.Show("bla", "cos nie dziala", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+
         }
         private void setString(String data)
         {
             if (this.InvokeRequired)
             {
-                Action safeWrite = delegate { setString(data); };
+                
                 try
                 {
-                    this.Invoke(safeWrite);
+                    Action safeWrite = delegate { setString(data); };this.Invoke(safeWrite);
                 }                
                 catch(ObjectDisposedException ex)
                 {
-
+                    Console.WriteLine("ObjectDisposedException  : {0} ", ex);
                 }
                 
             }
@@ -442,6 +449,10 @@ namespace PaneTestowy_3_0
         {
             char[] separator = { '#','/', '*' };
             string[] splitString = data.Split(separator);
+            for (int i = 0; i < splitString.Length; i++)
+            {
+                Console.WriteLine("incomming splitstring {0} : {1}",i,splitString[i]);
+            }
 
             if (splitString.Count() < 10)
                 return;
@@ -476,7 +487,24 @@ namespace PaneTestowy_3_0
                 setSensorListState(digitalOutputList, splitString[5]);
             else
                 return;
+            for (int i = 0; i < analogSensorList.Count; i++)
+            {
+                if (!String.IsNullOrEmpty(splitString[i + 6]))
+                    setAnalogValue(splitString[i + 6], i);
+                else 
+                    return;
+            }
 
+
+        }
+        private void setAnalogValue(String analogValue, int index)
+        {
+            double value = getIntValue(analogValue, 16);
+            if (value < 0)
+                return;
+            value = value / 10;
+            Console.WriteLine(value);
+            analogSensorList[index].setValue(value);
 
         }
 
@@ -1035,7 +1063,7 @@ namespace PaneTestowy_3_0
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Console.WriteLine("zamykanie systemu");
-            if (MessageBox.Show("Exit or no?", "Control panel",MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to Quit?", "Control panel",MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
                 e.Cancel = true;
             else
             {

@@ -34,14 +34,14 @@ void DigitalSensorClass::getValuesFromEeprom() {
 }
 void DigitalSensorClass::changeValue(char *name, int contact) {
 	int adr = 200 + (id * 20);
-	Serial.print("id : ");
-	Serial.println(id);
-	Serial.print("adr : ");
-	Serial.println(adr);
-	Serial.print("name : ");
-	Serial.println(name);
-	Serial.print("contact ");
-	Serial.println(contact);
+	//Serial.print("id : ");
+	//Serial.println(id);
+	//Serial.print("adr : ");
+	//Serial.println(adr);
+	//Serial.print("name : ");
+	//Serial.println(name);
+	//Serial.print("contact ");
+	//Serial.println(contact);
 	Global.saveToEprom(adr,(const char*)name);
 	//adr += 15;
 	adr = 200 + (id * 20) +15;

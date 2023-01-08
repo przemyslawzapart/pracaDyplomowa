@@ -6,8 +6,8 @@ void serialEvent2() {
 		data += c;
 		if (c == '*') {
 
-			Serial.print("incoming data 2 : ");
-			Serial.println(data);
+			/*Serial.print("incoming data 2 : ");
+			Serial.println(data);*/
 
 			data.trim();
 			const char* dataChar = data.c_str();
@@ -16,6 +16,24 @@ void serialEvent2() {
 		}
 	}
 }
+//void serialEvent() {
+//	static String data = "";
+//	while (Serial.available()) {
+//		char c = (char)Serial.read();
+//		data += c;
+//		//Serial.print(c);
+//		if (c == '*') {
+//
+//			/*Serial.print("incoming data 2 : ");
+//			Serial.println(data);*/
+//
+//			data.trim();
+//			const char* dataChar = data.c_str();
+//			checkIncomingData((char*)dataChar);
+//			data = "";
+//		}
+//	}
+//}
 void checkIncomingData(char* data) {
 	char c = data[0];
 	//if (!checkSum(data)) {//pomysl nad tym pozniej
@@ -24,11 +42,11 @@ void checkIncomingData(char* data) {
 	//}
 
 	if (c == '#') {
-		Serial.print("SET : ");
+		//Serial.print("SET : ");
 		SetNweValue(data);
 	}
 	else if (c == '@') {
-		Serial.print("GET : ");
+		//Serial.print("GET : ");
 		getValue(data);
 	}
 	else if (c == '!') {
@@ -108,22 +126,22 @@ void getValue(char* data) {
 		int id = atoi(strtok(NULL, korektor));
 		char buf[45];
 		analogSensorArray[id].getSettingsValues(buf);
-		Serial.print(buf);
-		Serial2.print(buf);
+		Serial.println(buf);
+		Serial2.println(buf);
 	}
 	if (strcmp(schowek, "D") == 0) {
 		int id = atoi(strtok(NULL, korektor));
 		char buf[45];
 		digitalSensorArray[id].getSettingsValues(buf);
-		Serial.print(buf);
-		Serial2.print(buf);
+		Serial.println(buf);
+		Serial2.println(buf);
 	}
 	if (strcmp(schowek, "O") == 0) {
 		int id = atoi(strtok(NULL, korektor));
 		char buf[45];
 		digitalSensorArrayOutput[id].getSettingsValues(buf);
-		Serial.print(buf);
-		Serial2.print(buf);
+		Serial.println(buf);
+		Serial2.println(buf);
 	}
 	if (strcmp(schowek, "S") == 0) {
 		char buf[12];
@@ -132,8 +150,8 @@ void getValue(char* data) {
 		strcpy(bufferToSend, "%S/");
 		strcat(bufferToSend, buf);
 		strcat(bufferToSend, "*");
-		Serial.print(bufferToSend);
-		Serial2.print(bufferToSend);
+		Serial.println(bufferToSend);
+		Serial2.println(bufferToSend);
 	}
 
 	if (strcmp(schowek, "Q") == 0) { //send all data to panel

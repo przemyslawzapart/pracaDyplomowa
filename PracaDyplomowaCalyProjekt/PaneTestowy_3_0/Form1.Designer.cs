@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gbConnectionSettings = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.gbConnection = new System.Windows.Forms.GroupBox();
             this.btnSerialRefresh = new System.Windows.Forms.Button();
             this.lblSerialStatus = new System.Windows.Forms.Label();
@@ -43,36 +41,6 @@
             this.cbxSelectBaudRate = new System.Windows.Forms.ComboBox();
             this.cbxSelectCom = new System.Windows.Forms.ComboBox();
             this.btnSerialConnect = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btnDigital17 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.btnDigital19 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.lblDigital19 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.lblDigital18 = new System.Windows.Forms.Label();
-            this.button20 = new System.Windows.Forms.Button();
-            this.btnDigital18 = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.btnDigital20 = new System.Windows.Forms.Button();
-            this.label32 = new System.Windows.Forms.Label();
-            this.lblDigital17 = new System.Windows.Forms.Label();
-            this.button22 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblDigital20 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timerSendData = new System.Windows.Forms.Timer(this.components);
             this.btnDateTime = new System.Windows.Forms.Button();
@@ -283,74 +251,12 @@
             // gbConnectionSettings
             // 
             this.gbConnectionSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gbConnectionSettings.Controls.Add(this.label14);
-            this.gbConnectionSettings.Controls.Add(this.label1);
-            this.gbConnectionSettings.Controls.Add(this.label18);
             this.gbConnectionSettings.Controls.Add(this.gbConnection);
-            this.gbConnectionSettings.Controls.Add(this.button6);
-            this.gbConnectionSettings.Controls.Add(this.btnDigital17);
-            this.gbConnectionSettings.Controls.Add(this.button7);
-            this.gbConnectionSettings.Controls.Add(this.label13);
-            this.gbConnectionSettings.Controls.Add(this.label19);
-            this.gbConnectionSettings.Controls.Add(this.button5);
-            this.gbConnectionSettings.Controls.Add(this.label20);
-            this.gbConnectionSettings.Controls.Add(this.label4);
-            this.gbConnectionSettings.Controls.Add(this.button8);
-            this.gbConnectionSettings.Controls.Add(this.btnDigital19);
-            this.gbConnectionSettings.Controls.Add(this.button9);
-            this.gbConnectionSettings.Controls.Add(this.lblDigital19);
-            this.gbConnectionSettings.Controls.Add(this.button19);
-            this.gbConnectionSettings.Controls.Add(this.button4);
-            this.gbConnectionSettings.Controls.Add(this.label23);
-            this.gbConnectionSettings.Controls.Add(this.lblDigital18);
-            this.gbConnectionSettings.Controls.Add(this.button20);
-            this.gbConnectionSettings.Controls.Add(this.btnDigital18);
-            this.gbConnectionSettings.Controls.Add(this.label24);
-            this.gbConnectionSettings.Controls.Add(this.button3);
-            this.gbConnectionSettings.Controls.Add(this.button21);
-            this.gbConnectionSettings.Controls.Add(this.btnDigital20);
-            this.gbConnectionSettings.Controls.Add(this.label32);
-            this.gbConnectionSettings.Controls.Add(this.lblDigital17);
-            this.gbConnectionSettings.Controls.Add(this.button22);
-            this.gbConnectionSettings.Controls.Add(this.label3);
-            this.gbConnectionSettings.Controls.Add(this.label34);
-            this.gbConnectionSettings.Controls.Add(this.button1);
-            this.gbConnectionSettings.Controls.Add(this.label2);
-            this.gbConnectionSettings.Controls.Add(this.lblDigital20);
             this.gbConnectionSettings.Location = new System.Drawing.Point(686, 0);
             this.gbConnectionSettings.Name = "gbConnectionSettings";
             this.gbConnectionSettings.Size = new System.Drawing.Size(680, 400);
             this.gbConnectionSettings.TabIndex = 16;
             this.gbConnectionSettings.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(498, 340);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 13);
-            this.label14.TabIndex = 71;
-            this.label14.Text = "tutaj jakas nazwa";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(158, 229);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "label1";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(498, 236);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(89, 13);
-            this.label18.TabIndex = 63;
-            this.label18.Text = "tutaj jakas nazwa";
             // 
             // gbConnection
             // 
@@ -466,322 +372,6 @@
             this.btnSerialConnect.UseVisualStyleBackColor = true;
             this.btnSerialConnect.Click += new System.EventHandler(this.btnSerialConnect_Click);
             // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Silver;
-            this.button6.Enabled = false;
-            this.button6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button6.Location = new System.Drawing.Point(472, 155);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(20, 20);
-            this.button6.TabIndex = 56;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // btnDigital17
-            // 
-            this.btnDigital17.BackColor = System.Drawing.Color.Silver;
-            this.btnDigital17.Enabled = false;
-            this.btnDigital17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDigital17.Location = new System.Drawing.Point(309, 155);
-            this.btnDigital17.Name = "btnDigital17";
-            this.btnDigital17.Size = new System.Drawing.Size(20, 20);
-            this.btnDigital17.TabIndex = 40;
-            this.btnDigital17.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Silver;
-            this.button7.Enabled = false;
-            this.button7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button7.Location = new System.Drawing.Point(472, 259);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(20, 20);
-            this.button7.TabIndex = 64;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(335, 314);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 13);
-            this.label13.TabIndex = 53;
-            this.label13.Text = "tutaj jakas nazwa";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(498, 262);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(89, 13);
-            this.label19.TabIndex = 65;
-            this.label19.Text = "tutaj jakas nazwa";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Silver;
-            this.button5.Enabled = false;
-            this.button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button5.Location = new System.Drawing.Point(309, 311);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(20, 20);
-            this.button5.TabIndex = 52;
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label20.Location = new System.Drawing.Point(498, 158);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(89, 13);
-            this.label20.TabIndex = 57;
-            this.label20.Text = "tutaj jakas nazwa";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(335, 288);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "tutaj jakas nazwa";
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Silver;
-            this.button8.Enabled = false;
-            this.button8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button8.Location = new System.Drawing.Point(472, 233);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(20, 20);
-            this.button8.TabIndex = 62;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // btnDigital19
-            // 
-            this.btnDigital19.BackColor = System.Drawing.Color.Silver;
-            this.btnDigital19.Enabled = false;
-            this.btnDigital19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDigital19.Location = new System.Drawing.Point(309, 207);
-            this.btnDigital19.Name = "btnDigital19";
-            this.btnDigital19.Size = new System.Drawing.Size(20, 20);
-            this.btnDigital19.TabIndex = 44;
-            this.btnDigital19.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Silver;
-            this.button9.Enabled = false;
-            this.button9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button9.Location = new System.Drawing.Point(472, 337);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(20, 20);
-            this.button9.TabIndex = 70;
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // lblDigital19
-            // 
-            this.lblDigital19.AutoSize = true;
-            this.lblDigital19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblDigital19.Location = new System.Drawing.Point(335, 210);
-            this.lblDigital19.Name = "lblDigital19";
-            this.lblDigital19.Size = new System.Drawing.Size(89, 13);
-            this.lblDigital19.TabIndex = 45;
-            this.lblDigital19.Text = "tutaj jakas nazwa";
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.Silver;
-            this.button19.Enabled = false;
-            this.button19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button19.Location = new System.Drawing.Point(472, 181);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(20, 20);
-            this.button19.TabIndex = 58;
-            this.button19.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Silver;
-            this.button4.Enabled = false;
-            this.button4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button4.Location = new System.Drawing.Point(309, 285);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(20, 20);
-            this.button4.TabIndex = 50;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label23.Location = new System.Drawing.Point(498, 184);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(89, 13);
-            this.label23.TabIndex = 59;
-            this.label23.Text = "tutaj jakas nazwa";
-            // 
-            // lblDigital18
-            // 
-            this.lblDigital18.AutoSize = true;
-            this.lblDigital18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblDigital18.Location = new System.Drawing.Point(335, 184);
-            this.lblDigital18.Name = "lblDigital18";
-            this.lblDigital18.Size = new System.Drawing.Size(89, 13);
-            this.lblDigital18.TabIndex = 43;
-            this.lblDigital18.Text = "tutaj jakas nazwa";
-            // 
-            // button20
-            // 
-            this.button20.BackColor = System.Drawing.Color.Silver;
-            this.button20.Enabled = false;
-            this.button20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button20.Location = new System.Drawing.Point(472, 285);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(20, 20);
-            this.button20.TabIndex = 66;
-            this.button20.UseVisualStyleBackColor = false;
-            // 
-            // btnDigital18
-            // 
-            this.btnDigital18.BackColor = System.Drawing.Color.Silver;
-            this.btnDigital18.Enabled = false;
-            this.btnDigital18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDigital18.Location = new System.Drawing.Point(309, 181);
-            this.btnDigital18.Name = "btnDigital18";
-            this.btnDigital18.Size = new System.Drawing.Size(20, 20);
-            this.btnDigital18.TabIndex = 42;
-            this.btnDigital18.UseVisualStyleBackColor = false;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label24.Location = new System.Drawing.Point(498, 210);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(89, 13);
-            this.label24.TabIndex = 61;
-            this.label24.Text = "tutaj jakas nazwa";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Silver;
-            this.button3.Enabled = false;
-            this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button3.Location = new System.Drawing.Point(309, 337);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(20, 20);
-            this.button3.TabIndex = 54;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.Color.Silver;
-            this.button21.Enabled = false;
-            this.button21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button21.Location = new System.Drawing.Point(472, 207);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(20, 20);
-            this.button21.TabIndex = 60;
-            this.button21.UseVisualStyleBackColor = false;
-            // 
-            // btnDigital20
-            // 
-            this.btnDigital20.BackColor = System.Drawing.Color.Silver;
-            this.btnDigital20.Enabled = false;
-            this.btnDigital20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDigital20.Location = new System.Drawing.Point(309, 233);
-            this.btnDigital20.Name = "btnDigital20";
-            this.btnDigital20.Size = new System.Drawing.Size(20, 20);
-            this.btnDigital20.TabIndex = 46;
-            this.btnDigital20.UseVisualStyleBackColor = false;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label32.Location = new System.Drawing.Point(498, 288);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(89, 13);
-            this.label32.TabIndex = 67;
-            this.label32.Text = "tutaj jakas nazwa";
-            // 
-            // lblDigital17
-            // 
-            this.lblDigital17.AutoSize = true;
-            this.lblDigital17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblDigital17.Location = new System.Drawing.Point(335, 158);
-            this.lblDigital17.Name = "lblDigital17";
-            this.lblDigital17.Size = new System.Drawing.Size(89, 13);
-            this.lblDigital17.TabIndex = 41;
-            this.lblDigital17.Text = "tutaj jakas nazwa";
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.Color.Silver;
-            this.button22.Enabled = false;
-            this.button22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button22.Location = new System.Drawing.Point(472, 311);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(20, 20);
-            this.button22.TabIndex = 68;
-            this.button22.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(335, 262);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "tutaj jakas nazwa";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label34.Location = new System.Drawing.Point(498, 314);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(89, 13);
-            this.label34.TabIndex = 69;
-            this.label34.Text = "tutaj jakas nazwa";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.Enabled = false;
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(309, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 20);
-            this.button1.TabIndex = 48;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(335, 340);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
-            this.label2.TabIndex = 55;
-            this.label2.Text = "tutaj jakas nazwa";
-            // 
-            // lblDigital20
-            // 
-            this.lblDigital20.AutoSize = true;
-            this.lblDigital20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblDigital20.Location = new System.Drawing.Point(335, 236);
-            this.lblDigital20.Name = "lblDigital20";
-            this.lblDigital20.Size = new System.Drawing.Size(89, 13);
-            this.lblDigital20.TabIndex = 47;
-            this.lblDigital20.Text = "tutaj jakas nazwa";
-            // 
             // serialPort1
             // 
             this.serialPort1.BaudRate = 19200;
@@ -801,12 +391,12 @@
             this.btnDateTime.Name = "btnDateTime";
             this.btnDateTime.Size = new System.Drawing.Size(200, 50);
             this.btnDateTime.TabIndex = 26;
-            this.btnDateTime.Text = "2022/01/12 22:22:88";
+            this.btnDateTime.Text = "Date / Time  : 2022/01/01 00:00:00";
             this.btnDateTime.UseVisualStyleBackColor = false;
             // 
             // btnEngineStatus
             // 
-            this.btnEngineStatus.BackColor = System.Drawing.Color.OliveDrab;
+            this.btnEngineStatus.BackColor = System.Drawing.Color.Gray;
             this.btnEngineStatus.Enabled = false;
             this.btnEngineStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
             this.btnEngineStatus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -814,7 +404,7 @@
             this.btnEngineStatus.Name = "btnEngineStatus";
             this.btnEngineStatus.Size = new System.Drawing.Size(340, 50);
             this.btnEngineStatus.TabIndex = 25;
-            this.btnEngineStatus.Text = "Status : Running";
+            this.btnEngineStatus.Text = "Status : Not connected";
             this.btnEngineStatus.UseVisualStyleBackColor = false;
             // 
             // btnConnectionSettings
@@ -2176,9 +1766,9 @@
             this.lblName4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblName4.Location = new System.Drawing.Point(6, 117);
             this.lblName4.Name = "lblName4";
-            this.lblName4.Size = new System.Drawing.Size(48, 13);
+            this.lblName4.Size = new System.Drawing.Size(69, 13);
             this.lblName4.TabIndex = 9;
-            this.lblName4.Text = "analog 4";
+            this.lblName4.Text = "Analog value";
             // 
             // lblAnalog3
             // 
@@ -2196,9 +1786,9 @@
             this.lblName3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblName3.Location = new System.Drawing.Point(6, 87);
             this.lblName3.Name = "lblName3";
-            this.lblName3.Size = new System.Drawing.Size(48, 13);
+            this.lblName3.Size = new System.Drawing.Size(69, 13);
             this.lblName3.TabIndex = 7;
-            this.lblName3.Text = "analog 3";
+            this.lblName3.Text = "Analog value";
             // 
             // lblAnalog2
             // 
@@ -2216,9 +1806,9 @@
             this.lblName2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblName2.Location = new System.Drawing.Point(6, 56);
             this.lblName2.Name = "lblName2";
-            this.lblName2.Size = new System.Drawing.Size(48, 13);
+            this.lblName2.Size = new System.Drawing.Size(69, 13);
             this.lblName2.TabIndex = 5;
-            this.lblName2.Text = "analog 2";
+            this.lblName2.Text = "Analog value";
             // 
             // lblAnalog1
             // 
@@ -2226,9 +1816,9 @@
             this.lblAnalog1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblAnalog1.Location = new System.Drawing.Point(98, 27);
             this.lblAnalog1.Name = "lblAnalog1";
-            this.lblAnalog1.Size = new System.Drawing.Size(40, 13);
+            this.lblAnalog1.Size = new System.Drawing.Size(13, 13);
             this.lblAnalog1.TabIndex = 4;
-            this.lblAnalog1.Text = "999,99";
+            this.lblAnalog1.Text = "0";
             // 
             // lblName1
             // 
@@ -3105,7 +2695,7 @@
             this.btnRpm.Name = "btnRpm";
             this.btnRpm.Size = new System.Drawing.Size(140, 50);
             this.btnRpm.TabIndex = 32;
-            this.btnRpm.Text = "RPM : 2000";
+            this.btnRpm.Text = "RPM : 0";
             this.btnRpm.UseVisualStyleBackColor = false;
             // 
             // Form1
@@ -3127,11 +2717,11 @@
             this.Controls.Add(this.gbValue);
             this.Controls.Add(this.gbManual);
             this.Controls.Add(this.gbConnectionSettings);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Control panel 1.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.gbConnectionSettings.ResumeLayout(false);
-            this.gbConnectionSettings.PerformLayout();
             this.gbConnection.ResumeLayout(false);
             this.gbConnection.PerformLayout();
             this.gbValue.ResumeLayout(false);
@@ -3173,7 +2763,6 @@
         private System.Windows.Forms.Button btnSerialConnect;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Timer timerSendData;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDateTime;
         private System.Windows.Forms.Button btnEngineStatus;
         private System.Windows.Forms.Button btnConnectionSettings;
@@ -3202,14 +2791,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.GroupBox gbDigitalInput;
-        private System.Windows.Forms.Label lblDigital20;
-        private System.Windows.Forms.Button btnDigital20;
-        private System.Windows.Forms.Label lblDigital19;
-        private System.Windows.Forms.Button btnDigital19;
-        private System.Windows.Forms.Label lblDigital18;
-        private System.Windows.Forms.Button btnDigital18;
-        private System.Windows.Forms.Label lblDigital17;
-        private System.Windows.Forms.Button btnDigital17;
         private System.Windows.Forms.GroupBox gbshowValues;
         private System.Windows.Forms.ProgressBar pbAnalog8;
         private System.Windows.Forms.ProgressBar pbAnalog7;
@@ -3307,30 +2888,6 @@
         private System.Windows.Forms.Timer loginTimer;
         private System.Windows.Forms.Button btnGeneralSettings;
         private System.Windows.Forms.GroupBox gbDigitalOutput;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button button31;

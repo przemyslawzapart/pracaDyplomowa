@@ -38,11 +38,11 @@ void AnalogSensorClass::getValuesFromEeprom() {
 	adr += 3;
 	range = EEPROM.read(adr);
 
-	Serial.println(name);
+	/*Serial.println(name);
 	Serial.println(unit);
 	Serial.println(minValue);
 	Serial.println(maxValue);
-	Serial.println(range);
+	Serial.println(range);*/
 }
 void AnalogSensorClass::changeValues(char *_name, char *_unit, int _min, int _max, int _range) {
 	int adr = EEPROM_START_ANALOG + (id * 30);
@@ -126,6 +126,11 @@ void AnalogSensorClass::show() {
 	Serial.println(range);
 
 }
-
+bool AnalogSensorClass::getState() {
+	if (value < minValue)
+		return false;
+	else 
+		return true;
+}
 AnalogSensorClass AnalogSensor;
 

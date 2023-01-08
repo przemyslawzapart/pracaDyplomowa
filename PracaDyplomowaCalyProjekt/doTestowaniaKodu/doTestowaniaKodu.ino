@@ -81,6 +81,7 @@ void print(int ana) {
 void loop() {
 
 	Serial2.println("sjdfhkdjashfk;asdhf");
+	Serial.println("Sesrial 0");
 	delay(1000);
 
 	//for (int i = 0; i < 100; i++) {

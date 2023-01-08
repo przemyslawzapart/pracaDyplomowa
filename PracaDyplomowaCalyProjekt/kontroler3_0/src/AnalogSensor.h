@@ -34,6 +34,7 @@ class AnalogSensorClass //: public DigitalSensorClass
 	void getFlaotValue(char* data);
 	int  getValue();
 	void show();
+	bool getState();
 
 };
 

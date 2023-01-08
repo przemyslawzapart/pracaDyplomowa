@@ -9,8 +9,8 @@
 #include <DigiPotX9Cxxx.h>
 
 DigiPot potentiometr_1(3, 4, 2);
-DigiPot potentiometr_2(6, 7, 5);
-DigiPot potentiometr_3(9, 10, 8);
+DigiPot potentiometr_2(6, 7, 5);//ok
+DigiPot potentiometr_3(3,4,2);
 DigiPot potentiometr_4(52,53,51);
 
 DigiPot potentiometrArray[] = { potentiometr_1, potentiometr_2, potentiometr_3, potentiometr_4 };

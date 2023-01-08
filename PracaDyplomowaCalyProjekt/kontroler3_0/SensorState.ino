@@ -20,7 +20,6 @@ void getStnsorState() {
 				digitalInputState &= ~(1 << ENGINE_TEMPERATURE_HIGH);
 				digitalInputState &= ~(1 << FLOW_RAW_WATER);
 				engineStopped = false;
-				Serial.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			}
 			
 			continue;
@@ -32,7 +31,6 @@ void getStnsorState() {
 		Serial.println(previousState);*/
 		if (currentState != previousState) {
 			if (currentState) {
-				Serial.println("ustaw jakiegos bita ________________");
 				if (!firstStart) {
 					SendToSd(i);
 				}
@@ -97,7 +95,7 @@ void checkReset() {
 			resetFlag = true;
 			resetState = false;
 			//battery2.resetSensor();
-			Serial.println("reset");
+			//Serial.println("reset");
 			setErrorState(false);
 
 			if (startingErrorStatus) {

@@ -230,12 +230,17 @@ namespace symulacja_sygnalow_Windows
                 try
                 {
                     serialPort1.Write(data);
+                    serialPort1.Write("\n");
                 }
-                catch (TimeoutException)
+                catch (TimeoutException ex)
                 {
-                    Console.WriteLine("Sending error");
+                    Console.WriteLine("Sending error : {0} ",ex);
                 }
 
+                catch (InvalidOperationException ex)
+                {
+                    Console.WriteLine("InvalidOperationException : {0} ", ex);
+                }
             }
             else
                 MessageBox.Show("No  conection !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);

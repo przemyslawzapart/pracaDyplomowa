@@ -239,13 +239,13 @@ void setup() {
 
 
 	//----------------------------------------------------------------------
-	Serial.println("h!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+	//Serial.println("h!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
 
 
-	readAnalog(0);
-	readAnalog(1);
-	readAnalog(2);
-	readAnalog(3);
+	//readAnalog(0);
+	//readAnalog(1);
+	//readAnalog(2);
+	//readAnalog(3);
 
 	delay(1000);
 	getStnsorState();
@@ -473,11 +473,14 @@ getEngineSensorState();
 			starting();
 		}
 		else {
-			setEngineStatus(ENGINE_ERROR, true);
+			//setEngineStatus(ENGINE_ERROR, true);
 			setEngineStatus(CONTROLER_OUT, false);
 		}
 			
 
+	 }
+	 else if (keyAutoState && startReset) {
+		 setEngineStatus(ENGINE_READY, true);
 	}
 	
 	else if (keyHandState) 
@@ -501,10 +504,8 @@ getEngineSensorState();
 				handStart();					
 				if (!flagHandStarting) {					
 					flagHandStarting = true;
-					Serial.println("hand start ");
 					setEngineStatus(ENGINE_READY, false);
 					setEngineStatus(ENGINE_STARTING ,true);
-					Serial.println("hand start koniec ");
 				}
 					
 				if (getRpm()) 
@@ -617,10 +618,10 @@ void getEngineSensorState() {
 		rpmValue = (temp / rpmNumberOfTeeth) * 60;
 		rpmCounter = 0;
 		rpmTimer = millis();
-		Serial.print("przerwanie  = ");
+		/*Serial.print("przerwanie  = ");
 		Serial.println(temp);
 		Serial.print(" RPM = ");
-		Serial.println(rpmValue);
+		Serial.println(rpmValue)*/;
 	}	
 }
 
@@ -776,9 +777,13 @@ int getRpm() {
 void setBatteryState() {
 	//setEngineStatus(BATTERY1_FAIL, digitalSensorArray[BATTERY_1].getState());
 	//setEngineStatus(BATTERY2_FAIL, digitalSensorArray[BATTERY_2].getState());
+	setEngineStatus(BATTERY1_FAIL, analogSensorArray[0].getState());
+	setEngineStatus(BATTERY2_FAIL, analogSensorArray[2].getState());
+
 }
 bool getBatterystate(int8_t battery) {
-	bool state = true;
+	//bool state = true;
+	return analogSensorArray[battery].getState();
 	//powinien z analog sprawdzic jaka jest wrtosc
 	//if (battery == 1) {		
 	//	//return digitalSensorArray[BATTERY_1].getValue();
@@ -883,18 +888,26 @@ void setDefaultValues() {
 
 	start = EEPROM_START_ANALOG;
 
-	for (size_t i = 0; i < 16; i++)
+	for (int i = 0; i < 16; i++)
 	{
 		int adr = start + (i * EEPROM_ANALOG_SIZE); //Serial.print("name : "); Serial.println(adr);
-		Global.saveToEprom(adr, "AnalogValue");// name
+		if (i == 0 ) 		
+			Global.saveToEprom(adr, "Battery 1" );// name
+		
+		else if (i == 1)
+			Global.saveToEprom(adr, "Battery 2");// name
+		else
+			Global.saveToEprom(adr, "AnalogValue");// name		
 		adr += 15; //Serial.print("unit : "); Serial.println(adr);
-		Global.saveToEprom(adr, "C");//unit
+		Global.saveToEprom(adr, "V");//unit
 		adr += 5; //Serial.print("min : "); Serial.println(adr);
 		EEPROM.write(adr, 2);//min
 		adr += 3; //Serial.print("max : "); Serial.println(adr);
 		EEPROM.write(adr, 4);//max
 		adr += 3; //Serial.print("range : "); Serial.println(adr);
 		EEPROM.write(adr, 5);//range
+		
+		
 	}
 }
 
