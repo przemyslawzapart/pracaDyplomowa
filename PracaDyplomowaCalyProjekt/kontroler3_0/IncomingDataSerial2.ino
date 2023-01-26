@@ -76,10 +76,10 @@ void SetNweValue(char* data) {
 		schowek = strtok(NULL, korektor);
 		//Serial.println(schowek);
 		setSerialNumber(schowek);
-		//Serial.print("new srn = ");
+		Serial.print("new srn = ");
 		char b[20];
 		getSerialNumber(b);
-		//Serial.print(b);
+		Serial.println(b);
 	}
 	else if (strcmp(schowek, "A") == 0) {
 		int id = atoi(strtok(NULL, korektor));
@@ -93,7 +93,15 @@ void SetNweValue(char* data) {
 		char buf[45];
 		analogSensorArray[id].getSettingsValues(buf);
 		Serial.print(buf);
-		Serial2.print(buf);
+		Serial2.println(buf);
+
+		int engineStateId = id + 5;
+		setEepromName(EEPROM_START_ENGINE_STATE, name, engineStateId);
+		getEepromName('!', EEPROM_START_ENGINE_STATE, buf, engineStateId);
+		Serial.println(buf);
+		Serial2.println(buf);
+
+		
 
 		//analogSensorArray[id].show();
 	}
@@ -106,12 +114,33 @@ void SetNweValue(char* data) {
 		//digitalSensorArray[id].show();
 		char buf[45];
 		digitalSensorArray[id].getSettingsValues(buf);
-		Serial.print(buf);
+		Serial.println(buf);
 		Serial2.print(buf);
 
+		
+
 	}
-	else if (strcmp(schowek, "T") == 0) {
+	else if (strcmp(schowek, "O") == 0) {
+		int id = atoi(strtok(NULL, korektor));
+		char* name = strtok(NULL, korektor);//name
+		int contact = atoi(strtok(NULL, korektor));
+		char buf[45];
+
+		setEepromName(EEPROM_START_DIGITAL_OUTPUT, name, id);
+		getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, id);
+
+		//digitalSensorArrayOutput[id].changeValue(name, 0);
+
+		Serial.println(buf);
+		Serial2.println(buf);
+
+
+
+	}
+	else if (strcmp(schowek, "Q") == 0) {
 		schowek = strtok(NULL, korektor);
+		Serial.println("Default values");
+		defaultValues();
 		//Serial.print("new time : ");
 		//Serial.println(schowek);
 	}
@@ -129,21 +158,21 @@ void getValue(char* data) {
 		Serial.println(buf);
 		Serial2.println(buf);
 	}
-	if (strcmp(schowek, "D") == 0) {
+	else if (strcmp(schowek, "D") == 0) {
 		int id = atoi(strtok(NULL, korektor));
 		char buf[45];
 		digitalSensorArray[id].getSettingsValues(buf);
 		Serial.println(buf);
 		Serial2.println(buf);
 	}
-	if (strcmp(schowek, "O") == 0) {
+	else if (strcmp(schowek, "O") == 0) {
 		int id = atoi(strtok(NULL, korektor));
 		char buf[45];
 		digitalSensorArrayOutput[id].getSettingsValues(buf);
 		Serial.println(buf);
 		Serial2.println(buf);
 	}
-	if (strcmp(schowek, "S") == 0) {
+	else if (strcmp(schowek, "S") == 0) {
 		char buf[12];
 		getSerialNumber(buf);
 		char bufferToSend[20];
@@ -154,7 +183,7 @@ void getValue(char* data) {
 		Serial2.println(bufferToSend);
 	}
 
-	if (strcmp(schowek, "Q") == 0) { //send all data to panel
+	else if (strcmp(schowek, "Q") == 0) { //send all data to panel
 		//Serial.println("wyslij wszystko");
 		sendAllSettingsToPanel();
 	}

@@ -10,7 +10,7 @@
 
 DigiPot potentiometr_1(3, 4, 2);
 DigiPot potentiometr_2(6, 7, 5);//ok
-DigiPot potentiometr_3(3,4,2);
+DigiPot potentiometr_3(49,50,48);
 DigiPot potentiometr_4(52,53,51);
 
 DigiPot potentiometrArray[] = { potentiometr_1, potentiometr_2, potentiometr_3, potentiometr_4 };
@@ -27,7 +27,7 @@ int analogValue[] = { 0,0,0,0 };
 
 char data[35];
 
-int rpmPin = A0;
+int rpmPin = 14;
 unsigned long rpmTimer = 0;
 unsigned long rpmFrequency = 1000; // 600 - ,500-540,400-720, 300-,200-960,100-2640, 200-1360, 50-4950
 bool rpmState = false;
@@ -65,12 +65,21 @@ void loop() {
 		else
 			rpmState = true;
 	}
+	//if (millis() - rpmTimer > 10) {
+	//	rpmTimer = millis();
+	//	digitalWrite(rpmPin, rpmState);
+	//	if (rpmState)
+	//		rpmState = false;
+	//	else
+	//		rpmState = true;
+	//}
 	
 }
 void makeDataString() {
 	char buffer[20];
 	getDigitalValue();
 	sprintf(buffer, "#%x/%x/", digitalDataIn, digitalDataOut);
+	//sprintf(buffer, "#%x/%x/", 0xFFFF, digitalDataOut);
 	int len = strlen(buffer);
 	char buf[5];
 	sprintf(buf, "%02x*", len+3);

@@ -8,6 +8,16 @@ void getStnsorState() {
 	{
 		/*if (!runningStatus && (i==OIL_PRESURE || i == ENGINE_TEMPERATURE_HIGH || i == FLOW_RAW_WATER))
 			continue;*/
+
+		if (i == ENGINE_TEMPERATURE_LOW) {
+			if (digitalSensorArray[ENGINE_TEMPERATURE_LOW].getState()) {
+				digitalWrite(digitalOutArray[HEATING],HIGH);
+				heatingFlag = true;
+				heatingTimer = millis();
+			}
+			/*else
+				digitalWrite(digitalOutArray[HEATING], LOW);*/
+		}
 		if ( !runningStatus && (i == OIL_PRESURE || i == ENGINE_TEMPERATURE_HIGH || i == FLOW_RAW_WATER)) {
 			if (engineStopped) {
 				/*digitalSensorArray[OIL_PRESURE].resetSensor();
@@ -37,11 +47,13 @@ void getStnsorState() {
 
 				digitalInputState |= (1 << i);
 				//ustaw errors
-				digitalWrite(digitalOutArray[ERROR], HIGH);
+				if (i != ENGINE_TEMPERATURE_LOW)
+					digitalWrite(digitalOutArray[ERROR], HIGH);
 			}
 			else {
 				digitalInputState &= ~(1 << i);
-				digitalWrite(digitalOutArray[ERROR], LOW);
+				if (i != ENGINE_TEMPERATURE_LOW)
+					digitalWrite(digitalOutArray[ERROR], LOW);
 			}
 		}
 	}
@@ -111,6 +123,10 @@ void checkReset() {
 			startingErrorStatus = false;
 			/*for (size_t i = 0; i < 6; i++)
 				digitalWrite(outputArray[i], LOW);*/
+			for (size_t i = 0; i < 4; i++)//zaczynajac od baterii
+			{
+				engineErrorStatus &= ~(1 << i+5);
+			}
 		}
 	}
 	else {
@@ -131,7 +147,7 @@ void setPinPositionMultiplexer(int position) {
 		bool state = false;
 		if (position & (1 << i))
 			state = true;
-		digitalWrite(muxPinPosition[i], state);
+		digitalWrite(muxPinPosition[i], state);		
 	}
 
 }

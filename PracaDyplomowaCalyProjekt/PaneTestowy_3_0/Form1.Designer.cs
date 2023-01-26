@@ -200,7 +200,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.tbxserialNumber = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.gbPswd = new System.Windows.Forms.GroupBox();
@@ -224,6 +224,11 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.gbSettingsDigital = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.btnSendDigitalOutSettings = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.cbSettingsDigitalNoNc = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -2003,9 +2008,9 @@
             this.lblLogin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblLogin.Location = new System.Drawing.Point(168, 19);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(112, 13);
+            this.lblLogin.Size = new System.Drawing.Size(130, 13);
             this.lblLogin.TabIndex = 22;
-            this.lblLogin.Text = "Jestes juz zalogowany";
+            this.lblLogin.Text = "You are already logged in.";
             this.lblLogin.Visible = false;
             // 
             // bntLogin
@@ -2051,7 +2056,7 @@
             this.gbSettingsGeneral.Controls.Add(this.label38);
             this.gbSettingsGeneral.Controls.Add(this.textBox8);
             this.gbSettingsGeneral.Controls.Add(this.label39);
-            this.gbSettingsGeneral.Controls.Add(this.textBox19);
+            this.gbSettingsGeneral.Controls.Add(this.tbxserialNumber);
             this.gbSettingsGeneral.Controls.Add(this.label40);
             this.gbSettingsGeneral.Controls.Add(this.label41);
             this.gbSettingsGeneral.Location = new System.Drawing.Point(1372, 715);
@@ -2129,6 +2134,7 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(50, 21);
             this.comboBox8.TabIndex = 38;
+            this.comboBox8.Visible = false;
             // 
             // dateTimePicker2
             // 
@@ -2138,6 +2144,7 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(159, 20);
             this.dateTimePicker2.TabIndex = 52;
             this.dateTimePicker2.Value = new System.DateTime(2022, 12, 29, 0, 0, 0, 0);
+            this.dateTimePicker2.Visible = false;
             // 
             // btnGetAnalogValues
             // 
@@ -2153,9 +2160,9 @@
             // btnSendDefoultAnalogSettings
             // 
             this.btnSendDefoultAnalogSettings.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendDefoultAnalogSettings.Location = new System.Drawing.Point(247, 31);
+            this.btnSendDefoultAnalogSettings.Location = new System.Drawing.Point(18, 179);
             this.btnSendDefoultAnalogSettings.Name = "btnSendDefoultAnalogSettings";
-            this.btnSendDefoultAnalogSettings.Size = new System.Drawing.Size(159, 26);
+            this.btnSendDefoultAnalogSettings.Size = new System.Drawing.Size(206, 26);
             this.btnSendDefoultAnalogSettings.TabIndex = 27;
             this.btnSendDefoultAnalogSettings.Text = "Default settings";
             this.btnSendDefoultAnalogSettings.UseVisualStyleBackColor = true;
@@ -2164,11 +2171,12 @@
             // textBox14
             // 
             this.textBox14.Enabled = false;
-            this.textBox14.Location = new System.Drawing.Point(100, 161);
+            this.textBox14.Location = new System.Drawing.Point(280, 31);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(125, 20);
             this.textBox14.TabIndex = 32;
             this.textBox14.Text = "Time";
+            this.textBox14.Visible = false;
             // 
             // comboBox7
             // 
@@ -2238,6 +2246,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(50, 21);
             this.comboBox7.TabIndex = 37;
+            this.comboBox7.Visible = false;
             // 
             // textBox13
             // 
@@ -2246,6 +2255,7 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(125, 20);
             this.textBox13.TabIndex = 31;
+            this.textBox13.Visible = false;
             // 
             // comboBox6
             // 
@@ -2279,6 +2289,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(50, 21);
             this.comboBox6.TabIndex = 36;
+            this.comboBox6.Visible = false;
             // 
             // label36
             // 
@@ -2289,6 +2300,7 @@
             this.label36.Size = new System.Drawing.Size(63, 13);
             this.label36.TabIndex = 21;
             this.label36.Text = "Ilosc zebow";
+            this.label36.Visible = false;
             // 
             // textBox12
             // 
@@ -2297,16 +2309,18 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(125, 20);
             this.textBox12.TabIndex = 30;
+            this.textBox12.Visible = false;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label37.Location = new System.Drawing.Point(21, 164);
+            this.label37.Location = new System.Drawing.Point(244, 38);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(30, 13);
             this.label37.TabIndex = 22;
             this.label37.Text = "Time";
+            this.label37.Visible = false;
             // 
             // textBox11
             // 
@@ -2315,6 +2329,7 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(125, 20);
             this.textBox11.TabIndex = 29;
+            this.textBox11.Visible = false;
             // 
             // label38
             // 
@@ -2325,6 +2340,7 @@
             this.label38.Size = new System.Drawing.Size(65, 13);
             this.label38.TabIndex = 20;
             this.label38.Text = "ilosc startow";
+            this.label38.Visible = false;
             // 
             // textBox8
             // 
@@ -2344,14 +2360,14 @@
             this.label39.TabIndex = 15;
             this.label39.Text = "Software ver .";
             // 
-            // textBox19
+            // tbxserialNumber
             // 
-            this.textBox19.Enabled = false;
-            this.textBox19.Location = new System.Drawing.Point(100, 30);
-            this.textBox19.MaxLength = 10;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(125, 20);
-            this.textBox19.TabIndex = 27;
+            this.tbxserialNumber.Enabled = false;
+            this.tbxserialNumber.Location = new System.Drawing.Point(100, 30);
+            this.tbxserialNumber.MaxLength = 20;
+            this.tbxserialNumber.Name = "tbxserialNumber";
+            this.tbxserialNumber.Size = new System.Drawing.Size(125, 20);
+            this.tbxserialNumber.TabIndex = 27;
             // 
             // label40
             // 
@@ -2362,6 +2378,7 @@
             this.label40.Size = new System.Drawing.Size(37, 13);
             this.label40.TabIndex = 16;
             this.label40.Text = "Pause";
+            this.label40.Visible = false;
             // 
             // label41
             // 
@@ -2597,6 +2614,11 @@
             // 
             // gbSettingsDigital
             // 
+            this.gbSettingsDigital.Controls.Add(this.label1);
+            this.gbSettingsDigital.Controls.Add(this.comboBox2);
+            this.gbSettingsDigital.Controls.Add(this.btnSendDigitalOutSettings);
+            this.gbSettingsDigital.Controls.Add(this.textBox1);
+            this.gbSettingsDigital.Controls.Add(this.label3);
             this.gbSettingsDigital.Controls.Add(this.label31);
             this.gbSettingsDigital.Controls.Add(this.cbSettingsDigitalNoNc);
             this.gbSettingsDigital.Controls.Add(this.comboBox5);
@@ -2610,6 +2632,54 @@
             this.gbSettingsDigital.TabIndex = 31;
             this.gbSettingsDigital.TabStop = false;
             this.gbSettingsDigital.Text = "Digital settings";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(21, 185);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Select";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(100, 177);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(125, 21);
+            this.comboBox2.TabIndex = 43;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // btnSendDigitalOutSettings
+            // 
+            this.btnSendDigitalOutSettings.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSendDigitalOutSettings.Location = new System.Drawing.Point(20, 240);
+            this.btnSendDigitalOutSettings.Name = "btnSendDigitalOutSettings";
+            this.btnSendDigitalOutSettings.Size = new System.Drawing.Size(210, 25);
+            this.btnSendDigitalOutSettings.TabIndex = 44;
+            this.btnSendDigitalOutSettings.Text = "Send settings";
+            this.btnSendDigitalOutSettings.UseVisualStyleBackColor = true;
+            this.btnSendDigitalOutSettings.Click += new System.EventHandler(this.btnSendDigitalOutSettings_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(100, 204);
+            this.textBox1.MaxLength = 15;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 20);
+            this.textBox1.TabIndex = 47;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(21, 207);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Name";
             // 
             // label31
             // 
@@ -2631,6 +2701,7 @@
             this.cbSettingsDigitalNoNc.Name = "cbSettingsDigitalNoNc";
             this.cbSettingsDigitalNoNc.Size = new System.Drawing.Size(125, 21);
             this.cbSettingsDigitalNoNc.TabIndex = 41;
+            this.cbSettingsDigitalNoNc.Visible = false;
             // 
             // comboBox5
             // 
@@ -2644,7 +2715,7 @@
             // btnSendDigitalSettings
             // 
             this.btnSendDigitalSettings.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendDigitalSettings.Location = new System.Drawing.Point(17, 240);
+            this.btnSendDigitalSettings.Location = new System.Drawing.Point(20, 112);
             this.btnSendDigitalSettings.Name = "btnSendDigitalSettings";
             this.btnSendDigitalSettings.Size = new System.Drawing.Size(210, 25);
             this.btnSendDigitalSettings.TabIndex = 20;
@@ -2661,11 +2732,12 @@
             this.label33.Size = new System.Drawing.Size(32, 13);
             this.label33.TabIndex = 34;
             this.label33.Text = "State";
+            this.label33.Visible = false;
             // 
             // textBox27
             // 
             this.textBox27.Location = new System.Drawing.Point(100, 57);
-            this.textBox27.MaxLength = 20;
+            this.textBox27.MaxLength = 15;
             this.textBox27.Name = "textBox27";
             this.textBox27.Size = new System.Drawing.Size(125, 20);
             this.textBox27.TabIndex = 39;
@@ -2682,7 +2754,7 @@
             // 
             // loginTimer
             // 
-            this.loginTimer.Interval = 60000;
+            this.loginTimer.Interval = 600000;
             this.loginTimer.Tick += new System.EventHandler(this.loginTimer_Tick);
             // 
             // btnRpm
@@ -2702,7 +2774,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2224, 1173);
+            this.ClientSize = new System.Drawing.Size(2477, 1173);
             this.Controls.Add(this.btnRpm);
             this.Controls.Add(this.gbSettingsAnalog);
             this.Controls.Add(this.gbSettingsDigital);
@@ -2854,7 +2926,7 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox tbxserialNumber;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.GroupBox gbPswd;
@@ -2953,6 +3025,11 @@
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Button btnRpm;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btnSendDigitalOutSettings;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

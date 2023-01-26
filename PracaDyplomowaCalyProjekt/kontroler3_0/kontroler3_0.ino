@@ -91,6 +91,11 @@
 #define ENGINE_ERROR			4
 #define BATTERY1_FAIL			5
 #define BATTERY2_FAIL			6
+#define ANALOG3_FAIL			7
+#define ANALOG4_FAIL			8
+
+#define BATTERY_1				0
+#define BATTERY_2				1
 
 
 TimeClass time;
@@ -157,6 +162,8 @@ unsigned long rpmTimer = 0;
 unsigned long rpmNumberOfTeeth = 100;
 unsigned int rpmValue = 0;
 unsigned long rpmCounter = 0;
+unsigned long heatingTimer = 0;
+bool heatingFlag = false;
 
 
 //serial event 2
@@ -196,6 +203,7 @@ void SendToSd(const char* data);
 
 void rpmCount() {
 	rpmCounter++;
+//	Serial.println("htutja ");
 }
 
 void setup() {
@@ -250,141 +258,9 @@ void setup() {
 	delay(1000);
 	getStnsorState();
 	SendToSd("Start");
+	Serial.println("koniec ");	
 
 	
-/*
-
-	//char buf[50];
-	//checkIncomingData("#S/123456789*");
-	//getSerialNumber(buf);
-	//Serial.println(buf);
-	//checkIncomingData("#S/987654321*");
-	//getSerialNumber(buf);
-	//Serial.println(buf);
-	//getVersionSoftware(buf);
-	//Serial.println(buf);
-
-	//checkIncomingData("@A/0/*"); Serial.println();
-	//checkIncomingData("@A/1/*"); Serial.println();
-	//checkIncomingData("@A/2/*"); Serial.println();
-	//checkIncomingData("@A/3/*"); Serial.println();
-	////checkIncomingData("#A/0/przemek/Bar/22/33/44*"); Serial.println();
-	////checkIncomingData("#A/1/inna/Bar/22/33/44*"); Serial.println();
-
-	//Serial.println("get analog");
-	//checkIncomingData("@A/0/*"); Serial.println();
-	//checkIncomingData("@A/1/*"); Serial.println();
-	//checkIncomingData("@A/2/*"); Serial.println();
-	//checkIncomingData("@A/3/*"); Serial.println();	
-
-	//Serial.println("get analog");
-	//checkIncomingData("@A/0/*"); Serial.println();
-	//checkIncomingData("@A/1/*"); Serial.println();
-	//checkIncomingData("@A/2/*"); Serial.println();
-	//checkIncomingData("@A/3/*"); Serial.println();
-	//
-	//Serial.println("get digital");
-	//checkIncomingData("@D/0/*"); Serial.println();
-	//checkIncomingData("@D/1/*"); Serial.println();
-	//checkIncomingData("@D/2/*"); Serial.println();
-	//checkIncomingData("@D/3/*"); Serial.println(); 
-	//checkIncomingData("@D/4/*"); Serial.println();
-	//checkIncomingData("@D/5/*"); Serial.println();
-	//checkIncomingData("@D/6/*"); Serial.println();
-	//checkIncomingData("@D/7/*"); Serial.println();
-	//checkIncomingData("@D/8/*"); Serial.println();
-	//checkIncomingData("@D/9/*"); Serial.println();
-	//checkIncomingData("@D/10/*"); Serial.println();
-	//checkIncomingData("@D/11/*"); Serial.println();
-	//checkIncomingData("@D/12/*"); Serial.println();
-	//checkIncomingData("@D/13/*"); Serial.println();
-	//checkIncomingData("@D/14/*"); Serial.println();
-	//checkIncomingData("@D/15/*"); Serial.println();
-
-	//Serial.println("get all");
-
-	//checkIncomingData("@Q*"); Serial.println();
-
-	//Serial.println("get digital out");
-	//checkIncomingData("@O/0/*"); Serial.println();
-	//checkIncomingData("@O/1/*"); Serial.println();
-	//checkIncomingData("@O/2/*"); Serial.println();
-	//checkIncomingData("@O/3/*"); Serial.println();
-	//checkIncomingData("@O/4/*"); Serial.println();
-	//checkIncomingData("@O/5/*"); Serial.println();
-	//checkIncomingData("@O/6/*"); Serial.println();
-	//checkIncomingData("@O/7/*"); Serial.println();
-	//checkIncomingData("@O/8/*"); Serial.println();
-	//checkIncomingData("@O/9/*"); Serial.println();
-	//checkIncomingData("@O/10/*"); Serial.println();
-	//checkIncomingData("@O/11/*"); Serial.println();
-	//checkIncomingData("@O/12/*"); Serial.println();
-	//checkIncomingData("@O/13/*"); Serial.println();
-	//checkIncomingData("@O/14/*"); Serial.println();
-	//checkIncomingData("@O/15/*"); Serial.println();
-
-	//Serial.println("engine state ");
-	//getEepromName(buf, 0), Serial.println(buf);
-	//getEepromName(buf, 1), Serial.println(buf);
-	//getEepromName(buf, 2), Serial.println(buf);
-	//getEepromName(buf, 3), Serial.println(buf);
-	//getEepromName(buf, 4), Serial.println(buf);
-	//getEepromName(buf, 5), Serial.println(buf);
-	//getEepromName(buf, 6), Serial.println(buf);
-	//getEepromName(buf, 7), Serial.println(buf);
-	//getEepromName(buf, 8), Serial.println(buf);
-	//getEepromName(buf, 9), Serial.println(buf);
-	//getEepromName(buf, 10), Serial.println(buf);
-	//getEepromName(buf, 11), Serial.println(buf);
-	//getEepromName(buf, 12), Serial.println(buf);
-	//getEepromName(buf, 13), Serial.println(buf);
-	//getEepromName(buf, 14), Serial.println(buf);
-	//getEepromName(buf, 14), Serial.println(buf);
-
-
-	//Serial.println("engine state 2 ");
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 0), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 1), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 2), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 3), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 4), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 5), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 6), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 7), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 8), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 9), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 10), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 11), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 12), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 13), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 14), Serial.println(buf);
-	//getEepromName(EEPROM_START_ENGINE_STATE,buf, 14), Serial.println(buf);
-
-
-	//Serial.println("engine state 3 ");
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 0), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 1), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 2), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 3), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 4), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 5), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 6), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 7), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 8), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 9), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 10), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 11), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 12), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 13), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 14), Serial.println(buf);
-	//getEepromName('&', EEPROM_START_DIGITAL_OUTPUT, buf, 14), Serial.println(buf);
-
-
-	Serial.println("koniec ");
-
-	//while (1) { ; }
-
-	*/
 }
 void readAnalog(int id) {
 	char buf[20];
@@ -434,6 +310,13 @@ void getEepromName(char startSign,int start, char* buffer, int id) {
 
 }
 
+void setEepromName( int start, const char* buffer, int id) {
+	
+	int adr = start + (id * EEPROM_DIGITAL_SIZE);
+	Global.saveToEprom(adr, buffer);
+
+
+}
 
 
 bool recived = false;
@@ -542,10 +425,12 @@ getEngineSensorState();
 void setEngineStatus(uint8_t position, bool state){
 
 	if (!state) {
+		if(position < 5)
 		engineErrorStatus &= ~(1 << position);
 	}
 	else {
-		engineErrorStatus |= (1 << position);
+		
+			engineErrorStatus |= (1 << position);
 	}
 }	
 void runningMode() {
@@ -606,6 +491,11 @@ void getEngineSensorState() {
 	getStnsorState();
 	checkReset();
 	setBatteryState();
+	setAnalogState();
+	if (millis() - heatingTimer > 3000 && heatingFlag) {
+		heatingFlag = false;
+		digitalWrite(digitalOutArray[HEATING], LOW);
+	}
 	
 	if (millis() - timerSendDataToControler > SEND_DATA) 
 	{
@@ -632,20 +522,20 @@ void setStartersState(bool state) {
 void handStart() {
 
 	if (flagBattery) {
-		if (!getBatterystate(1)) {//true start 1			
+		if (getBatterystate(BATTERY_1)) {//true start 1			
 			digitalWrite(digitalOutArray[STARTER_1], HIGH);
 		}
-		else if (!getBatterystate(2)) {
+		else if (getBatterystate(BATTERY_2)) {
 			flagBattery = false;
 		}
 		else
 			handStartError();
 	}
 	else {
-		if (!getBatterystate(2)) {//true start 1			
+		if (getBatterystate(BATTERY_2)) {//true start 1			
 			digitalWrite(digitalOutArray[STARTER_2], HIGH);
 		}
-		else if (!getBatterystate(1)) {
+		else if (getBatterystate(BATTERY_1)) {
 			flagBattery = true;
 		}
 		else
@@ -668,7 +558,7 @@ void starting() {
 	int startTime = 2000;
 	unsigned long startingTimer = millis();
 	bool pause = false;
-	getBatterystate(1);
+	getBatterystate(BATTERY_1);
 	getRpm();
 	while (start < 6) {
 		getEngineSensorState();
@@ -681,8 +571,6 @@ void starting() {
 			digitalWrite(digitalOutArray[STARTER_2], LOW);
 			setEngineStatus(ENGINE_STARTING, false);
 			setEngineStatus(CONTROLER_OUT, true);
-
-
 			break;
 		}
 			
@@ -696,7 +584,7 @@ void starting() {
 		else {
 			getRpm();
 			if (flagBattery) {
-				if (!getBatterystate(1)) {//true start 1
+				if (getBatterystate(BATTERY_1)) {//true start 1
 					//setEngineStatus(ENGINE_STARTING, true);
 					digitalWrite(digitalOutArray[STARTER_1], HIGH);
 					if (millis() - startingTimer > startTime) {
@@ -710,14 +598,14 @@ void starting() {
 					}
 
 				}
-				else if (!getBatterystate(2)) {
+				else if (getBatterystate(BATTERY_2)) {
 					flagBattery = false;
 				}
 				else
 					start = 6;
 			}
 			else {
-				if (!getBatterystate(2)) {//true start 1
+				if (getBatterystate(BATTERY_2)) {//true start 1
 					//setEngineStatus(ENGINE_STARTING, true);
 					digitalWrite(digitalOutArray[STARTER_2], HIGH);
 					if (millis() - startingTimer > startTime) {
@@ -730,7 +618,7 @@ void starting() {
 						pause = true;
 					}
 				}
-				else if (!getBatterystate(1)) {
+				else if (getBatterystate(BATTERY_1)) {
 					flagBattery = true;
 				}
 				else
@@ -774,16 +662,30 @@ int getRpm() {
 		return false;
 	
 }
-void setBatteryState() {
-	//setEngineStatus(BATTERY1_FAIL, digitalSensorArray[BATTERY_1].getState());
-	//setEngineStatus(BATTERY2_FAIL, digitalSensorArray[BATTERY_2].getState());
+void setAnalogState() {
 	setEngineStatus(BATTERY1_FAIL, analogSensorArray[0].getState());
-	setEngineStatus(BATTERY2_FAIL, analogSensorArray[2].getState());
+	setEngineStatus(BATTERY2_FAIL, analogSensorArray[1].getState());
+	setEngineStatus(ANALOG3_FAIL, analogSensorArray[2].getState());
+	setEngineStatus(ANALOG4_FAIL, analogSensorArray[3].getState());
+}
+void setBatteryState() {
+	//setEngineStatus(BATTERY1_FAIL, 0);
+	//setEngineStatus(BATTERY2_FAIL, 0);
+	setEngineStatus(BATTERY1_FAIL, analogSensorArray[0].getState());
+	setEngineStatus(BATTERY2_FAIL, analogSensorArray[1].getState());
+	if (analogSensorArray[0].getState() && analogSensorArray[0].getState()) {
+		setEngineStatus(ENGINE_READY, false);
+		setEngineStatus(ENGINE_ERROR, true);
+	}
+		
 
 }
 bool getBatterystate(int8_t battery) {
 	//bool state = true;
-	return analogSensorArray[battery].getState();
+	if (analogSensorArray[battery].getState())
+		return false;
+	else
+		return true;
 	//powinien z analog sprawdzic jaka jest wrtosc
 	//if (battery == 1) {		
 	//	//return digitalSensorArray[BATTERY_1].getValue();
@@ -826,11 +728,24 @@ void blink() {
 	for (size_t i = 0; i < sizeof(digitalOutArray) / sizeof(digitalOutArray[0]); i++)	
 			digitalWrite(digitalOutArray[i], a);	
 }
-
+void defaultValues() {
+	Serial.println("tutaj");
+	EEPROM.write(0, 1);
+	setDefaultValues();
+	for (int i = 0; i < sizeof(digitalSensorArray) / sizeof(digitalSensorArray[0]); i++)
+	{	
+		digitalSensorArray[i].getValuesFromEeprom();
+	}
+	for (size_t i = 0; i < sizeof(analogSensorArray) / sizeof(analogSensorArray[0]); i++)
+	{
+		analogSensorArray[i].getValuesFromEeprom();
+	}
+	sendAllSettingsToPanel();
+}
 void setDefaultValues() {
 	if (EEPROM.read(0) == 0) {
 		Serial.println("nic do roboty");
-		//return;
+		return;
 	}
 	Serial.println("moge cos zmienic");
 	int start = 0;
@@ -869,12 +784,12 @@ void setDefaultValues() {
 		EEPROM.write(adr, 0); //Serial.print("state : "); Serial.println(adr);
 	}
 
-	const char* engineState[] = { "Controler out" , "Ready" , "Starting", "Running", "Error", "Battery1 fail", "Battery2 fail"};
+	const char* engineState[] = { "Controler out" , "Ready" , "Starting", "Running", "Starting error", "Battery1 fail", "Battery2 fail","Analog 3", "Analog 4"};
 	start = EEPROM_START_ENGINE_STATE;
 	for (size_t i = 0; i < 16; i++)
 	{
 		int adr = start + (i * EEPROM_DIGITAL_SIZE);
-		if (i < 7)
+		if (i < sizeof(engineState) / sizeof(engineState[0]))
 			Global.saveToEprom(adr, engineState[i]);
 		else
 

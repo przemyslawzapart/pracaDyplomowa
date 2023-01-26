@@ -37,8 +37,13 @@ namespace symulacja_sygnalow_Windows
 
             for (int i = 0; i < digitalButtonsList.Count; i++)
             {
+                int newSize = 5;
+                digitalButtonsList[i].Font = new Font(digitalButtonsList[i].Font.FontFamily, newSize);
                 digitalSensorList.Add(new DigitalSensor(digitalButtonsList[i]));
-                digitalButtonsList[i].Text = i.ToString();
+                int number = i;
+                if (i > 15)
+                    number -= 16;
+                digitalButtonsList[i].Text = number.ToString();
             }
 
             analogValueList.Add(pBarAnalogValue1.Value);
@@ -147,7 +152,7 @@ namespace symulacja_sygnalow_Windows
                 return;
             //Console.WriteLine("inncoming {0} : ", digitalIn);
             //Console.WriteLine("digital in  {0} , global in {1}", digitalIn, digitalInGlobal);
-            for (int i = 0; i <8; i++)
+            for (int i = 0; i <16; i++)
             {
                 //if( (digitalIn & (1<<i)) != (digitalInGlobal & (1<<i)))
                 //{

@@ -95,9 +95,8 @@ void AnalogSensorClass::measurement() {
 	int sensorValue = analogRead(pinPosition);
 	/*Serial.print("mesaurment : ");
 	Serial.print(sensorValue);*/
-	value = (sensorValue*10) * (5.00 / 1023);	
-	/*Serial.print(" , value : ");
-	Serial.println(value);*/
+	value = (sensorValue*10) * (5.0 / 1023);	
+
 }
 
 void AnalogSensorClass::getFlaotValue(char *data) {
@@ -127,7 +126,7 @@ void AnalogSensorClass::show() {
 
 }
 bool AnalogSensorClass::getState() {
-	if (value < minValue)
+	if (value > (minValue*10) && value < (maxValue*10))
 		return false;
 	else 
 		return true;

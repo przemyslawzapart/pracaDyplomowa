@@ -46,6 +46,7 @@ void makeAnalogStringToPanel(char* data) {
 		int value = analogSensorArray[i].getValue();
 		int first = value / 10;
 		int second = value - (first * 10);
+		//sprintf(buffer, "%03x", 0);
 		sprintf(buffer, "%03x", value);
 		strcat(data, buffer);
 		strcat(data, "/");

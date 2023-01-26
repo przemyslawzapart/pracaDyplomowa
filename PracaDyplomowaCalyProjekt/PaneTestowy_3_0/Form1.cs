@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.AxHost;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Button = System.Windows.Forms.Button;
 using ComboBox = System.Windows.Forms.ComboBox;
 using TextBox = System.Windows.Forms.TextBox;
@@ -336,6 +324,7 @@ namespace PaneTestowy_3_0
                 {
                     Console.WriteLine("otrzynamo out  : {0} ", data);
                     setNames(data, digitalOutputList, '&');
+                    
                 }
                 else if (data[0] == '!')
                 {
@@ -406,6 +395,11 @@ namespace PaneTestowy_3_0
                 return;
             list[id].setName(splitString[3]);
 
+            if(sign == '&')
+            {
+                getSensrosDigitaOutlName(comboBox2);
+                textBox1.Text = splitString[3];
+            }
         }
 
         private void setNamesAnalog(String data)
@@ -809,8 +803,10 @@ namespace PaneTestowy_3_0
         {
             setPanel(1);
             setSettingsPanel(0);
+            tbxGeneralSettingsList[0].Text = SerialNumber;
+            tbxGeneralSettingsList[1].Text = softwareVersion;
 
-           // getSensrosAnalogName(comboBox1);//sensorList
+            // getSensrosAnalogName(comboBox1);//sensorList
         }
 
         private void btnConnectionSettings_Click(object sender, EventArgs e)
@@ -888,8 +884,14 @@ namespace PaneTestowy_3_0
         {
             setSettingsPanel(2);
             getSensrosDigitalName(comboBox5);
+            comboBox5.SelectedIndex = 0;
             string data = "@/D/0*";
             sendData(data);
+
+            getSensrosDigitaOutlName(comboBox2);
+            comboBox2.SelectedIndex = 0;
+            textBox1.Text = comboBox2.Text;
+
         }
         private void setSettingsPanel(int pos)
         {
@@ -909,10 +911,10 @@ namespace PaneTestowy_3_0
                     item.Visible = false;
                 }
             }
-            if(pos == 0)
+            if(pos == 1)
             {
-                ;
 
+                ;
             }
         }
         private void btnAnalogSettings_Click(object sender, EventArgs e)
@@ -949,7 +951,12 @@ namespace PaneTestowy_3_0
             foreach (var item in digitalSensorList)
                 cbox.Items.Add(item.name);
         }
-
+        private void getSensrosDigitaOutlName(ComboBox cbox)
+        {
+            cbox.Items.Clear();
+            foreach (var item in digitalOutputList)
+                cbox.Items.Add(item.name);
+        }
         private void bntLogin_Click(object sender, EventArgs e)
         {
             if (!loginState)
@@ -988,7 +995,7 @@ namespace PaneTestowy_3_0
             }
             else
             {
-                lblPswd.Visible = true;
+                lblPswd.Visible = true; 
             }
         }
         private void setloginSettingsState(bool state)
@@ -1001,11 +1008,13 @@ namespace PaneTestowy_3_0
 
         private void btnSendGeneralSettings_Click(object sender, EventArgs e)
         {
-            
+            String data = "#/S/" + tbxserialNumber.Text + "/*";
+            sendData(data);
         }
 
         private void btnSendAnalogSettings_Click(object sender, EventArgs e)
         {
+            string textToSend = comboBox4.Text;
             int index = comboBox4.SelectedIndex;
             int min = getIntValue(tbxAnalogSettingsList[2].Text, 10);
             int max = getIntValue(tbxAnalogSettingsList[3].Text, 10);
@@ -1018,9 +1027,10 @@ namespace PaneTestowy_3_0
                 return;
             }
             lblSettingsMessage.Visible = false;
-
+            
             String dataToSend = "#A/"+ index.ToString() + "/" + tbxAnalogSettingsList[0].Text + "/"+ tbxAnalogSettingsList[1].Text + "/"+ tbxAnalogSettingsList[2].Text
                                         + "/"+ tbxAnalogSettingsList[3].Text+ "/"+ tbxAnalogSettingsList[4].Text + "*";
+
             sendData(dataToSend);            
             comboBox4.Items.Clear();
             comboBox4.Items.Add("Select sensor");
@@ -1034,7 +1044,8 @@ namespace PaneTestowy_3_0
             comboBox5.Items.Clear();
             comboBox5.Items.Add("Select sensor");
             comboBox5.SelectedIndex = 0;
-            clearTbxList(tbxDigitalSettingsList);
+            textBox27.Text = "";
+           // clearTbxList(tbxDigitalSettingsList);
 
         }
 
@@ -1045,19 +1056,45 @@ namespace PaneTestowy_3_0
 
         private void btnSendDefoultAnalogSettings_Click(object sender, EventArgs e)
         {
-
+            string data = "#/Q/*";
+            sendData(data);
         }
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
                 clearTbxList(tbxAnalogSettingsList);
                 setAnalogSettings(comboBox4.SelectedIndex);
+                if (loginState)
+                {
+                    if(comboBox4.SelectedIndex < 2) 
+                    { 
+                        tbxAnalogSettingsList[0].Enabled = false;
+                        tbxAnalogSettingsList[1].Enabled = false;
+                    }
+                    else 
+                    {
+                        tbxAnalogSettingsList[0].Enabled = true;
+                        tbxAnalogSettingsList[1].Enabled = true;
+                    }
+                    
+                }
+            
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clearTbxList(tbxDigitalSettingsList);
-            setDigitalSettings(comboBox5.SelectedIndex);
+            //clearTbxList(tbxDigitalSettingsList);
+            //setDigitalSettings(comboBox5.SelectedIndex);
+            textBox27.Text = comboBox5.Text;
+            if (loginState)
+            {
+                if (comboBox5.SelectedIndex < 8)
+                    textBox27.Enabled = false;
+                else
+                    textBox27.Enabled = true;
+
+            }
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -1075,6 +1112,32 @@ namespace PaneTestowy_3_0
                 
             
             
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // getSensrosDigitaOutlName(comboBox2);
+            
+            textBox1.Text = comboBox2.Text;
+            if (loginState)
+            {
+                if (comboBox2.SelectedIndex < 5)
+                    textBox1.Enabled = false;
+                else
+                    textBox1.Enabled = true;
+
+            }
+
+        }
+
+        private void btnSendDigitalOutSettings_Click(object sender, EventArgs e)
+        {
+            String dataToSend = "#O/" + comboBox2.SelectedIndex.ToString() + "/" + textBox1.Text + "/0/*";
+            sendData(dataToSend);
+            comboBox2.Items.Clear();
+            comboBox2.Items.Add("Select sensor");
+            comboBox2.SelectedIndex = 0;
+           // clearTbxList(tbxDigitalSettingsList);
         }
     }
 
